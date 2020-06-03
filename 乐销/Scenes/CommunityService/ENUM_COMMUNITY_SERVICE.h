@@ -1,0 +1,19 @@
+//
+//  ENUM_COMMUNITY_SERVICE.h
+//  Neighbor
+//
+//  Created by 隋林栋 on 2020/4/3.
+//  Copyright © 2020 ping. All rights reserved.
+//
+
+#ifndef ENUM_COMMUNITY_SERVICE_h
+#define ENUM_COMMUNITY_SERVICE_h
+// 1纠纷  2维修 3保洁 4安保
+typedef NS_ENUM(NSUInteger, ENUM_COMMUNITY_SERVICE_TYPE) {
+    ENUM_COMMUNITY_SERVICE_ARGUE = 1,
+    ENUM_COMMUNITY_SERVICE_MAINTAIN = 2,
+    ENUM_COMMUNITY_SERVICE_CLEAN = 3,
+    ENUM_COMMUNITY_SERVICE_SECURITY = 4,
+};
+
+#endif /* ENUM_COMMUNITY_SERVICE_h */
