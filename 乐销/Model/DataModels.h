@@ -59,4 +59,5 @@
 #import "ModelQuestionnairDetailContent.h"
 #import "ModelQuestionnairDetailValues.h"
 #import "ModelQuestionnairDetail.h"
+#import "ModelMsg.h"
 

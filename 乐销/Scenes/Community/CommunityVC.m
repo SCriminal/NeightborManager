@@ -178,6 +178,15 @@
                 [GB_Nav pushVCName:@"SendWhistleVC" animated:true];
             };
             return model;
+        }(),^(){
+            ModelBtn * model = [ModelBtn new];
+            model.title = @"工作通知";
+            model.tag = 1;
+            model.imageName = @"tmp_module_11";
+            model.blockClick = ^{
+                [GB_Nav pushVCName:@"MessageCenterVC" animated:true];
+            };
+            return model;
         }()].mutableCopy];
     }
     return _collection;

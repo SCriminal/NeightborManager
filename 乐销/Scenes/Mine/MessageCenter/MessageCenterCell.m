@@ -14,6 +14,16 @@
 
 @implementation MessageCenterCell
 #pragma mark 懒加载
+- (UILabel *)status{
+    if (_status == nil) {
+        _status = [UILabel new];
+        _status.textColor = [UIColor whiteColor];
+        _status.font =  [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
+        _status.numberOfLines = 1;
+        _status.lineSpace = 0;
+    }
+    return _status;
+}
 - (UILabel *)title{
     if (_title == nil) {
         _title = [UILabel new];
@@ -34,7 +44,14 @@
     }
     return _time;
 }
-
+- (UIView *)labelBg{
+    if (_labelBg == nil) {
+        _labelBg = [UIView new];
+        _labelBg.backgroundColor = COLOR_ORANGE;
+        
+    }
+    return _labelBg;
+}
 #pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -44,17 +61,31 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.title];
         [self.contentView addSubview:self.time];
-        
+        [self.contentView addSubview:self.labelBg];
+        [self.contentView addSubview:self.status];
+
     }
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model{
+- (void)resetCellWithModel:(ModelMsg *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
+    bool isReaded = false;
+    [self.status fitTitle:isReaded?@"已读":@"未读" variable:0];
+    
+    self.labelBg.widthHeight = XY(self.status.width + W(12), W(18));
+    self.labelBg.leftTop = XY(W(15),W(17.5));
+    self.labelBg.backgroundColor = isReaded?COLOR_BLUE:COLOR_ORANGE;
+    [self.labelBg addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:2 lineWidth:0 lineColor:[UIColor clearColor]];
+    
+    self.status.center = self.labelBg.center;
+
+    
     //刷新view
-    [self.title fitTitle:@"您的居民建档信息已修改！" variable:SCREEN_WIDTH - W(30)];
-    self.title.leftTop = XY(W(15),W(18));
-    [self.time fitTitle:@"2020-03-05 08:00" variable:SCREEN_WIDTH - W(30)];
+    [self.title fitTitle:UnPackStr(model.content) variable:W(270)];
+    self.title.leftCenterY = XY(self.labelBg.right+W(8),self.labelBg.centerY);
+
+    [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.createTime andFormatter:TIME_MIN_SHOW] variable:SCREEN_WIDTH - W(30)];
     self.time.leftTop = XY(W(15),self.title.bottom+W(13));
     
     //设置总高度

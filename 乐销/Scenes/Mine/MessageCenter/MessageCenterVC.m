@@ -62,8 +62,23 @@
 
 #pragma mark request
 - (void)requestList{
-//    self.aryDatas = @[@"",@"",@""].mutableCopy;
-//    [self.tableView reloadData];
-    [self showNoResult];
+    self.aryDatas = @[^(){
+        ModelMsg * model = [ModelMsg new];
+        model.content = @"123123123123sdsdf";
+        model.createTime = [[NSDate date]timeIntervalSince1970];
+        return model;
+    }(),^(){
+        ModelMsg * model = [ModelMsg new];
+        model.content = @"123123123123sdsdf";
+        model.createTime = [[NSDate date]timeIntervalSince1970];
+        return model;
+    }(),^(){
+        ModelMsg * model = [ModelMsg new];
+        model.content = @"123123123123sdsdf";
+        model.createTime = [[NSDate date]timeIntervalSince1970];
+        return model;
+    }()].mutableCopy;
+    [self.tableView reloadData];
+//    [self showNoResult];
 }
 @end
