@@ -213,11 +213,12 @@
     self.IDNumber.leftTop = XY(W(122),self.IDTitle.top);
 
     
+    self.nameTtitle.hidden = !isStr(model.realName);
     self.nameTtitle.rightTop = XY(W(92),self.IDTitle.bottom+W(20));
     [self.name fitTitle:UnPackStr(model.realName) variable:0];
     self.name.leftTop = XY(W(122),self.nameTtitle.top);
     
-    self.timeTitle.rightTop = XY(W(92),self.nameTtitle.bottom+W(20));
+    self.timeTitle.rightTop = XY(W(92),isStr(model.realName)?self.nameTtitle.bottom+W(20):self.IDTitle.bottom+W(20));
     [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.whistleTime andFormatter:TIME_HOUR_SHOW] variable:0];
     self.time.leftTop = XY(W(122),self.timeTitle.top);
 
@@ -722,12 +723,16 @@
 
     self.btnCreate.centerXTop = XY(SCREEN_WIDTH/2.0,self.btnDisposal.bottom+W(20));
     NSDate *whistleTime = [NSDate dateWithTimeIntervalSince1970:model.whistleTime];
-    
+//    whistleTime = [GlobalMethod exchangeStringToDate:@"2020-06-07 23:20" formatter:TIME_MIN_SHOW];
     {
         NSDate * deadLine = [whistleTime dateByAddingTimeInterval:60*60*72];
-               NSTimeInterval interval = [deadLine timeIntervalSinceDate:whistleTime];
+        NSDate * dateNow = [NSDate date];
+               NSTimeInterval interval = [deadLine timeIntervalSinceDate:dateNow];
+        self.btnDisposal.userInteractionEnabled = true;
                if (interval<0) {
                    [self.btnDisposal resetViewWithWidth:W(315) :W(45) :@"已超时，自动推送至中心处理" :[UIColor colorWithHexString:@"#F5F6F7"] :COLOR_999 :[UIColor clearColor]];
+                   self.btnDisposal.userInteractionEnabled = false;
+
                }else if(interval<60*60){
                    [self.btnDisposal resetViewWithWidth:W(315) :W(45) :[NSString stringWithFormat:@"立即处理(%.f分钟)",ceil(interval/60.0)]];
                }else{
@@ -736,9 +741,12 @@
     }
     {
         NSDate * deadLine = [whistleTime dateByAddingTimeInterval:60*60*24];
-        NSTimeInterval interval = [deadLine timeIntervalSinceDate:whistleTime];
+        NSDate * dateNow = [NSDate date];
+               NSTimeInterval interval = [deadLine timeIntervalSinceDate:dateNow];
+        self.btnCreate.userInteractionEnabled = true;
         if (interval<0) {
             [self.btnCreate resetViewWithWidth:W(315) :W(45) :@"24小时内未处理，暂无法提交" :[UIColor whiteColor] :COLOR_999 :[UIColor colorWithHexString:@"#D9D9D9"]];
+            self.btnCreate.userInteractionEnabled = false;
         }else if(interval<60*60){
             [self.btnCreate resetWhiteViewWithWidth:W(315) :W(45) :[NSString stringWithFormat:@"立即处理(%.f分钟)",ceil(interval/60.0)]];
         }else{

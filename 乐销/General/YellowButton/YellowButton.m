@@ -37,12 +37,15 @@
 }
 #pragma mark 刷新view
 - (void)resetViewWithWidth:(CGFloat)width :(CGFloat)height :(NSString *)title{
+    self.bg.hidden = false;
+    self.backgroundColor = [UIColor clearColor];//背景色
     [self addSubview:self.bg];
     [self addSubview:self.title];
     self.widthHeight = XY(width, height);
     self.bg.widthHeight = self.widthHeight;
     [GlobalMethod setRoundView:self.bg color:[UIColor clearColor] numRound:self.bg.height/2.0 width:0];
-
+    
+    self.title.textColor = [UIColor whiteColor];
     [self.title fitTitle:title variable:0];
     self.title.centerXCenterY = XY(self.width/2.0, self.height/2.0);
     
@@ -51,20 +54,20 @@
     
 }
 - (void)resetWhiteViewWithWidth:(CGFloat)width :(CGFloat)height :(NSString *)title{
+    [self resetViewWithWidth:width :height :title];
     self.backgroundColor = [UIColor whiteColor];
     self.title.textColor = COLOR_BLUE;
     self.title.font = [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
     self.bg.hidden = true;
-    [self resetViewWithWidth:width :height :title];
     [GlobalMethod setRoundView:self color:COLOR_BLUE numRound:self.height/2.0 width:1];
 
 }
 - (void)resetViewWithWidth:(CGFloat)width :(CGFloat)height :(NSString *)title :(UIColor*)backgroundColor :(UIColor*)titleColor :(UIColor*)lineColor{
+    [self resetViewWithWidth:width :height :title];
     self.backgroundColor = backgroundColor;
     self.title.textColor = titleColor;
     self.title.font = [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
     self.bg.hidden = true;
-    [self resetViewWithWidth:width :height :title];
     [GlobalMethod setRoundView:self color:lineColor numRound:self.height/2.0 width:1];
 
 }
