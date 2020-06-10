@@ -14,6 +14,7 @@ NSString *const kModelMsgContent = @"content";
 NSString *const kModelMsgFromNumber = @"fromNumber";
 NSString *const kModelMsgType = @"type";
 NSString *const kModelMsgFromId = @"fromId";
+NSString *const kModelMsgIsReader = @"isReader";
 
 
 @interface ModelMsg ()
@@ -46,6 +47,7 @@ NSString *const kModelMsgFromId = @"fromId";
             self.fromNumber = [dict stringValueForKey:kModelMsgFromNumber];
             self.type = [dict doubleValueForKey:kModelMsgType];
             self.fromId = [dict doubleValueForKey:kModelMsgFromId];
+        self.isReader = [dict doubleValueForKey:kModelMsgIsReader];
 
     }
     
@@ -61,6 +63,7 @@ NSString *const kModelMsgFromId = @"fromId";
     [mutableDict setValue:self.fromNumber forKey:kModelMsgFromNumber];
     [mutableDict setValue:[NSNumber numberWithDouble:self.type] forKey:kModelMsgType];
     [mutableDict setValue:[NSNumber numberWithDouble:self.fromId] forKey:kModelMsgFromId];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isReader] forKey:kModelMsgIsReader];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

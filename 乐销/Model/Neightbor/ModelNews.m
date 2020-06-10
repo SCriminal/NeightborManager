@@ -17,6 +17,7 @@ NSString *const kModelNewsCoverUrl = @"coverUrl";
 NSString *const kModelNewsBody = @"body";
 NSString *const kModelNewsDisplayMode = @"displayMode";
 NSString *const kModelNewsReadAmount = @"readAmount";
+NSString *const kModelNewsIsReader = @"isReader";
 
 
 @interface ModelNews ()
@@ -55,7 +56,8 @@ NSString *const kModelNewsReadAmount = @"readAmount";
         self.body = [dict stringValueForKey:kModelNewsBody];
         self.displayMode = [dict doubleValueForKey:kModelNewsDisplayMode];
         self.readAmount = [dict doubleValueForKey:kModelNewsReadAmount];
-        
+        self.isReader = [dict doubleValueForKey:kModelNewsIsReader];
+
     }
     
     return self;
@@ -73,7 +75,8 @@ NSString *const kModelNewsReadAmount = @"readAmount";
     [mutableDict setValue:self.body forKey:kModelNewsBody];
     [mutableDict setValue:[NSNumber numberWithDouble:self.displayMode] forKey:kModelNewsDisplayMode];
     [mutableDict setValue:[NSNumber numberWithDouble:self.readAmount] forKey:kModelNewsReadAmount];
-    
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isReader] forKey:kModelNewsIsReader];
+
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

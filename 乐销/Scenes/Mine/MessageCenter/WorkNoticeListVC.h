@@ -1,5 +1,5 @@
 //
-//  MessageCenterVC.h
+//  WorkNoticeListVC.h
 //  Neighbor
 //
 //  Created by 隋林栋 on 2020/3/10.
@@ -8,6 +8,6 @@
 
 #import "BaseTableVC.h"
 
-@interface MessageCenterVC : BaseTableVC
+@interface WorkNoticeListVC : BaseTableVC
 
 @end

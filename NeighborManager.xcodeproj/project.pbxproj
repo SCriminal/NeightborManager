@@ -174,7 +174,7 @@
 		D291306F24171EA900CAC2E4 /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291306E24171EA900CAC2E4 /* SignInVC.m */; };
 		D291307324171F2A00CAC2E4 /* JournalismListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291307224171F2A00CAC2E4 /* JournalismListVC.m */; };
 		D291307624171F3D00CAC2E4 /* JournalismDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291307524171F3D00CAC2E4 /* JournalismDetailVC.m */; };
-		D291307A24171F6600CAC2E4 /* MessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291307924171F6600CAC2E4 /* MessageCenterVC.m */; };
+		D291307A24171F6600CAC2E4 /* WorkNoticeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291307924171F6600CAC2E4 /* WorkNoticeListVC.m */; };
 		D2913082241721B000CAC2E4 /* ArchiveListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2913081241721B000CAC2E4 /* ArchiveListVC.m */; };
 		D2913085241721BD00CAC2E4 /* CreateArchiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2913084241721BD00CAC2E4 /* CreateArchiveVC.m */; };
 		D29130892417234200CAC2E4 /* MemberListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D29130882417234200CAC2E4 /* MemberListVC.m */; };
@@ -182,7 +182,7 @@
 		D291309B24172D5500CAC2E4 /* AddressListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291309A24172D5500CAC2E4 /* AddressListVC.m */; };
 		D291309E24172E8800CAC2E4 /* AddressListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D291309D24172E8800CAC2E4 /* AddressListCell.m */; };
 		D29130A12417324300CAC2E4 /* JournalismListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D29130A02417324300CAC2E4 /* JournalismListCell.m */; };
-		D29130A42417363E00CAC2E4 /* MessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D29130A32417363E00CAC2E4 /* MessageCenterCell.m */; };
+		D29130A42417363E00CAC2E4 /* WorkNoticeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D29130A32417363E00CAC2E4 /* WorkNoticeListCell.m */; };
 		D29130A72417377400CAC2E4 /* MemberListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D29130A62417377400CAC2E4 /* MemberListCell.m */; };
 		D29130AA24173AF000CAC2E4 /* ArchiveListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D29130A924173AF000CAC2E4 /* ArchiveListCell.m */; };
 		D29130AD241760EA00CAC2E4 /* SelectAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D29130AC241760EA00CAC2E4 /* SelectAddressCell.m */; };
@@ -710,8 +710,8 @@
 		D291307224171F2A00CAC2E4 /* JournalismListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JournalismListVC.m; sourceTree = "<group>"; };
 		D291307424171F3D00CAC2E4 /* JournalismDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JournalismDetailVC.h; sourceTree = "<group>"; };
 		D291307524171F3D00CAC2E4 /* JournalismDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JournalismDetailVC.m; sourceTree = "<group>"; };
-		D291307824171F6600CAC2E4 /* MessageCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCenterVC.h; sourceTree = "<group>"; };
-		D291307924171F6600CAC2E4 /* MessageCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCenterVC.m; sourceTree = "<group>"; };
+		D291307824171F6600CAC2E4 /* WorkNoticeListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkNoticeListVC.h; sourceTree = "<group>"; };
+		D291307924171F6600CAC2E4 /* WorkNoticeListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkNoticeListVC.m; sourceTree = "<group>"; };
 		D2913080241721B000CAC2E4 /* ArchiveListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArchiveListVC.h; sourceTree = "<group>"; };
 		D2913081241721B000CAC2E4 /* ArchiveListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArchiveListVC.m; sourceTree = "<group>"; };
 		D2913083241721BD00CAC2E4 /* CreateArchiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateArchiveVC.h; sourceTree = "<group>"; };
@@ -726,8 +726,8 @@
 		D291309D24172E8800CAC2E4 /* AddressListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressListCell.m; sourceTree = "<group>"; };
 		D291309F2417324300CAC2E4 /* JournalismListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JournalismListCell.h; sourceTree = "<group>"; };
 		D29130A02417324300CAC2E4 /* JournalismListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JournalismListCell.m; sourceTree = "<group>"; };
-		D29130A22417363E00CAC2E4 /* MessageCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCenterCell.h; sourceTree = "<group>"; };
-		D29130A32417363E00CAC2E4 /* MessageCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCenterCell.m; sourceTree = "<group>"; };
+		D29130A22417363E00CAC2E4 /* WorkNoticeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkNoticeListCell.h; sourceTree = "<group>"; };
+		D29130A32417363E00CAC2E4 /* WorkNoticeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkNoticeListCell.m; sourceTree = "<group>"; };
 		D29130A52417377400CAC2E4 /* MemberListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberListCell.h; sourceTree = "<group>"; };
 		D29130A62417377400CAC2E4 /* MemberListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberListCell.m; sourceTree = "<group>"; };
 		D29130A824173AF000CAC2E4 /* ArchiveListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArchiveListCell.h; sourceTree = "<group>"; };
@@ -1994,10 +1994,10 @@
 		D291307724171F5800CAC2E4 /* MessageCenter */ = {
 			isa = PBXGroup;
 			children = (
-				D291307824171F6600CAC2E4 /* MessageCenterVC.h */,
-				D291307924171F6600CAC2E4 /* MessageCenterVC.m */,
-				D29130A22417363E00CAC2E4 /* MessageCenterCell.h */,
-				D29130A32417363E00CAC2E4 /* MessageCenterCell.m */,
+				D291307824171F6600CAC2E4 /* WorkNoticeListVC.h */,
+				D291307924171F6600CAC2E4 /* WorkNoticeListVC.m */,
+				D29130A22417363E00CAC2E4 /* WorkNoticeListCell.h */,
+				D29130A32417363E00CAC2E4 /* WorkNoticeListCell.m */,
 			);
 			path = MessageCenter;
 			sourceTree = "<group>";
@@ -3257,7 +3257,7 @@
 				C69570561E861A7000ABB2ED /* NSString+Category.m in Sources */,
 				D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */,
 				D2037605210719190054F8A6 /* ModelAliClient_Base.m in Sources */,
-				D291307A24171F6600CAC2E4 /* MessageCenterVC.m in Sources */,
+				D291307A24171F6600CAC2E4 /* WorkNoticeListVC.m in Sources */,
 				D2821CBC218AD9B90057688B /* ORChartView.m in Sources */,
 				D2B9FF24248E43D10082E8D2 /* ModelMsg.m in Sources */,
 				D29316901EF3BD980034E6FB /* GlobalMethod+Authority.m in Sources */,
@@ -3310,7 +3310,7 @@
 				D2996A4521E6E3AA00562587 /* Collection_Image.m in Sources */,
 				D2BC9ABC1DFFE16D00B0468E /* RequestApi.m in Sources */,
 				D293B67F219AFC220073F316 /* BottomBtnView.m in Sources */,
-				D29130A42417363E00CAC2E4 /* MessageCenterCell.m in Sources */,
+				D29130A42417363E00CAC2E4 /* WorkNoticeListCell.m in Sources */,
 				D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */,
 				D26B0AE6242338E200977704 /* ArchivePickView.m in Sources */,
 				D291307324171F2A00CAC2E4 /* JournalismListVC.m in Sources */,

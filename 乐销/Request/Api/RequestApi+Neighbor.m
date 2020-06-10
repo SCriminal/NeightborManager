@@ -373,7 +373,36 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"scope":NSNumber.dou(1)};
     [self getUrl:@"/resident/content/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
-
+/**
+ 列表
+ */
++(void)requestWorkNoticeListWithScopeid:(double)scopeId
+                             page:(double)page
+                            count:(double)count
+                       categoryId:(double)categoryId
+                         delegate:(id <RequestDelegate>)delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure{
+//NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)
+    NSDictionary *dic = @{@"areaId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+                          @"page":NSNumber.dou(page),
+                          @"count":NSNumber.dou(count),
+//                          @"categoryId":NSNumber.dou(categoryId),
+                          @"categoryAlias":@"work_notice",
+                          @"scope":NSNumber.dou(4)};
+    [self getUrl:@"/resident/content/1_0_15/user/list/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+ 详情
+ */
++(void)requestWorkNoticeDetailWithId:(double)identity
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"id":NSNumber.dou(identity),
+                          @"scope":NSNumber.dou(4)};
+    [self getUrl:@"/resident/content/1_0_15/user/{id}" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
  修改
  */
@@ -1079,4 +1108,6 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                            @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)};
         [self postUrl:@"/admin/whistle/1/3" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+
 @end

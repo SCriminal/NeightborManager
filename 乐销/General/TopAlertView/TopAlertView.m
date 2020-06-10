@@ -74,7 +74,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
     
     self.height = self.labelTitle.bottom + W(15);
     [GlobalMethod setRoundView:self color:[UIColor clearColor] numRound:10 width:0];
-
+    
     self.control.widthHeight = XY(SCREEN_WIDTH, self.height);
     self.control.leftTop = XY(W(0),W(0));
     //播放声音
@@ -147,7 +147,18 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
     switch (sender.tag) {
         case 1://数据解析  跳转页面
         {
-            if (self.model.type == 1) {
+            if (self.model.type == 8) {
+                NSMutableArray * ary = [NSMutableArray array];
+                for (UIViewController * vc in GB_Nav.viewControllers) {
+                    if ([vc isKindOfClass:NSClassFromString(@"WorkNoticeListVC")]) {
+                        [ary addObject:vc];
+                        [GB_Nav setViewControllers:ary animated:true];
+                        return;
+                    }else{
+                        [ary addObject:vc];
+                    }
+                }
+                [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
             }
             [self timerStop];
         }

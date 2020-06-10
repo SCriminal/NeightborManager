@@ -24,7 +24,7 @@
 //bug
 #import <Bugly/Bugly.h>
 @interface AppDelegate ()<UIAlertViewDelegate,UNUserNotificationCenterDelegate,WXApiDelegate,WeiboSDKDelegate>{
-
+    
 }
 
 @end
@@ -40,7 +40,7 @@
     [self registerForRemoteNotification];
     //配置 app id
     [self configureAPIKey];
-
+    
     return YES;
 }
 
@@ -66,8 +66,8 @@
             [[UIApplication sharedApplication] registerForRemoteNotifications];
             [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         }
-       
-      }
+        
+    }
 }
 
 #pragma mark 配置appid
@@ -80,7 +80,7 @@
     //配置阿里推送
     //阿里云推送
     [CloudPushSDK autoInit:^(CloudPushCallbackResult *res) {
-      
+        
         NSLog(@"sld");
         if (res.success) {
             NSLog(@"Push SDK init success, deviceId: %@", [CloudPushSDK getDeviceId]);
@@ -91,7 +91,7 @@
     }];
     //bug
     [Bugly startWithAppId:@"76cec8e771"];
-
+    
 }
 
 #pragma mark 推送
@@ -108,7 +108,7 @@
             NSLog(@"Register deviceToken failed, error: %@", res.error);
         }
     }];
-   
+    
     
 }
 
@@ -137,7 +137,7 @@
 #pragma mark推送
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"didReceiveRemoteNotification ");
-
+    
     [self easemobApplication:application didReceiveRemoteNotification:userInfo];
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
@@ -174,9 +174,9 @@
 #pragma mark APNS
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-//    if (_mainController) {
-//        [_mainController didReceiveLocalNotification:notification];
-//    }
+    //    if (_mainController) {
+    //        [_mainController didReceiveLocalNotification:notification];
+    //    }
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
@@ -191,7 +191,7 @@
     ModelApns * model = [ModelApns modelObjectWithDictionary:response.notification.request.content.userInfo];
     if (model.type == 1) {
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
-//        [GlobalMethod jumpToOrderList];
+        //        [GlobalMethod jumpToOrderList];
     }
     completionHandler();
 }
@@ -204,14 +204,10 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     
     //    NSString * strJson = [GlobalMethod exchangeDicToJson:userInfo];
     ModelApns * model = [ModelApns modelObjectWithDictionary:userInfo];
-    if (model.type == 1) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
-    }else if(model.type == 3){
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_MSG_REFERSH object:nil];
+    if (model.type == 8) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_WORK_NOTICE_REFERSH object:nil];
     }
-
     [[TopAlertView sharedInstance]showWithModel:model];
-
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{

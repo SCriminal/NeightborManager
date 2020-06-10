@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *fromNumber;
 @property (nonatomic, assign) double type;
 @property (nonatomic, assign) double fromId;
+@property (nonatomic, assign) double isReader;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

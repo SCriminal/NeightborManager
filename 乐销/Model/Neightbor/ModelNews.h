@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *body;
 @property (nonatomic, assign) double displayMode;
 @property (nonatomic, assign) double readAmount;
+@property (nonatomic, assign) double isReader;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

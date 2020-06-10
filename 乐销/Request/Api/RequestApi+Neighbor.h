@@ -206,7 +206,23 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure;
-
+/**
+ 列表
+ */
++(void)requestWorkNoticeListWithScopeid:(double)scopeId
+                             page:(double)page
+                            count:(double)count
+                       categoryId:(double)categoryId
+                         delegate:(id <RequestDelegate>)delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                                failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+ 详情
+ */
++(void)requestWorkNoticeDetailWithId:(double)identity
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                             failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
  修改
  */

@@ -184,7 +184,7 @@
             model.tag = 1;
             model.imageName = @"tmp_module_11";
             model.blockClick = ^{
-                [GB_Nav pushVCName:@"MessageCenterVC" animated:true];
+                [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
             };
             return model;
         }()].mutableCopy];

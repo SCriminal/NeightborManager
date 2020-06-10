@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageCenterCell : UITableViewCell
+@interface WorkNoticeListCell : UITableViewCell
 @property (strong, nonatomic) UILabel *status;
 @property (strong, nonatomic) UILabel *title;
 @property (strong, nonatomic) UILabel *time;
 @property (strong, nonatomic) UIView *labelBg;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelMsg *)model;
+- (void)resetCellWithModel:(ModelNews *)model;
 
 @end

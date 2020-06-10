@@ -6,13 +6,13 @@
 //Copyright © 2020 ping. All rights reserved.
 //
 
-#import "MessageCenterCell.h"
+#import "WorkNoticeListCell.h"
 
-@interface MessageCenterCell ()
+@interface WorkNoticeListCell ()
 
 @end
 
-@implementation MessageCenterCell
+@implementation WorkNoticeListCell
 #pragma mark 懒加载
 - (UILabel *)status{
     if (_status == nil) {
@@ -68,24 +68,23 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelMsg *)model{
+- (void)resetCellWithModel:(ModelNews *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
-    bool isReaded = false;
-    [self.status fitTitle:isReaded?@"已读":@"未读" variable:0];
+    [self.status fitTitle:model.isReader?@"已读":@"未读" variable:0];
     
     self.labelBg.widthHeight = XY(self.status.width + W(12), W(18));
     self.labelBg.leftTop = XY(W(15),W(17.5));
-    self.labelBg.backgroundColor = isReaded?COLOR_BLUE:COLOR_ORANGE;
+    self.labelBg.backgroundColor = model.isReader?COLOR_BLUE:COLOR_ORANGE;
     [self.labelBg addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:2 lineWidth:0 lineColor:[UIColor clearColor]];
     
     self.status.center = self.labelBg.center;
 
     
     //刷新view
-    [self.title fitTitle:UnPackStr(model.content) variable:W(270)];
+    [self.title fitTitle:UnPackStr(model.title) variable:W(270)];
     self.title.leftCenterY = XY(self.labelBg.right+W(8),self.labelBg.centerY);
 
-    [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.createTime andFormatter:TIME_MIN_SHOW] variable:SCREEN_WIDTH - W(30)];
+    [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.publishTime andFormatter:TIME_MIN_SHOW] variable:SCREEN_WIDTH - W(30)];
     self.time.leftTop = XY(W(15),self.title.bottom+W(13));
     
     //设置总高度
