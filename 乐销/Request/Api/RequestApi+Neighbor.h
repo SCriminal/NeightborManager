@@ -336,6 +336,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                                          id:(double)identity
                                       scope:(NSString *)scope
                                     scopeId:(double)scopeId
+categoryId:(double)categoryId
                                    delegate:(id <RequestDelegate>)delegate
                                     success:(void (^)(NSDictionary * response, id mark))success
                                     failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -591,6 +592,10 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;
++(void)requestWhistleTypeDelegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

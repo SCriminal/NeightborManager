@@ -602,6 +602,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
 id:(double)identity
 scope:(NSString *)scope
 scopeId:(double)scopeId
+categoryId:(double)categoryId
 delegate:(id <RequestDelegate>)delegate
 success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -609,6 +610,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"pushCode":RequestStrKey(pushCode),
                           @"areaId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
                           @"id":NSNumber.dou(identity),
+                          @"categoryId":NSNumber.dou(categoryId),
                           @"scope":@7,
                           @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)};
     [self patchUrl:@"/admin/whistle/2/{id}" delegate:delegate parameters:dic success:success failure:failure];
@@ -1109,5 +1111,12 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
         [self postUrl:@"/admin/whistle/1/3" delegate:delegate parameters:dic success:success failure:failure];
 }
 
-
++(void)requestWhistleTypeDelegate:(id <RequestDelegate>)delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"count":NSNumber.dou(5000),
+                          @"page":NSNumber.dou(1),
+                          @"scope":@4};
+    [self getUrl:@"/resident/whistle/category/list/1_0_15/total" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

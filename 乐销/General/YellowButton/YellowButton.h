@@ -15,4 +15,5 @@
 #pragma mark 刷新view
 - (void)resetViewWithWidth:(CGFloat)width :(CGFloat)height :(NSString *)title;
 - (void)resetWhiteViewWithWidth:(CGFloat)width :(CGFloat)height :(NSString *)title;
+- (void)resetViewWithWidth:(CGFloat)width :(CGFloat)height :(NSString *)title :(UIColor*)backgroundColor :(UIColor*)titleColor :(UIColor*)lineColor;
 @end

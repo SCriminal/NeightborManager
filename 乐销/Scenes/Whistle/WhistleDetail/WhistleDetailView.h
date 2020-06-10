@@ -24,6 +24,10 @@
 @property (nonatomic, strong) UILabel *photo;
 @property (strong, nonatomic) UILabel *timeTitle;
 @property (strong, nonatomic) UILabel *time;
+@property (strong, nonatomic) UILabel *typeTitle;
+@property (strong, nonatomic) UILabel *type;
+@property (strong, nonatomic) UIButton *typeSelect;
+
 @property (nonatomic, strong) ModelWhistleList *model;
 
 #pragma mark 刷新view

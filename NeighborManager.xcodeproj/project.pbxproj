@@ -224,6 +224,8 @@
 		D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CA1E960C97005F00C6 /* ImagePickerVC.m */; };
 		D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CD1E961456005F00C6 /* ImagePickerCollectionCell.m */; };
 		D2B9FF24248E43D10082E8D2 /* ModelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF23248E43D10082E8D2 /* ModelMsg.m */; };
+		D2B9FF3C249117B70082E8D2 /* SelectWhistleTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF3A249117B60082E8D2 /* SelectWhistleTypeVC.m */; };
+		D2B9FF3F2491186A0082E8D2 /* ModelTrolley.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF3E2491186A0082E8D2 /* ModelTrolley.m */; };
 		D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A831DFFA75600B0468E /* allCities.plist */; };
 		D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */; };
 		D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A851DFFA75600B0468E /* hotCities.plist */; };
@@ -812,6 +814,10 @@
 		D2B6B9CD1E961456005F00C6 /* ImagePickerCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerCollectionCell.m; sourceTree = "<group>"; };
 		D2B9FF22248E43D10082E8D2 /* ModelMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelMsg.h; sourceTree = "<group>"; };
 		D2B9FF23248E43D10082E8D2 /* ModelMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMsg.m; sourceTree = "<group>"; };
+		D2B9FF3A249117B60082E8D2 /* SelectWhistleTypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectWhistleTypeVC.m; sourceTree = "<group>"; };
+		D2B9FF3B249117B70082E8D2 /* SelectWhistleTypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectWhistleTypeVC.h; sourceTree = "<group>"; };
+		D2B9FF3D2491186A0082E8D2 /* ModelTrolley.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrolley.h; sourceTree = "<group>"; };
+		D2B9FF3E2491186A0082E8D2 /* ModelTrolley.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrolley.m; sourceTree = "<group>"; };
 		D2BC9A831DFFA75600B0468E /* allCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCities.plist; sourceTree = "<group>"; };
 		D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCitiesDics.plist; sourceTree = "<group>"; };
 		D2BC9A851DFFA75600B0468E /* hotCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCities.plist; sourceTree = "<group>"; };
@@ -2539,6 +2545,8 @@
 				D2CDE6062445BFCC007EA369 /* ModelQuestionnairDetail.m */,
 				D2CDE6052445BFCC007EA369 /* ModelQuestionnairDetailContent.h */,
 				D2CDE6022445BFCC007EA369 /* ModelQuestionnairDetailContent.m */,
+				D2B9FF3D2491186A0082E8D2 /* ModelTrolley.h */,
+				D2B9FF3E2491186A0082E8D2 /* ModelTrolley.m */,
 				D2CDE6092445BFCC007EA369 /* ModelQuestionnairDetailValues.h */,
 				D2CDE6042445BFCC007EA369 /* ModelQuestionnairDetailValues.m */,
 				D207A9FC24405196000AC836 /* ModelActivity.h */,
@@ -2654,6 +2662,8 @@
 		D2D1E1D8242205BF00ED5E0D /* WhistleDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D2B9FF3B249117B70082E8D2 /* SelectWhistleTypeVC.h */,
+				D2B9FF3A249117B60082E8D2 /* SelectWhistleTypeVC.m */,
 				D26B0ADD24220E0800977704 /* CommentStarView.h */,
 				D26B0ADE24220E0800977704 /* CommentStarView.m */,
 				D2D1E1D9242205E300ED5E0D /* WhistleDetailVC.h */,
@@ -3183,6 +3193,7 @@
 				D234EF0324209EB700D8D1AB /* WhistleTabView.m in Sources */,
 				D207A9E624403E27000AC836 /* ModelAssociation.m in Sources */,
 				D2DFD78422969D6100363142 /* ModelAuthorityInfo.m in Sources */,
+				D2B9FF3F2491186A0082E8D2 /* ModelTrolley.m in Sources */,
 				D2A4A84D2462630B00FAF08A /* SelectCommunityPickerView.m in Sources */,
 				D20375FA210717B10054F8A6 /* ModelBaseData.m in Sources */,
 				D29130A72417377400CAC2E4 /* MemberListCell.m in Sources */,
@@ -3251,6 +3262,7 @@
 				D207A9E124403D9A000AC836 /* CreateAssociationVC.m in Sources */,
 				D2BC9A8F1DFFA7C400B0468E /* CustomTabBar.m in Sources */,
 				D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */,
+				D2B9FF3C249117B70082E8D2 /* SelectWhistleTypeVC.m in Sources */,
 				D2CDE5FD2445BE9E007EA369 /* MeetingListCell.m in Sources */,
 				D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */,
 				D234EF0F2420AAB400D8D1AB /* WhistleSuccessListVC.m in Sources */,

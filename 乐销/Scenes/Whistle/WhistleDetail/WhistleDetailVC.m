@@ -180,6 +180,7 @@
         [self.collection_Image resetWithAry:modelDetail.aryImages];
         [self.statusView resetViewWithModel:modelDetail];
         [self.commentDetailView resetViewWithModel:modelDetail];
+        [self.disposalView resetViewWithModel:modelDetail];
         [self config];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         

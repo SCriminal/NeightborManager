@@ -48,7 +48,38 @@
     }
     return _time;
 }
+- (UILabel *)typeTitle{
+    if (_typeTitle == nil) {
+        _typeTitle = [UILabel new];
+        _typeTitle.textColor = COLOR_666;
+        _typeTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_typeTitle fitTitle:@"问题分类" variable:0];
 
+    }
+    return _typeTitle;
+}
+- (UILabel *)type{
+    if (_type == nil) {
+        _type = [UILabel new];
+        _type.textColor = COLOR_333;
+        _type.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_type fitTitle:@"问题分类" variable:0];
+    }
+    return _type;
+}
+- (UIButton *)typeSelect{
+    if (!_typeSelect) {
+        _typeSelect = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_typeSelect addTarget:self action:@selector(typeClick) forControlEvents:UIControlEventTouchUpInside];
+        _typeSelect.backgroundColor = [UIColor clearColor];
+        [_typeSelect setTitle:@"修改分类" forState:UIControlStateNormal];
+        [_typeSelect setTitleColor:COLOR_BLUE forState:UIControlStateNormal];
+        _typeSelect.titleLabel.fontNum = F(15);
+        _typeSelect.widthHeight = XY([@"修改分类" sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:_typeSelect.titleLabel.font.pointSize]}].width+W(60),W(40));
+        
+    }
+    return _typeSelect;
+}
 - (UILabel *)nameTtitle{
     if (_nameTtitle == nil) {
         _nameTtitle = [UILabel new];
@@ -154,6 +185,9 @@
     [self addSubview:self.IDNumber];
     [self addSubview:self.timeTitle];
     [self addSubview:self.time];
+    [self addSubview:self.typeTitle];
+    [self addSubview:self.type];
+//    [self addSubview:self.typeSelect];
 
     [self addSubview:self.problem];
     [self addSubview:self.problemDetail];
@@ -199,8 +233,13 @@
     con.tag = TAG_LINE;
     
     //刷新view
+    self.typeTitle.rightTop = XY(W(92),[self addLineFrame:CGRectMake(W(30), self.phone.bottom + W(20), SCREEN_WIDTH - W(60), 1)]+W(20));
+    [self.type fitTitle:model.categoryName variable:0];
+    self.type.leftTop = XY(W(122),self.typeTitle.top);
+    self.typeSelect.rightCenterY = XY(SCREEN_WIDTH, self.typeTitle.centerY);
+    
     [self.problem fitTitle:@"问题描述" variable:0];
-    self.problem.rightTop = XY(W(92),[self addLineFrame:CGRectMake(W(30), self.phone.bottom + W(20), SCREEN_WIDTH - W(60), 1)]+W(20));
+    self.problem.rightTop = XY(W(92),self.type.bottom+W(20));
     [self.problemDetail fitTitle:UnPackStr(model.iDPropertyDescription) variable:SCREEN_WIDTH - self.problem.right - W(60)];
     self.problemDetail.leftTop = XY( W(122),self.problem.top);
     [self.photo fitTitle:@"照片信息" variable:0];
@@ -215,6 +254,9 @@
         NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",self.model.cellPhone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     }
+}
+- (void)typeClick{
+    
 }
 @end
 
@@ -673,13 +715,39 @@
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(ModelWhistleList *)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     self.btnDisposal.centerXTop = XY(SCREEN_WIDTH/2.0,0);
 
     self.btnCreate.centerXTop = XY(SCREEN_WIDTH/2.0,self.btnDisposal.bottom+W(20));
+    NSDate *whistleTime = [NSDate dateWithTimeIntervalSince1970:model.whistleTime];
     
+    {
+        NSDate * deadLine = [whistleTime dateByAddingTimeInterval:60*60*72];
+               NSTimeInterval interval = [deadLine timeIntervalSinceDate:whistleTime];
+               if (interval<0) {
+                   [self.btnDisposal resetViewWithWidth:W(315) :W(45) :@"已超时，自动推送至中心处理" :[UIColor colorWithHexString:@"#F5F6F7"] :COLOR_999 :[UIColor clearColor]];
+               }else if(interval<60*60){
+                   [self.btnDisposal resetViewWithWidth:W(315) :W(45) :[NSString stringWithFormat:@"立即处理(%.f分钟)",ceil(interval/60.0)]];
+               }else{
+                   [self.btnDisposal resetViewWithWidth:W(315) :W(45) :[NSString stringWithFormat:@"立即处理(%.f小时)",ceil(interval/60.0/60.0)]];
+               }
+    }
+    {
+        NSDate * deadLine = [whistleTime dateByAddingTimeInterval:60*60*24];
+        NSTimeInterval interval = [deadLine timeIntervalSinceDate:whistleTime];
+        if (interval<0) {
+            [self.btnCreate resetViewWithWidth:W(315) :W(45) :@"24小时内未处理，暂无法提交" :[UIColor whiteColor] :COLOR_999 :[UIColor colorWithHexString:@"#D9D9D9"]];
+        }else if(interval<60*60){
+            [self.btnCreate resetWhiteViewWithWidth:W(315) :W(45) :[NSString stringWithFormat:@"立即处理(%.f分钟)",ceil(interval/60.0)]];
+        }else{
+            [self.btnCreate resetWhiteViewWithWidth:W(315) :W(45) :[NSString stringWithFormat:@"立即处理(%.f小时)",ceil(interval/60.0/60.0)]];
+        }
+
+    }
+    
+
     //设置总高度
     self.height = self.btnCreate.bottom+iphoneXBottomInterval+ W(30);
 }

@@ -60,4 +60,5 @@
 #import "ModelQuestionnairDetailValues.h"
 #import "ModelQuestionnairDetail.h"
 #import "ModelMsg.h"
+#import "ModelTrolley.h"
 

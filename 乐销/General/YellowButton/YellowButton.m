@@ -59,6 +59,15 @@
     [GlobalMethod setRoundView:self color:COLOR_BLUE numRound:self.height/2.0 width:1];
 
 }
+- (void)resetViewWithWidth:(CGFloat)width :(CGFloat)height :(NSString *)title :(UIColor*)backgroundColor :(UIColor*)titleColor :(UIColor*)lineColor{
+    self.backgroundColor = backgroundColor;
+    self.title.textColor = titleColor;
+    self.title.font = [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+    self.bg.hidden = true;
+    [self resetViewWithWidth:width :height :title];
+    [GlobalMethod setRoundView:self color:lineColor numRound:self.height/2.0 width:1];
+
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
