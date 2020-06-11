@@ -14,6 +14,7 @@
 #import "WhistleDetailView.h"
 #import "CreateWhistleVC.h"
 #import "DisposalWhistleVC.h"
+#import "SelectWhistleTypeVC.h"
 
 @interface WhistleDetailVC ()
 @property (nonatomic, strong) Collection_Image *collection_Image;
@@ -67,6 +68,14 @@
 - (WhistleDetailTopView *)topView{
     if (!_topView) {
         _topView = [WhistleDetailTopView new];
+        WEAKSELF
+        _topView.blockChangeTypeClick = ^{
+            SelectWhistleTypeVC * vc = [SelectWhistleTypeVC new];
+               vc.blockSelected = ^(ModelTrolley *model) {
+                   [weakSelf requestChangeType:model.iDProperty];
+               };
+               [GB_Nav pushViewController:vc animated:true];
+        };
     }
     return _topView;
 }
@@ -187,4 +196,12 @@
     }];
 }
 
+-(void)requestChangeType:(double)categoryID{
+    [RequestApi requestModifyWhistleCategoryid:categoryID identity:strDotF(self.modelList.iDProperty) delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"修改成功"];
+        [self requestList];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
 @end

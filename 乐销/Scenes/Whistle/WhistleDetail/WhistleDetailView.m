@@ -187,7 +187,7 @@
     [self addSubview:self.time];
     [self addSubview:self.typeTitle];
     [self addSubview:self.type];
-//    [self addSubview:self.typeSelect];
+    [self addSubview:self.typeSelect];
 
     [self addSubview:self.problem];
     [self addSubview:self.problemDetail];
@@ -238,7 +238,8 @@
     [self.type fitTitle:model.categoryName variable:0];
     self.type.leftTop = XY(W(122),self.typeTitle.top);
     self.typeSelect.rightCenterY = XY(SCREEN_WIDTH, self.typeTitle.centerY);
-    
+    self.typeSelect.hidden = model.status != 1;
+   
     [self.problem fitTitle:@"问题描述" variable:0];
     self.problem.rightTop = XY(W(92),self.type.bottom+W(20));
     [self.problemDetail fitTitle:UnPackStr(model.iDPropertyDescription) variable:SCREEN_WIDTH - self.problem.right - W(60)];
@@ -257,7 +258,9 @@
     }
 }
 - (void)typeClick{
-    
+    if (self.blockChangeTypeClick) {
+        self.blockChangeTypeClick();
+    }
 }
 @end
 

@@ -29,6 +29,7 @@
 @property (strong, nonatomic) UIButton *typeSelect;
 
 @property (nonatomic, strong) ModelWhistleList *model;
+@property (nonatomic, strong) void (^blockChangeTypeClick)(void);
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelWhistleList *)model;

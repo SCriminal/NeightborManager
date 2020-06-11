@@ -73,6 +73,7 @@
         [self requestUserInfoWithScope:0 delegate:delegate success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             ModelUser * model = [ModelUser modelObjectWithDictionary:response];
             [GlobalData sharedInstance].GB_UserModel = model;
+            [GlobalMethod requestBindDeviceToken];
             if (success) {
                 success(response,mark);
             }
@@ -1118,5 +1119,20 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"page":NSNumber.dou(1),
                           @"scope":@4};
     [self getUrl:@"/resident/whistle/category/list/1_0_15/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+修改吹哨类目[^/admin/whistle/1_0_15/1/[0-9]+$]
+*/
++(void)requestModifyWhistleCategoryid:(double)categoryId
+                identity:(NSString *)identity
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"categoryId":NSNumber.dou(categoryId),
+                           @"id":RequestStrKey(identity),
+                           @"scope":NSNumber.dou(7),
+                           @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)};
+        [self patchUrl:@"/admin/whistle/1_0_15/1/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

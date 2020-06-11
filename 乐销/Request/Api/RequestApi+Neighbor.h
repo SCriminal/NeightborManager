@@ -596,6 +596,15 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
 success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure;
 
+/**
+修改吹哨类目[^/admin/whistle/1_0_15/1/[0-9]+$]
+*/
++(void)requestModifyWhistleCategoryid:(double)categoryId
+                identity:(NSString *)identity
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                              failure:(void (^)(NSString * errorStr, id mark))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

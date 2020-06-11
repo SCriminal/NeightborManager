@@ -117,7 +117,7 @@
         _type.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
         _type.numberOfLines = 1;
         _type.lineSpace = 0;
-        [_type fitTitle:@"吹哨部门" variable:0];
+        [_type fitTitle:@"问题分类" variable:0];
         
     }
     return _type;
@@ -129,7 +129,7 @@
         _selecttype.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _selecttype.numberOfLines = 0;
         _selecttype.lineSpace = W(5);
-        [_selecttype fitTitle:@"请选择吹哨部门" variable:0];
+        [_selecttype fitTitle:@"请选择问题分类" variable:0];
         
     }
     return _selecttype;
@@ -181,9 +181,9 @@
     [self.view addSubview:self.selecttype];
     [self.view addSubview:self.arrowTypeRight];
 
-    [self.view addSubview:self.bg0];
-    [self.view addSubview:self.department];
-    [self.view addSubview:self.selectDepartment];
+//    [self.view addSubview:self.bg0];
+//    [self.view addSubview:self.department];
+//    [self.view addSubview:self.selectDepartment];
     [self.view addSubview:self.bg1];
     [self.view addSubview:self.textView];
     [self.view addSubview:self.arrowRight];
@@ -204,22 +204,22 @@
     self.bgType.height = self.selecttype.height+W(26);
     self.arrowTypeRight.rightCenterY = XY(self.bgType.right - W(15), self.bgType.centerY);
     
-    self.department.leftTop = XY(W(25),W(15)+self.bgType.bottom);
-    self.bg0.leftTop = XY(W(15),self.department.bottom+W(15));
-    if (self.arySelected.count) {
-        NSString * strName = [[self.arySelected fetchValues:@"name"] componentsJoinedByString:@","];
-        self.selectDepartment.textColor = COLOR_333;
-        [self.selectDepartment fitTitle:strName variable:SCREEN_WIDTH- W(100)];
-    }else{
-        self.selectDepartment.textColor = COLOR_999;
-        [self.selectDepartment fitTitle:@"请选择吹哨部门" variable:SCREEN_WIDTH- W(100)];
-    }
-    self.selectDepartment.leftTop = XY(self.bg0.left + W(15), self.bg0.top+W(13));
-    self.bg0.height = self.selectDepartment.height+W(26);
-    self.arrowRight.rightCenterY = XY(self.bg0.right - W(15), self.bg0.centerY);
+//    self.department.leftTop = XY(W(25),W(15)+self.bgType.bottom);
+//    self.bg0.leftTop = XY(W(15),self.department.bottom+W(15));
+//    if (self.arySelected.count) {
+//        NSString * strName = [[self.arySelected fetchValues:@"name"] componentsJoinedByString:@","];
+//        self.selectDepartment.textColor = COLOR_333;
+//        [self.selectDepartment fitTitle:strName variable:SCREEN_WIDTH- W(100)];
+//    }else{
+//        self.selectDepartment.textColor = COLOR_999;
+//        [self.selectDepartment fitTitle:@"请选择吹哨部门" variable:SCREEN_WIDTH- W(100)];
+//    }
+//    self.selectDepartment.leftTop = XY(self.bg0.left + W(15), self.bg0.top+W(13));
+//    self.bg0.height = self.selectDepartment.height+W(26);
+//    self.arrowRight.rightCenterY = XY(self.bg0.right - W(15), self.bg0.centerY);
     
     
-    self.reason.leftTop = XY(W(25),W(15)+self.bg0.bottom);
+    self.reason.leftTop = XY(W(25),W(15)+self.bgType.bottom);
     
     self.bg1.leftTop = XY(W(15),self.reason.bottom+W(15));
     self.textView.widthHeight = XY(self.bg1.width - W(30),self.bg1.height - W(30));

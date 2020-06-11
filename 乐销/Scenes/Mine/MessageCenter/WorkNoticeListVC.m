@@ -44,7 +44,7 @@
 
 #pragma mark 添加导航栏
 - (void)addNav{
-    [self.view addSubview:[BaseNavView initNavBackTitle:@"消息中心" rightView:nil]];
+    [self.view addSubview:[BaseNavView initNavBackTitle:@"工作通知" rightView:nil]];
 }
 
 #pragma mark UITableViewDelegate
