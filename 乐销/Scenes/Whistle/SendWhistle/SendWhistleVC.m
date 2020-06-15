@@ -65,7 +65,9 @@
 }
 - (NSArray *)ary0{
     if (!_ary0) {
-        _ary0 = @[self.modelCommunity,self.modelBuilding,self.modelUnite,self.modelRoom];
+        _ary0 = @[self.modelCommunity,self.modelTime];
+//        _ary0 = @[self.modelCommunity,self.modelBuilding,self.modelUnite,self.modelRoom];
+
     }
     return _ary0;
 }
@@ -80,11 +82,12 @@
         _modelTime = ^(){
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_SELECT;
-            model.locationType = ENUM_CELL_LOCATION_TOP;
+            model.locationType = ENUM_CELL_LOCATION_BOTTOM;
             model.imageName = @"";
             model.string = @"发现时间";
             model.placeHolderString = @"请选择时间";
             model.subString = [GlobalMethod exchangeDate:[NSDate date] formatter:TIME_MIN_SHOW];
+            model.hideState = true;
             WEAKSELF
             model.blocClick = ^(ModelBaseData *model) {
                 [GlobalMethod endEditing];
@@ -244,7 +247,7 @@
 }
 #pragma mark UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 //row num
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -257,12 +260,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [self fetchAuthorityCellHeightWithModel:indexPath.section?self.ary1[indexPath.row]:self.ary0[indexPath.row]];
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return section==0?self.midView.height:CGFLOAT_MIN;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    return section==0?self.midView:nil;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return section==0?self.midView.height:CGFLOAT_MIN;
+//}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//    return section==0?self.midView:nil;
+//}
 #pragma mark request
 - (void)requestAdd{
     [GlobalMethod endEditing];
@@ -274,7 +277,7 @@
     }
     NSString * strDes = self.topView.textView.text;
     if (!isStr(strDes)) {
-        [GlobalMethod showAlert:@"请先填写发哨描述"];
+        [GlobalMethod showAlert:@"请先填写问题描述"];
         return;
     }
     if (!self.modelCommunity.identifier.doubleValue) {
@@ -282,14 +285,14 @@
         return;
     }
     NSString * strReason = self.midView.textView.text;
-    if (!isStr(strReason)) {
-        [GlobalMethod showAlert:@"请先填写吹哨原因"];
-        return;
-    }
-    if (!self.aryDepartment.count) {
-        [GlobalMethod showAlert:@"请先选择发哨部门"];
-        return;
-    }
+//    if (!isStr(strReason)) {
+//        [GlobalMethod showAlert:@"请先填写吹哨原因"];
+//        return;
+//    }
+//    if (!self.aryDepartment.count) {
+//        [GlobalMethod showAlert:@"请先选择发哨部门"];
+//        return;
+//    }
     NSString * strDep = [[self.aryDepartment fetchValues:@"code"] componentsJoinedByString:@","];
     double timeStamp = [GlobalMethod exchangeString:self.modelTime.subString formatter:TIME_MIN_SHOW].timeIntervalSince1970;
     [RequestApi requestSendWhistleWithFindtime:timeStamp estateId:self.modelCommunity.identifier.doubleValue description:strDes urls:strImage realName:nil cellPhone:nil buildingName:self.modelBuilding.subString unitName:self.modelUnite.subString roomName:self.modelRoom.subString pushDescription:strReason pushCodes:strDep delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

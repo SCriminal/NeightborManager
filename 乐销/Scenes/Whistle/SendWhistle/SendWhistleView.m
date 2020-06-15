@@ -33,7 +33,7 @@
         _textView.backgroundColor = [UIColor clearColor];
         _textView.delegate = self;
         _textView.textContainerInset = UIEdgeInsetsMake(-W(2), 0, 0, 0);
-        [GlobalMethod setLabel:_textView.placeHolder widthLimit:0 numLines:0 fontNum:F(15) textColor:COLOR_999 text:@"请填写发哨描述..."];
+        [GlobalMethod setLabel:_textView.placeHolder widthLimit:0 numLines:0 fontNum:F(15) textColor:COLOR_999 text:@"请填写问题描述..."];
         [_textView setTextColor:COLOR_333];
     }
     return _textView;
@@ -56,7 +56,7 @@
         _problemDescription.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
         _problemDescription.numberOfLines = 1;
         _problemDescription.lineSpace = 0;
-        [_problemDescription fitTitle:@"发哨描述" variable:0];
+        [_problemDescription fitTitle:@"问题描述" variable:0];
 
     }
     return _problemDescription;
