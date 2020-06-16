@@ -1091,6 +1091,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                 roomName:(NSString *)roomName
                 pushDescription:(NSString *)pushDescription
                 pushCodes:(NSString *)pushCodes
+                           categoryId:(double)categoryId
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -1104,11 +1105,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                            @"buildingName":RequestStrKey(buildingName),
                            @"unitName":RequestStrKey(unitName),
                            @"roomName":RequestStrKey(roomName),
-                           @"estateId":NSNumber.dou(estateId),
+                           @"estateId":RequestDoubleKey(estateId),
                            @"pushDescription":RequestStrKey(pushDescription),
                            @"pushCodes":RequestStrKey(pushCodes),
                            @"scope":@(7),
-                           @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)};
+                           @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+                              @"categoryId":NSNumber.dou(categoryId)
+        };
         [self postUrl:@"/admin/whistle/1/3" delegate:delegate parameters:dic success:success failure:failure];
 }
 

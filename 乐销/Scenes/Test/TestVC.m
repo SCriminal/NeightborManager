@@ -1,7 +1,6 @@
 //
 //  TestVC.m
 //  中车运 wreck
-// peep ministry subsequent sequent stimulate vehicle sprinkle proficiency speciality juvenile spectrum optical feudal metric session tube prevail cement cementery oval mental statute scrutiny
 //  Created by 隋林栋 on 2016/12/22.
 //  Copyright © 2016年 ping. All rights reserved.
 //

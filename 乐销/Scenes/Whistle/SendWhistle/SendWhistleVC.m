@@ -20,6 +20,7 @@
 //selectCommunityView
 #import "SelectCommunityPickerView.h"
 #import "UITextField+Text.h"
+#import "SelectWhistleTypeVC.h"
 
 @interface SendWhistleVC ()
 @property (nonatomic, strong) SendWhistleTopView *topView;
@@ -32,6 +33,7 @@
 @property (nonatomic, strong) ModelBaseData *modelBuilding;
 @property (nonatomic, strong) ModelBaseData *modelUnite;
 @property (nonatomic, strong) ModelBaseData *modelRoom;
+@property (nonatomic, strong) ModelBaseData *modelCategory;
 
 @property (nonatomic, strong) YellowButton  *btnBottom;
 @property (nonatomic, strong) NSArray *aryDepartment;
@@ -65,7 +67,7 @@
 }
 - (NSArray *)ary0{
     if (!_ary0) {
-        _ary0 = @[self.modelCommunity,self.modelTime];
+        _ary0 = @[self.modelTime,self.modelCategory];
 //        _ary0 = @[self.modelCommunity,self.modelBuilding,self.modelUnite,self.modelRoom];
 
     }
@@ -82,12 +84,12 @@
         _modelTime = ^(){
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_SELECT;
-            model.locationType = ENUM_CELL_LOCATION_BOTTOM;
+            model.locationType = ENUM_CELL_LOCATION_TOP;
             model.imageName = @"";
             model.string = @"发现时间";
             model.placeHolderString = @"请选择时间";
             model.subString = [GlobalMethod exchangeDate:[NSDate date] formatter:TIME_MIN_SHOW];
-            model.hideState = true;
+//            model.hideState = true;
             WEAKSELF
             model.blocClick = ^(ModelBaseData *model) {
                 [GlobalMethod endEditing];
@@ -130,6 +132,32 @@
         }();
     }
     return _modelDepartment;
+}
+- (ModelBaseData *)modelCategory{
+    if (!_modelCategory) {
+        _modelCategory = ^(){
+            WEAKSELF
+            ModelBaseData * model = [ModelBaseData new];
+            model.enumType = ENUM_PERFECT_CELL_SELECT;
+            model.imageName = @"";
+            model.string = @"问题分类";
+            model.placeHolderString = @"请选择问题分类";
+            model.hideState = true;
+            model.locationType = ENUM_CELL_LOCATION_BOTTOM;
+            model.blocClick = ^(ModelBaseData *item) {
+              SelectWhistleTypeVC * vc = [SelectWhistleTypeVC new];
+                 vc.blockSelected = ^(ModelTrolley *model) {
+                     weakSelf.modelCategory.subString = model.name;
+                     weakSelf.modelCategory.identifier = NSNumber.dou(model.iDProperty).stringValue;
+                     [weakSelf.tableView reloadData];
+                 };
+                 [GB_Nav pushViewController:vc animated:true];
+
+            };
+            return model;
+        }();
+    }
+    return _modelCategory;
 }
 
 - (ModelBaseData *)modelCommunity{
@@ -280,10 +308,10 @@
         [GlobalMethod showAlert:@"请先填写问题描述"];
         return;
     }
-    if (!self.modelCommunity.identifier.doubleValue) {
-        [GlobalMethod showAlert:@"请先选择发哨小区"];
-        return;
-    }
+//    if (!self.modelCommunity.identifier.doubleValue) {
+//        [GlobalMethod showAlert:@"请先选择发哨小区"];
+//        return;
+//    }
     NSString * strReason = self.midView.textView.text;
 //    if (!isStr(strReason)) {
 //        [GlobalMethod showAlert:@"请先填写吹哨原因"];
@@ -295,7 +323,7 @@
 //    }
     NSString * strDep = [[self.aryDepartment fetchValues:@"code"] componentsJoinedByString:@","];
     double timeStamp = [GlobalMethod exchangeString:self.modelTime.subString formatter:TIME_MIN_SHOW].timeIntervalSince1970;
-    [RequestApi requestSendWhistleWithFindtime:timeStamp estateId:self.modelCommunity.identifier.doubleValue description:strDes urls:strImage realName:nil cellPhone:nil buildingName:self.modelBuilding.subString unitName:self.modelUnite.subString roomName:self.modelRoom.subString pushDescription:strReason pushCodes:strDep delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestSendWhistleWithFindtime:timeStamp estateId:self.modelCommunity.identifier.doubleValue description:strDes urls:strImage realName:nil cellPhone:nil buildingName:self.modelBuilding.subString unitName:self.modelUnite.subString roomName:self.modelRoom.subString pushDescription:strReason pushCodes:strDep categoryId:self.modelCategory.identifier.doubleValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
         [GB_Nav popViewControllerAnimated:true];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

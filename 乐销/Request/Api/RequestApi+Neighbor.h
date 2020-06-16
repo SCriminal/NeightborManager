@@ -589,6 +589,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                 roomName:(NSString *)roomName
                 pushDescription:(NSString *)pushDescription
                 pushCodes:(NSString *)pushCodes
+categoryId:(double)categoryId
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;
