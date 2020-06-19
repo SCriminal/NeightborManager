@@ -47,7 +47,7 @@
 
 
 //高德地图
-#define MAPID @"ce16cc0601e8197f788a7e8c3354f0e2"
+#define MAPID @"5a6127c7f10df59ff2301c975aa08a08"
 
 //闪登
 #define FLASH_ID @"h9HQTEdK"

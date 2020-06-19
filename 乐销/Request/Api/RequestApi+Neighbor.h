@@ -590,6 +590,8 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                 pushDescription:(NSString *)pushDescription
                 pushCodes:(NSString *)pushCodes
 categoryId:(double)categoryId
+lat:(double)lat
+                                 lng:(double)lng
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;

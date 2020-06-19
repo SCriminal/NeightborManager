@@ -21,6 +21,7 @@
 #import "SelectCommunityPickerView.h"
 #import "UITextField+Text.h"
 #import "SelectWhistleTypeVC.h"
+#import "BaseVC+Location.h"
 
 @interface SendWhistleVC ()
 @property (nonatomic, strong) SendWhistleTopView *topView;
@@ -250,8 +251,12 @@
     [self configData];
     //add keyboard observe
     [self addObserveOfKeyboard];
+    [self initLocation];
+    [self addLocalAuthorityListen];
 }
-
+- (void)fetchAddress:(ModelAddress *)clPlace{
+    [GlobalMethod writeModel:clPlace key:LOCAL_LOCATION exchange:false];
+}
 #pragma mark config data
 - (void)configData{
     self.tableView.tableHeaderView = self.topView;
@@ -323,7 +328,10 @@
 //    }
     NSString * strDep = [[self.aryDepartment fetchValues:@"code"] componentsJoinedByString:@","];
     double timeStamp = [GlobalMethod exchangeString:self.modelTime.subString formatter:TIME_MIN_SHOW].timeIntervalSince1970;
-    [RequestApi requestSendWhistleWithFindtime:timeStamp estateId:self.modelCommunity.identifier.doubleValue description:strDes urls:strImage realName:nil cellPhone:nil buildingName:self.modelBuilding.subString unitName:self.modelUnite.subString roomName:self.modelRoom.subString pushDescription:strReason pushCodes:strDep categoryId:self.modelCategory.identifier.doubleValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    ModelAddress * modelAddress = [GlobalMethod readModelForKey:LOCAL_LOCATION  modelName:@"ModelAddress" exchange:false];
+
+    [RequestApi requestSendWhistleWithFindtime:timeStamp estateId:[GlobalData sharedInstance].GB_UserModel.areaID description:strDes urls:strImage realName:nil cellPhone:nil buildingName:self.modelBuilding.subString unitName:self.modelUnite.subString roomName:self.modelRoom.subString pushDescription:strReason pushCodes:strDep categoryId:self.modelCategory.identifier.doubleValue  lat:modelAddress.lat
+                                           lng:modelAddress.lng delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
         [GB_Nav popViewControllerAnimated:true];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
