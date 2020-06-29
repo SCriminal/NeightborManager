@@ -94,21 +94,21 @@
 }
 #pragma mark request
 - (void)requestList{
-    CGFloat category = 0;
+    NSString * categoryAlias = @"default";
     switch (self.type) {
         case ENUM_NEWS_LIST_DYNAMIC:
-            category = 8;
+            categoryAlias = @"news";
             break;
         case ENUM_NEWS_LIST_HELP:
-            category = 9;
+            categoryAlias = @"help";
             break;
         case ENUM_NEWS_LIST_ABOUT:
-            category = 10;
+            categoryAlias = @"about";
             break;
         default:
             break;
     }
-    [RequestApi requestNewsListWithScopeid:25 page:self.pageNum count:50 categoryId:category delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestNewsListWithScopeid:25 page:self.pageNum count:50 categoryAlias:categoryAlias delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
         if (self.isRemoveAll) {

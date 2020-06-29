@@ -363,14 +363,14 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
 +(void)requestNewsListWithScopeid:(double)scopeId
                              page:(double)page
                             count:(double)count
-                       categoryId:(double)categoryId
+                       categoryAlias:(NSString *)categoryAlias
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"areaId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
                           @"page":NSNumber.dou(page),
                           @"count":NSNumber.dou(count),
-                          @"categoryId":NSNumber.dou(categoryId),
+                          @"categoryAlias":RequestStrKey(categoryAlias),
                           @"scope":NSNumber.dou(1)};
     [self getUrl:@"/resident/content/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }

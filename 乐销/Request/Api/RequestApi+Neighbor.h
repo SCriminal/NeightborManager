@@ -202,7 +202,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
 +(void)requestNewsListWithScopeid:(double)scopeId
                              page:(double)page
                             count:(double)count
-                            categoryId:(double)categoryId
+                            categoryAlias:(NSString *)categoryAlias
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure;
