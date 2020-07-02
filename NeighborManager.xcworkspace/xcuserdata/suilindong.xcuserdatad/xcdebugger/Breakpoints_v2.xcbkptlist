@@ -425,10 +425,122 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "787"
-            endingLineNumber = "787"
+            startingLineNumber = "808"
+            endingLineNumber = "808"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A045434-22E6-45EA-B0B7-F094998FA621"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Whistle/SendWhistle/SendWhistleVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
+            landmarkName = "-cleanAllProperties"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD23C386-C15D-4CED-A5FB-7758F684D179"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Whistle/SendWhistle/SendWhistleVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
+            landmarkName = "-getAllProperties"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F56E6EE-7329-44A5-8940-DC410D25FB0F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Whistle/SendWhistle/SendWhistleVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "-requestAdd"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1A761B8-361F-4ACC-B460-DAB7A6476CFB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Whistle/SendWhistle/SendWhistleVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-topView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65DEB7E9-61AA-4F27-8124-3FF824798D50"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Whistle/SendWhistle/SendWhistleVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "-cleanAllProperties"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "65DEB7E9-61AA-4F27-8124-3FF824798D50 - d6b47cd2ce35ebce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SendWhistleVC cleanAllProperties]"
+                  moduleName = "NeighborManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%E7%AE%A1%E7%90%86%E7%AB%AF/%E4%B9%90%E9%94%80/Scenes/Whistle/SendWhistle/SendWhistleVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "358"
+                  endingLineNumber = "358"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  uuid = "65DEB7E9-61AA-4F27-8124-3FF824798D50 - d6b47cd2ce35ebce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SendWhistleVC cleanAllProperties]"
+                  moduleName = "NeighborManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%E7%AE%A1%E7%90%86%E7%AB%AF/%E4%B9%90%E9%94%80/Scenes/Whistle/SendWhistle/SendWhistleVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "358"
+                  endingLineNumber = "358"
+                  offsetFromSymbolStart = "63">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

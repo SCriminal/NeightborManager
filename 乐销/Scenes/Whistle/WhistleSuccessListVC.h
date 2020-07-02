@@ -15,3 +15,12 @@
 @interface WhistleMainListVC : WhistleWatiListVC
 
 @end
+
+
+@interface ManagerWhistleSuccessListVC : WhistleWatiListVC
+
+@end
+
+@interface ManagerWhistleWatiListVC : WhistleWatiListVC
+
+@end

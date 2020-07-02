@@ -69,8 +69,8 @@
 - (NSArray *)ary0{
     if (!_ary0) {
         _ary0 = @[self.modelTime,self.modelCategory];
-//        _ary0 = @[self.modelCommunity,self.modelBuilding,self.modelUnite,self.modelRoom];
-
+        //        _ary0 = @[self.modelCommunity,self.modelBuilding,self.modelUnite,self.modelRoom];
+        
     }
     return _ary0;
 }
@@ -90,7 +90,7 @@
             model.string = @"发现时间";
             model.placeHolderString = @"请选择时间";
             model.subString = [GlobalMethod exchangeDate:[NSDate date] formatter:TIME_MIN_SHOW];
-//            model.hideState = true;
+            //            model.hideState = true;
             WEAKSELF
             model.blocClick = ^(ModelBaseData *model) {
                 [GlobalMethod endEditing];
@@ -119,15 +119,15 @@
             model.locationType = ENUM_CELL_LOCATION_BOTTOM;
             model.blocClick = ^(ModelBaseData *item) {
                 SelectDepartmentVC * selectVC = [SelectDepartmentVC new];
-                  selectVC.blockSelected = ^(NSMutableArray *ary) {
-                      weakSelf.aryDepartment = ary;
-                      NSString * strName = [[ary fetchValues:@"name"] componentsJoinedByString:@","];
-                      weakSelf.modelDepartment.subString = strName;
-                      [weakSelf configData];
-                  };
-                  selectVC.arySelected = [NSMutableArray arrayWithArray:weakSelf.aryDepartment];
-                  [GB_Nav pushViewController:selectVC animated:true];
-
+                selectVC.blockSelected = ^(NSMutableArray *ary) {
+                    weakSelf.aryDepartment = ary;
+                    NSString * strName = [[ary fetchValues:@"name"] componentsJoinedByString:@","];
+                    weakSelf.modelDepartment.subString = strName;
+                    [weakSelf configData];
+                };
+                selectVC.arySelected = [NSMutableArray arrayWithArray:weakSelf.aryDepartment];
+                [GB_Nav pushViewController:selectVC animated:true];
+                
             };
             return model;
         }();
@@ -146,14 +146,14 @@
             model.hideState = true;
             model.locationType = ENUM_CELL_LOCATION_BOTTOM;
             model.blocClick = ^(ModelBaseData *item) {
-              SelectWhistleTypeVC * vc = [SelectWhistleTypeVC new];
-                 vc.blockSelected = ^(ModelTrolley *model) {
-                     weakSelf.modelCategory.subString = model.name;
-                     weakSelf.modelCategory.identifier = NSNumber.dou(model.iDProperty).stringValue;
-                     [weakSelf.tableView reloadData];
-                 };
-                 [GB_Nav pushViewController:vc animated:true];
-
+                SelectWhistleTypeVC * vc = [SelectWhistleTypeVC new];
+                vc.blockSelected = ^(ModelTrolley *model) {
+                    weakSelf.modelCategory.subString = model.name;
+                    weakSelf.modelCategory.identifier = NSNumber.dou(model.iDProperty).stringValue;
+                    [weakSelf.tableView reloadData];
+                };
+                [GB_Nav pushViewController:vc animated:true];
+                
             };
             return model;
         }();
@@ -266,7 +266,7 @@
 - (void)imagesSelect:(NSArray *)aryImages
 {
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_WHISTLE;
-
+    
     [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil fail:nil];
     for (BaseImage *image in aryImages) {
         ModelImage * modelImageInfo = [ModelImage new];
@@ -302,7 +302,7 @@
 #pragma mark request
 - (void)requestAdd{
     [GlobalMethod endEditing];
-  
+    
     NSString * strImage = [[self.topView.collection_Image.aryDatas fetchValues:@"url"] componentsJoinedByString:@","];
     if (!isStr(strImage)) {
         [GlobalMethod showAlert:@"请先添加图片"];
@@ -313,32 +313,77 @@
         [GlobalMethod showAlert:@"请先填写问题描述"];
         return;
     }
-//    if (!self.modelCommunity.identifier.doubleValue) {
-//        [GlobalMethod showAlert:@"请先选择发哨小区"];
-//        return;
-//    }
+    //    if (!self.modelCommunity.identifier.doubleValue) {
+    //        [GlobalMethod showAlert:@"请先选择发哨小区"];
+    //        return;
+    //    }
     NSString * strReason = self.midView.textView.text;
-//    if (!isStr(strReason)) {
-//        [GlobalMethod showAlert:@"请先填写吹哨原因"];
-//        return;
-//    }
-//    if (!self.aryDepartment.count) {
-//        [GlobalMethod showAlert:@"请先选择发哨部门"];
-//        return;
-//    }
+    //    if (!isStr(strReason)) {
+    //        [GlobalMethod showAlert:@"请先填写吹哨原因"];
+    //        return;
+    //    }
+    //    if (!self.aryDepartment.count) {
+    //        [GlobalMethod showAlert:@"请先选择发哨部门"];
+    //        return;
+    //    }
     NSString * strDep = [[self.aryDepartment fetchValues:@"code"] componentsJoinedByString:@","];
     double timeStamp = [GlobalMethod exchangeString:self.modelTime.subString formatter:TIME_MIN_SHOW].timeIntervalSince1970;
     ModelAddress * modelAddress = [GlobalMethod readModelForKey:LOCAL_LOCATION  modelName:@"ModelAddress" exchange:false];
-
+    
     [RequestApi requestSendWhistleWithFindtime:timeStamp estateId:[GlobalData sharedInstance].GB_UserModel.areaID description:strDes urls:strImage realName:nil cellPhone:nil buildingName:self.modelBuilding.subString unitName:self.modelUnite.subString roomName:self.modelRoom.subString pushDescription:strReason pushCodes:strDep categoryId:self.modelCategory.identifier.doubleValue  lat:modelAddress.lat
                                            lng:modelAddress.lng delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
-        [GB_Nav popViewControllerAnimated:true];
+        if (self.blockRequestSuccess) {
+            self.blockRequestSuccess();
+        }
+        self.tableView.tableHeaderView = nil;
+        [self.topView removeFromSuperview];
+        [self cleanAllProperties];
+        [self configData];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-
+    
 }
 
-
+- (void)cleanAllProperties{
+    for (NSString * property in [self getAllProperties]) {
+        if ([property isEqualToString:@"blockRequestSuccess"]) {
+            continue;
+        }
+        if ([property isEqualToString:@"btnBottom"]) {
+            continue;
+        }
+        [self setValue:nil forKeyPath:property];
+        //        id value = [self valueForKey:property];
+        //        value = nil;
+    }
+}
+- (NSArray *)getAllProperties{
+    
+    u_int count = 0;
+    
+    //传递count的地址
+    
+    objc_property_t *properties = class_copyPropertyList([self class], &count);
+    
+    NSMutableArray *propertyArray = [NSMutableArray arrayWithCapacity:count];
+    
+    for (int i = 0; i < count; i++) {
+        
+        //得到的propertyName为C语言的字符串
+        
+        const char *propertyName = property_getName(properties[i]);
+        
+        [propertyArray addObject:[NSString stringWithUTF8String:propertyName]];
+        
+        // NSLog(@"%@",[NSString stringWithUTF8String:propertyName]);
+        
+    }
+    
+    free(properties);
+    
+    return propertyArray;
+    
+}
 @end

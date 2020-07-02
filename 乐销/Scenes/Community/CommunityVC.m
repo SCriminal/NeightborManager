@@ -175,7 +175,7 @@
             model.tag = 1;
             model.imageName = @"tmp_module_10";
             model.blockClick = ^{
-                [GB_Nav pushVCName:@"SendWhistleVC" animated:true];
+                [GB_Nav pushVCName:@"SendWhistleTabVC" animated:true];
             };
             return model;
         }(),^(){

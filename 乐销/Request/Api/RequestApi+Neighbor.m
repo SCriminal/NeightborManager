@@ -594,6 +594,20 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
     [self getUrl:@"/admin/whistle/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
++(void)requestManagerWhistleListWithStatus:(NSString *)status
+                               page:(double)page
+                              count:(double)count
+                           delegate:(id <RequestDelegate>)delegate
+                            success:(void (^)(NSDictionary * response, id mark))success
+                            failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"status":RequestStrKey(status),
+                          @"page":NSNumber.dou(page),
+                          @"count":NSNumber.dou(count),
+                          @"scope":@4,
+                          @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)
+    };
+    [self getUrl:@"/resident/whistle/list/2/total" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
  吹哨
  */
@@ -664,7 +678,14 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"scope":RequestStrKey(scope)};
     [self getUrl:@"/admin/whistle/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
-
++(void)requestManagerWhistleDetailWithId:(double)identity
+                         delegate:(id <RequestDelegate>)delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"id":NSNumber.dou(identity),
+                          @"scope":@4};
+    [self getUrl:@"/resident/whistle/2/{id}" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
  版本升级
  */

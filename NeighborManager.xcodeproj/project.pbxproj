@@ -276,6 +276,8 @@
 		D2CDE60B2445BFCC007EA369 /* ModelQuestionariList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CDE6032445BFCC007EA369 /* ModelQuestionariList.m */; };
 		D2CDE60C2445BFCC007EA369 /* ModelQuestionnairDetailValues.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CDE6042445BFCC007EA369 /* ModelQuestionnairDetailValues.m */; };
 		D2CDE60D2445BFCC007EA369 /* ModelQuestionnairDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CDE6062445BFCC007EA369 /* ModelQuestionnairDetail.m */; };
+		D2CEBAB824AD749B00518270 /* SendWhistleTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CEBAB724AD749B00518270 /* SendWhistleTabVC.m */; };
+		D2CEBABB24AD7EE500518270 /* ManagerWhistleDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CEBABA24AD7EE500518270 /* ManagerWhistleDetailVC.m */; };
 		D2CF18FB22548E9E00542AEF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CF18FA22548E9E00542AEF /* libc++.1.tbd */; };
 		D2CF190622548EF800542AEF /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2CF18FD22548EF800542AEF /* TYRZResource.bundle */; };
 		D2CF190722548EF800542AEF /* account_login_sdk_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CF18FE22548EF800542AEF /* account_login_sdk_core.framework */; };
@@ -918,6 +920,10 @@
 		D2CDE6072445BFCC007EA369 /* ModelQuestionnairDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelQuestionnairDetail.h; sourceTree = "<group>"; };
 		D2CDE6082445BFCC007EA369 /* ModelQuestionariList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelQuestionariList.h; sourceTree = "<group>"; };
 		D2CDE6092445BFCC007EA369 /* ModelQuestionnairDetailValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelQuestionnairDetailValues.h; sourceTree = "<group>"; };
+		D2CEBAB624AD749B00518270 /* SendWhistleTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendWhistleTabVC.h; sourceTree = "<group>"; };
+		D2CEBAB724AD749B00518270 /* SendWhistleTabVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendWhistleTabVC.m; sourceTree = "<group>"; };
+		D2CEBAB924AD7EE500518270 /* ManagerWhistleDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerWhistleDetailVC.h; sourceTree = "<group>"; };
+		D2CEBABA24AD7EE500518270 /* ManagerWhistleDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerWhistleDetailVC.m; sourceTree = "<group>"; };
 		D2CF18FA22548E9E00542AEF /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		D2CF18FD22548EF800542AEF /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
 		D2CF18FE22548EF800542AEF /* account_login_sdk_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = account_login_sdk_core.framework; sourceTree = "<group>"; };
@@ -2219,6 +2225,8 @@
 				D2A4A8452462509300FAF08A /* SendWhistleVC.m */,
 				D2A4A8482462509300FAF08A /* SendWhistleView.h */,
 				D2A4A8462462509300FAF08A /* SendWhistleView.m */,
+				D2CEBAB624AD749B00518270 /* SendWhistleTabVC.h */,
+				D2CEBAB724AD749B00518270 /* SendWhistleTabVC.m */,
 			);
 			path = SendWhistle;
 			sourceTree = "<group>";
@@ -2666,6 +2674,8 @@
 				D2B9FF3A249117B60082E8D2 /* SelectWhistleTypeVC.m */,
 				D26B0ADD24220E0800977704 /* CommentStarView.h */,
 				D26B0ADE24220E0800977704 /* CommentStarView.m */,
+				D2CEBAB924AD7EE500518270 /* ManagerWhistleDetailVC.h */,
+				D2CEBABA24AD7EE500518270 /* ManagerWhistleDetailVC.m */,
 				D2D1E1D9242205E300ED5E0D /* WhistleDetailVC.h */,
 				D2D1E1DA242205E300ED5E0D /* WhistleDetailVC.m */,
 				D2D1E1DC2422065800ED5E0D /* WhistleDetailView.h */,
@@ -3380,6 +3390,7 @@
 				D2996A4221E6E3AA00562587 /* UpImageWithTextCell.m in Sources */,
 				D2CC9675241D14AC00818D87 /* ModelArchiveList.m in Sources */,
 				D22BA9D31E5EB8CA00C5B391 /* FSCalendarCalculator.m in Sources */,
+				D2CEBAB824AD749B00518270 /* SendWhistleTabVC.m in Sources */,
 				D234EF062420A6E300D8D1AB /* WhistleWatiListVC.m in Sources */,
 				D217D8C61E1B8B8B0094FD55 /* BaseAlertView.m in Sources */,
 				DAB62BA91E73AC30002AE835 /* NSNumber+Category.m in Sources */,
@@ -3411,6 +3422,7 @@
 				D2AC4FA41E04BBF800385682 /* BaseNavView.m in Sources */,
 				D26F088E20D7A5D200B258B0 /* MarQueueView.m in Sources */,
 				D234EF0024209E2000D8D1AB /* WhistleTabVC.m in Sources */,
+				D2CEBABB24AD7EE500518270 /* ManagerWhistleDetailVC.m in Sources */,
 				D2DFD78522969D6100363142 /* ModelAuthorityImage.m in Sources */,
 				D2BE30B621070BD40059929D /* ModelImage.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
@@ -3610,7 +3622,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
@@ -3662,7 +3674,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
