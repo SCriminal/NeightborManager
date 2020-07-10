@@ -228,17 +228,13 @@
 		D2AE6E8F24B8331800C582AD /* CertificateDealDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7E24B8331800C582AD /* CertificateDealDetailVC.m */; };
 		D2AE6E9024B8331800C582AD /* CertificateDealImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7F24B8331800C582AD /* CertificateDealImageView.m */; };
 		D2AE6E9124B8331900C582AD /* CertificateDealDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8024B8331800C582AD /* CertificateDealDetailView.m */; };
-		D2AE6E9224B8331900C582AD /* CertificateDealResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8224B8331800C582AD /* CertificateDealResultCell.m */; };
-		D2AE6E9324B8331900C582AD /* CertificateDealResultDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8324B8331800C582AD /* CertificateDealResultDetailVC.m */; };
-		D2AE6E9424B8331900C582AD /* CertificateDealResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8424B8331800C582AD /* CertificateDealResultVC.m */; };
-		D2AE6E9524B8331900C582AD /* CertificateDealResultDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8624B8331800C582AD /* CertificateDealResultDetailTopView.m */; };
-		D2AE6E9624B8331900C582AD /* CertificateDealTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8A24B8331800C582AD /* CertificateDealTabVC.m */; };
 		D2AE6E9B24B8338900C582AD /* ModelCertificateDealDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E9724B8338900C582AD /* ModelCertificateDealDetail.m */; };
 		D2AE6E9C24B8338900C582AD /* ModelCertificateDealCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E9824B8338900C582AD /* ModelCertificateDealCategory.m */; };
 		D2AE6E9F24B8358600C582AD /* ModelCertificateContentDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E9D24B8358600C582AD /* ModelCertificateContentDetail.m */; };
 		D2AE6EA224B83A0F00C582AD /* CategoryCertificationDealListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6EA124B83A0F00C582AD /* CategoryCertificationDealListVC.m */; };
 		D2AE6EA524B841A400C582AD /* CertificationSubmitTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6EA424B841A400C582AD /* CertificationSubmitTabVC.m */; };
 		D2AE6EA824B841F200C582AD /* CertificationSubmitListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6EA724B841F200C582AD /* CertificationSubmitListVC.m */; };
+		D2AE6EAB24B8569A00C582AD /* CertDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6EAA24B8569A00C582AD /* CertDetailTopView.m */; };
 		D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CA1E960C97005F00C6 /* ImagePickerVC.m */; };
 		D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CD1E961456005F00C6 /* ImagePickerCollectionCell.m */; };
 		D2B9FF24248E43D10082E8D2 /* ModelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF23248E43D10082E8D2 /* ModelMsg.m */; };
@@ -842,16 +838,6 @@
 		D2AE6E7E24B8331800C582AD /* CertificateDealDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealDetailVC.m; sourceTree = "<group>"; };
 		D2AE6E7F24B8331800C582AD /* CertificateDealImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealImageView.m; sourceTree = "<group>"; };
 		D2AE6E8024B8331800C582AD /* CertificateDealDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealDetailView.m; sourceTree = "<group>"; };
-		D2AE6E8224B8331800C582AD /* CertificateDealResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultCell.m; sourceTree = "<group>"; };
-		D2AE6E8324B8331800C582AD /* CertificateDealResultDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultDetailVC.m; sourceTree = "<group>"; };
-		D2AE6E8424B8331800C582AD /* CertificateDealResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultVC.m; sourceTree = "<group>"; };
-		D2AE6E8524B8331800C582AD /* CertificateDealTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealTabVC.h; sourceTree = "<group>"; };
-		D2AE6E8624B8331800C582AD /* CertificateDealResultDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultDetailTopView.m; sourceTree = "<group>"; };
-		D2AE6E8724B8331800C582AD /* CertificateDealResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultCell.h; sourceTree = "<group>"; };
-		D2AE6E8824B8331800C582AD /* CertificateDealResultDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultDetailVC.h; sourceTree = "<group>"; };
-		D2AE6E8924B8331800C582AD /* CertificateDealResultDetailTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultDetailTopView.h; sourceTree = "<group>"; };
-		D2AE6E8A24B8331800C582AD /* CertificateDealTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealTabVC.m; sourceTree = "<group>"; };
-		D2AE6E8B24B8331800C582AD /* CertificateDealResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultVC.h; sourceTree = "<group>"; };
 		D2AE6E9724B8338900C582AD /* ModelCertificateDealDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCertificateDealDetail.m; sourceTree = "<group>"; };
 		D2AE6E9824B8338900C582AD /* ModelCertificateDealCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCertificateDealCategory.m; sourceTree = "<group>"; };
 		D2AE6E9924B8338900C582AD /* ModelCertificateDealCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCertificateDealCategory.h; sourceTree = "<group>"; };
@@ -864,6 +850,8 @@
 		D2AE6EA424B841A400C582AD /* CertificationSubmitTabVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificationSubmitTabVC.m; sourceTree = "<group>"; };
 		D2AE6EA624B841F200C582AD /* CertificationSubmitListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificationSubmitListVC.h; sourceTree = "<group>"; };
 		D2AE6EA724B841F200C582AD /* CertificationSubmitListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificationSubmitListVC.m; sourceTree = "<group>"; };
+		D2AE6EA924B8569A00C582AD /* CertDetailTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertDetailTopView.h; sourceTree = "<group>"; };
+		D2AE6EAA24B8569A00C582AD /* CertDetailTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertDetailTopView.m; sourceTree = "<group>"; };
 		D2B6B9C91E960C97005F00C6 /* ImagePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerVC.h; sourceTree = "<group>"; };
 		D2B6B9CA1E960C97005F00C6 /* ImagePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerVC.m; sourceTree = "<group>"; };
 		D2B6B9CC1E961456005F00C6 /* ImagePickerCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerCollectionCell.h; sourceTree = "<group>"; };
@@ -2355,9 +2343,10 @@
 		D2AE6E7724B8331800C582AD /* CertificateDeal */ = {
 			isa = PBXGroup;
 			children = (
-				D2AE6E8124B8331800C582AD /* CertificateDealDetail */,
 				D2AE6E7924B8331800C582AD /* CertificateDealDetailVC.h */,
 				D2AE6E7E24B8331800C582AD /* CertificateDealDetailVC.m */,
+				D2AE6EA924B8569A00C582AD /* CertDetailTopView.h */,
+				D2AE6EAA24B8569A00C582AD /* CertDetailTopView.m */,
 				D2AE6E7B24B8331800C582AD /* CertificateDealDetailView.h */,
 				D2AE6E8024B8331800C582AD /* CertificateDealDetailView.m */,
 				D2AE6E7C24B8331800C582AD /* CertificateDealImageView.h */,
@@ -2370,23 +2359,6 @@
 				D2AE6EA124B83A0F00C582AD /* CategoryCertificationDealListVC.m */,
 			);
 			path = CertificateDeal;
-			sourceTree = "<group>";
-		};
-		D2AE6E8124B8331800C582AD /* CertificateDealDetail */ = {
-			isa = PBXGroup;
-			children = (
-				D2AE6E8224B8331800C582AD /* CertificateDealResultCell.m */,
-				D2AE6E8324B8331800C582AD /* CertificateDealResultDetailVC.m */,
-				D2AE6E8424B8331800C582AD /* CertificateDealResultVC.m */,
-				D2AE6E8524B8331800C582AD /* CertificateDealTabVC.h */,
-				D2AE6E8624B8331800C582AD /* CertificateDealResultDetailTopView.m */,
-				D2AE6E8724B8331800C582AD /* CertificateDealResultCell.h */,
-				D2AE6E8824B8331800C582AD /* CertificateDealResultDetailVC.h */,
-				D2AE6E8924B8331800C582AD /* CertificateDealResultDetailTopView.h */,
-				D2AE6E8A24B8331800C582AD /* CertificateDealTabVC.m */,
-				D2AE6E8B24B8331800C582AD /* CertificateDealResultVC.h */,
-			);
-			path = CertificateDealDetail;
 			sourceTree = "<group>";
 		};
 		D2BC9A7E1DFFA75600B0468E /* Resource */ = {
@@ -3306,7 +3278,6 @@
 				DAB576881E305E5C006626BC /* NoResultView.m in Sources */,
 				D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */,
 				C6B343F61F20A186005FE308 /* UIImage+LHP.m in Sources */,
-				D2AE6E9424B8331900C582AD /* CertificateDealResultVC.m in Sources */,
 				D291309824172AC200CAC2E4 /* CreateAddressVC.m in Sources */,
 				D2BE30BD21070C170059929D /* ModelLabel.m in Sources */,
 				D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */,
@@ -3358,7 +3329,6 @@
 				D20E4A91243C22A4009915E2 /* CommunityServiceDetailVC.m in Sources */,
 				D22F404C241E004E007A3C8A /* WebInterActionVC.m in Sources */,
 				D275DA032179C09C0060BB0E /* BaseNavView+Logical.m in Sources */,
-				D2AE6E9324B8331900C582AD /* CertificateDealResultDetailVC.m in Sources */,
 				D2FF933D20D1118D00B198EB /* UIFont+Category.m in Sources */,
 				D22BA9D21E5EB8CA00C5B391 /* FSCalendarAppearance.m in Sources */,
 				D207A9F624404F72000AC836 /* ActivityDetailView.m in Sources */,
@@ -3372,11 +3342,11 @@
 				D2D089111E0E22D900BE1E4C /* PlaceHolderTextView.m in Sources */,
 				D242502E24132E2F0055AC42 /* PerfectTextCell.m in Sources */,
 				D29130892417234200CAC2E4 /* MemberListVC.m in Sources */,
+				D2AE6EAB24B8569A00C582AD /* CertDetailTopView.m in Sources */,
 				D20E4AC3243D9EBA009915E2 /* HelpInfoListCell.m in Sources */,
 				D2BC9A901DFFA7C400B0468E /* CustomTabBarController.m in Sources */,
 				D2F7F3E6242A2FE100F86747 /* ModelDepartment.m in Sources */,
 				D20E4A93243C22A4009915E2 /* DisposalCommunityServiceVC.m in Sources */,
-				D2AE6E9224B8331900C582AD /* CertificateDealResultCell.m in Sources */,
 				D2A15F3A2419C21200A90D57 /* SelectCommunityVC.m in Sources */,
 				D22F7DA21F666A3B000DB837 /* VideoPickerVC.m in Sources */,
 				D22BA9DA1E5EB8CA00C5B391 /* FSCalendarExtensions.m in Sources */,
@@ -3431,7 +3401,6 @@
 				D2CC967D241DB24200818D87 /* ModelShopDetailCategory.m in Sources */,
 				D2BE30C6210711430059929D /* ModelBtn.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
-				D2AE6E9624B8331900C582AD /* CertificateDealTabVC.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
 				D2AE6E9C24B8338900C582AD /* ModelCertificateDealCategory.m in Sources */,
 				D2425047241331B00055AC42 /* CommunityView.m in Sources */,
@@ -3541,7 +3510,6 @@
 				D20E4A90243C22A4009915E2 /* CommunityServiceDetailView.m in Sources */,
 				D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */,
 				D2D1E1D72421E9DA00ED5E0D /* ModelWhistleList.m in Sources */,
-				D2AE6E9524B8331900C582AD /* CertificateDealResultDetailTopView.m in Sources */,
 				D207A9F924404F72000AC836 /* ActivityListVC.m in Sources */,
 				D2996A4C21E6E4C700562587 /* UpImageView.m in Sources */,
 				DA85246B1D65B5AE00AB04CC /* main.m in Sources */,

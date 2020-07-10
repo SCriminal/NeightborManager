@@ -645,6 +645,14 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                                   failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+审核
+*/
++(void)requestCertDisposalAuditWithIsapproval:(double)isApproval
+                number:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                      failure:(void (^)(NSString * errorStr, id mark))failure;
 
 @end
 

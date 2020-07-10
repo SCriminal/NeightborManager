@@ -1217,4 +1217,21 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
         };
         [self getUrl:@"/admin/onekey/participant/1_0_10/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+审核
+*/
++(void)requestCertDisposalAuditWithIsapproval:(double)isApproval
+                number:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"isApproval":NSNumber.dou(isApproval),
+                           @"number":RequestStrKey(number),
+                              @"scope":@7,
+                              @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+
+        };
+        [self patchUrl:@"/onekey/participant/1_0_10/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

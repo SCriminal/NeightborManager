@@ -13,8 +13,10 @@
 //request
 #import "RequestApi+Neighbor.h"
 #import "WebVC.h"
+#import "CertDetailTopView.h"
 
 @interface CertificateDealDetailVC ()
+@property (nonatomic, strong) CertDetailTopView *topView;
 @property (nonatomic, strong) UIView *viewBottom;
 @property (nonatomic, strong) CertificateDealDetailView *voteView;
 @property (nonatomic, strong) UIView *viewHeader;
@@ -23,6 +25,13 @@
 @end
 
 @implementation CertificateDealDetailVC
+- (CertDetailTopView *)topView{
+    if (!_topView) {
+        _topView = [CertDetailTopView new];
+        [_topView resetViewWithModel:self.modelItem];
+    }
+    return _topView;
+}
 - (UIView *)viewHeader{
     if (!_viewHeader) {
         _viewHeader = [UIView new];
@@ -71,7 +80,7 @@
     //add keyboard observe
     [self addObserveOfKeyboard];
     //request
-    [self requestList];
+    [self requestDetail];
 }
 
 #pragma mark 添加导航栏
@@ -81,13 +90,20 @@
 - (void)configData{
     
     [self.viewHeader removeAllSubViews];
+    [self.viewHeader addSubview:self.topView];
+    
+    self.voteView.top = self.topView.bottom;
     [self.viewHeader addSubview:self.voteView];
-    self.viewBottom.top = self.voteView.bottom;
-    [self.viewHeader addSubview:self.viewBottom];
     
-    self.viewHeader.height = self.viewBottom.bottom;
+    self.viewHeader.height = self.voteView.bottom;
+
+    if (self.modelItem.status == 1) {
+        self.viewBottom.top = self.voteView.bottom;
+        [self.viewHeader addSubview:self.viewBottom];
+        self.viewHeader.height = self.viewBottom.bottom;
+    }
+
     self.tableView.tableFooterView = self.viewHeader;
-    
     [self.tableView reloadData];
 }
 
@@ -121,9 +137,21 @@
 }
 
 - (void)btnAdmitClick{
-    
+    [RequestApi requestCertDisposalAuditWithIsapproval:1 number:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.modelItem.status = 2;
+        [self.topView resetViewWithModel:self.modelItem];
+        [self configData];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 - (void)btnRefuseClick{
-    
+    [RequestApi requestCertDisposalAuditWithIsapproval:0 number:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.modelItem.status = 3;
+        [self.topView resetViewWithModel:self.modelItem];
+        [self configData];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 @end
