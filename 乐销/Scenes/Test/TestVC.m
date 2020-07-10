@@ -44,7 +44,7 @@
     [super viewDidLoad];
     WEAKSELF
     [self.view addSubview:[BaseNavView initNavBackTitle:@"1" rightTitle:@"2" rightBlock:^{
-//        [weakSelf jump];
+        [GB_Nav pushVCName:@"RTCSampleChatViewController" animated:true];
     }]];
     
     return;

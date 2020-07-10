@@ -1232,6 +1232,6 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                               @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
 
         };
-        [self patchUrl:@"/onekey/participant/1_0_10/{number}" delegate:delegate parameters:dic success:success failure:failure];
+        [self patchUrl:@"/admin/onekey/participant/1_0_10/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

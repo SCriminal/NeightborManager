@@ -35,6 +35,7 @@
     [self addNav];
     //table
     [self.tableView registerClass:[CertificationSubmitListCell class] forCellReuseIdentifier:@"CertificationSubmitListCell"];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_CERT_NOTICE_REFERSH object:nil];
     //request
     [self requestList];
     [self addRefreshHeader];
@@ -63,6 +64,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CertificateDealDetailVC * detailVC = [CertificateDealDetailVC new];
+    detailVC.modelItem = self.aryDatas[indexPath.row];
     [GB_Nav pushViewController:detailVC animated:true];
 }
 

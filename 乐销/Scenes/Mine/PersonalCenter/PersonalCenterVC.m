@@ -14,8 +14,9 @@
 //section title
 #import "SectionTitleView.h"
 #import "JournalismListVC.h"
-
-
+//request
+#import "RequestApi+Neighbor.h"
+#import "RequestInstance.h"
 @interface PersonalCenterVC ()
 @property (nonatomic, strong) PersonalCenterTopView *topView;
 @property (nonatomic, strong) UIView *tableHeaderView;
@@ -77,7 +78,31 @@
     self.tableHeaderView.height = self.topView.bottom;
     self.tableView.tableHeaderView = self.tableHeaderView;
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self requestExtendToken];
+}
+- (void)requestExtendToken{
+    static int requestSuccess = 0;
+    if (requestSuccess) {
+        return;
+    }
+    if (![GlobalMethod isLoginSuccess]) {
+        requestSuccess = 1;
+        return;
+    }
+    if ([RequestInstance sharedInstance].tasks.count == 0) {
+        requestSuccess = 1;
+        [RequestApi requestExtendTokenSuccess:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+               NSString * token = [response stringValueForKey:@"token"];
+               if (isStr(token)) {
+                   [GlobalData sharedInstance].GB_Key = token;
+               }
+           } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+           
+           }];
+    }
+}
 
 #pragma mark UITableViewDelegate
 //row num

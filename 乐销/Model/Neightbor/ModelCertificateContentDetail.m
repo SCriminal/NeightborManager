@@ -49,7 +49,9 @@ NSString *const kModelCertificateContentDetailCategoryName = @"categoryName";
             self.displayMode = [dict doubleValueForKey:kModelCertificateContentDetailDisplayMode];
             self.template =  [GlobalMethod exchangeDic:[dict objectForKey:kModelCertificateContentDetailTemplate] toAryWithModelName:@"ModelQuestionnairDetailContent"];
             self.categoryName = [dict stringValueForKey:kModelCertificateContentDetailCategoryName];
+        self.participant =  [GlobalMethod exchangeDic:[dict objectForKey:@"participant"] toAryWithModelName:@"ModelQuestionnairDetailContent"];
 
+            
     }
     
     return self;
@@ -65,6 +67,7 @@ NSString *const kModelCertificateContentDetailCategoryName = @"categoryName";
     [mutableDict setValue:[NSNumber numberWithDouble:self.displayMode] forKey:kModelCertificateContentDetailDisplayMode];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.template] forKey:kModelCertificateContentDetailTemplate];
     [mutableDict setValue:self.categoryName forKey:kModelCertificateContentDetailCategoryName];
+    [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.participant] forKey:@"participant"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

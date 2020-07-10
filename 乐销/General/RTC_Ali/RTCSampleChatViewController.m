@@ -105,13 +105,13 @@
 - (void)joinBegin{
     
     //AliRtcAuthInfo 配置项
-    NSString *AppID   =  @"";
-    NSString *userID  =  @"";
-    NSString *channelID  =  @"";
-    NSString *nonce  =  @"";
+    NSString *AppID   =  @"phhs6mt3";
+    NSString *userID  =  @"1";
+    NSString *channelID  =  @"1";
+    NSString *nonce  =  @"AK-83000875-3bef-4f08-a5c3-d8deb7e459de";
     long long timestamp = 0;
     NSString *token  =  @"";
-    NSArray <NSString *> *GSLB  =  @[@""];
+    NSArray <NSString *> *GSLB  =  @[@"https://rgslb.rtc.aliyuncs.com"];
     NSArray <NSString *> *agent =  @[@""];
     
     

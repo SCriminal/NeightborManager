@@ -67,6 +67,8 @@
 - (CertificateDealDetailView *)voteView{
     if (!_voteView) {
         _voteView = [CertificateDealDetailView new];
+//        _voteView.userInteractionEnabled = false;
+        _voteView.isParticipated = true;
     }
     return _voteView;
 }
@@ -85,7 +87,7 @@
 
 #pragma mark 添加导航栏
 - (void)addNav{
-    [self.view addSubview:[BaseNavView initNavBackTitle:UnPackStr(self.modelItem.title) rightTitle:nil rightBlock:nil]];
+    [self.view addSubview:[BaseNavView initNavBackTitle:@"参与详情" rightTitle:nil rightBlock:nil]];
 }
 - (void)configData{
     
@@ -127,7 +129,7 @@
     [RequestApi requestCertSubmitDetailWithnNumber:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelCertificateContentDetail * model = [ModelCertificateContentDetail modelObjectWithDictionary:response];
         self.modelDetail = model;
-        [self.voteView resetViewWithModel:model.template];
+        [self.voteView resetViewWithModel:model.participant];
         [self configData];
         
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -137,19 +139,28 @@
 }
 
 - (void)btnAdmitClick{
-    [RequestApi requestCertDisposalAuditWithIsapproval:1 number:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.modelItem.status = 2;
-        [self.topView resetViewWithModel:self.modelItem];
-        [self configData];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+    [GlobalMethod showEditAlertWithTitle:@"提示" content:@"您确定要通过吗？" dismiss:^{
         
-    }];
+    } confirm:^{
+        [self requestAdmit:true];
+    } view:self.view];
 }
 - (void)btnRefuseClick{
-    [RequestApi requestCertDisposalAuditWithIsapproval:0 number:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.modelItem.status = 3;
+    [GlobalMethod showEditAlertWithTitle:@"提示" content:@"您确定要驳回吗？" dismiss:^{
+        
+    } confirm:^{
+        [self requestAdmit:false];
+    } view:self.view];
+}
+
+- (void)requestAdmit:(BOOL)isAdmit{
+    [RequestApi requestCertDisposalAuditWithIsapproval:1 number:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.modelItem.status = isAdmit?2:3;
+        self.modelItem = [ModelCertificateDealDetail modelObjectWithDictionary:self.modelItem.dictionaryRepresentation];
         [self.topView resetViewWithModel:self.modelItem];
         [self configData];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_CERT_NOTICE_REFERSH object:nil];
+        [GlobalMethod showAlert:isAdmit?@"已办理":@"已驳回"];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

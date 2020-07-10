@@ -138,11 +138,11 @@
     //刷新view
     self.iv.image = [UIImage imageNamed:self.isParticipated?@"certificateDeal_empty":@"certificateDeal_add"];
     
-    [self.title fitTitle:@"上传照片" variable:self.iv.width-W(8)];
+    [self.title fitTitle:@"" variable:self.iv.width-W(8)];
     self.title.centerXTop = XY(self.iv.width/2.0,W(61));
     self.require.rightCenterY = XY(self.title.left-W(2),self.title.centerY);
     
-    if (isStr(model.value)) {
+    if (isStr(model.value)||self.isParticipated) {
         [self.iv sd_setImageWithURL:[NSURL URLWithString:model.value] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];
     }
     self.require.hidden = true;
@@ -155,7 +155,17 @@
 
 #pragma click
 - (void)ivClick{
-    [self showImageVC:1];
+    if (self.isParticipated) {
+        ImageDetailBigView * detailView = [ImageDetailBigView new];
+        [detailView resetView:@[^(){
+            ModelImage * model = [ModelImage new];
+            model.url = self.model.value;
+            return model;
+        }()].mutableCopy isEdit:false index: 0];
+        [detailView showInView:GB_Nav.lastVC.view imageViewShow:self.iv];
+    }else{
+        [self showImageVC:1];
+    }
 }
 //选择图片
 - (void)imageSelect:(BaseImage *)image{

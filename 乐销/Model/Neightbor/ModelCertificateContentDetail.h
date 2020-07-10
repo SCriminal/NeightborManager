@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *iDPropertyDescription;
 @property (nonatomic, assign) double displayMode;
 @property (nonatomic, strong) NSArray *template;
+@property (nonatomic, strong) NSArray *participant;
 @property (nonatomic, strong) NSString *categoryName;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

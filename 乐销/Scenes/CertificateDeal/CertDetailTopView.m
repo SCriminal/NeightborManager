@@ -74,6 +74,9 @@
                 _labelBg.backgroundColor = self.model.statusColorShow;
                 [_labelBg addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:2 lineWidth:0 lineColor:[UIColor clearColor]];
                 _status.center = _labelBg.center;
+                [self addSubview:_labelBg];
+                [self addSubview:_status];
+
             }
             
             top = MAX(labelTitle.bottom, labelTitle1.bottom)+W(20);

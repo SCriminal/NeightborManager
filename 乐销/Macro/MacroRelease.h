@@ -26,7 +26,7 @@
 #endif
 
 #if DEBUG
-//#define SLD_TEST //sld_test
+#define SLD_TEST //sld_test
 #endif
 //#define NO_APP_STORE
 

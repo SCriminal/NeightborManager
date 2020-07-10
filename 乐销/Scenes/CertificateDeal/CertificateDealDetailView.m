@@ -27,6 +27,7 @@
             case 1:
             {
                 CertificateDealDetailSingleChoiceView * view = [CertificateDealDetailSingleChoiceView new];
+                view.userInteractionEnabled = !self.isParticipated;
                 view.isParticipated = self.isParticipated;
                 top = [view resetViewWithModel:content top:top];
                 [self addSubview:view];
@@ -35,6 +36,7 @@
             case 2:
             {
                 CertificateDealDetailMultipleChoiceView * view = [CertificateDealDetailMultipleChoiceView new];
+                view.userInteractionEnabled = !self.isParticipated;
                 view.isParticipated = self.isParticipated;
                 top = [view resetViewWithModel:content top:top];
                 [self addSubview:view];
@@ -50,11 +52,6 @@
                 break;
             case 4:
             {
-//                if (fetchSingleImage) {
-//                    continue;
-//                }
-//                fetchSingleImage = true;
-                
                 CertificateDealImageView * view = [CertificateDealImageView new];
                 view.isParticipated = self.isParticipated;
                 top = [view resetViewWithModel:@[content] top:top];

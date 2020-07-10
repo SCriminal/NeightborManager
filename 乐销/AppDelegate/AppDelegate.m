@@ -203,8 +203,14 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     
     //    NSString * strJson = [GlobalMethod exchangeDicToJson:userInfo];
     ModelApns * model = [ModelApns modelObjectWithDictionary:userInfo];
+    if (model.type == 1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_WHISTLE_REFERSH object:nil];
+    }
     if (model.type == 8) {
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_WORK_NOTICE_REFERSH object:nil];
+    }
+    if (model.type == 9) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_CERT_NOTICE_REFERSH object:nil];
     }
     [[TopAlertView sharedInstance]showWithModel:model];
 }
