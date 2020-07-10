@@ -17,6 +17,7 @@ def pods
      pod 'AliyunOSSiOS', '~> 2.6.0'
     #阿里推送
     pod 'AlicloudPush'
+    pod 'AliRTCSdk'
     #高德地图
     pod 'AMapSearch-NO-IDFA'
     pod 'AMapLocation-NO-IDFA'

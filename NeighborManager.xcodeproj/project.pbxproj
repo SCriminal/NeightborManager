@@ -2947,6 +2947,7 @@
 				F69D7D4393E6080CDA769166 /* [CP] Copy Pods Resources */,
 				D24F0FDD1FA422E400F90726 /* ShellScript */,
 				D2246E5021E4A5B8006E463F /* Embed App Extensions */,
+				2B27CE99222FE37F1B3831ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3120,6 +3121,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2B27CE99222FE37F1B3831ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NeighborManager/Pods-NeighborManager-frameworks.sh",
+				"${PODS_ROOT}/AliRTCSdk/AliRTCSdk.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliRTCSdk.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NeighborManager/Pods-NeighborManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D24F0FDD1FA422E400F90726 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -3141,7 +3160,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NeighborManager/Pods-NeighborManager-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NeighborManager/Pods-NeighborManager-resources.sh",
 				"${PODS_ROOT}/AMap3DMap-NO-IDFA/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/AMapNavi-NO-IDFA/AMapNaviKit.framework/AMapNavi.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -3160,7 +3179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NeighborManager/Pods-NeighborManager-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NeighborManager/Pods-NeighborManager-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

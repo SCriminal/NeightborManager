@@ -136,6 +136,7 @@
 	<string>需要上传头像和吹哨处理功能中访问您的相册权限</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>location</string>
 		<string>remote-notification</string>
 	</array>
