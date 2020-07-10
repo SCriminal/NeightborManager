@@ -225,6 +225,20 @@
 		D2AE6E7424B80F9500C582AD /* RTCSampleRemoteUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E6F24B80F9400C582AD /* RTCSampleRemoteUserManager.m */; };
 		D2AE6E7524B80F9500C582AD /* RTCSampleRemoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7124B80F9400C582AD /* RTCSampleRemoteUserModel.m */; };
 		D2AE6E7624B80F9500C582AD /* RTCSampleChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7224B80F9400C582AD /* RTCSampleChatViewController.m */; };
+		D2AE6E8F24B8331800C582AD /* CertificateDealDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7E24B8331800C582AD /* CertificateDealDetailVC.m */; };
+		D2AE6E9024B8331800C582AD /* CertificateDealImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7F24B8331800C582AD /* CertificateDealImageView.m */; };
+		D2AE6E9124B8331900C582AD /* CertificateDealDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8024B8331800C582AD /* CertificateDealDetailView.m */; };
+		D2AE6E9224B8331900C582AD /* CertificateDealResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8224B8331800C582AD /* CertificateDealResultCell.m */; };
+		D2AE6E9324B8331900C582AD /* CertificateDealResultDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8324B8331800C582AD /* CertificateDealResultDetailVC.m */; };
+		D2AE6E9424B8331900C582AD /* CertificateDealResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8424B8331800C582AD /* CertificateDealResultVC.m */; };
+		D2AE6E9524B8331900C582AD /* CertificateDealResultDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8624B8331800C582AD /* CertificateDealResultDetailTopView.m */; };
+		D2AE6E9624B8331900C582AD /* CertificateDealTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E8A24B8331800C582AD /* CertificateDealTabVC.m */; };
+		D2AE6E9B24B8338900C582AD /* ModelCertificateDealDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E9724B8338900C582AD /* ModelCertificateDealDetail.m */; };
+		D2AE6E9C24B8338900C582AD /* ModelCertificateDealCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E9824B8338900C582AD /* ModelCertificateDealCategory.m */; };
+		D2AE6E9F24B8358600C582AD /* ModelCertificateContentDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E9D24B8358600C582AD /* ModelCertificateContentDetail.m */; };
+		D2AE6EA224B83A0F00C582AD /* CategoryCertificationDealListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6EA124B83A0F00C582AD /* CategoryCertificationDealListVC.m */; };
+		D2AE6EA524B841A400C582AD /* CertificationSubmitTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6EA424B841A400C582AD /* CertificationSubmitTabVC.m */; };
+		D2AE6EA824B841F200C582AD /* CertificationSubmitListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6EA724B841F200C582AD /* CertificationSubmitListVC.m */; };
 		D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CA1E960C97005F00C6 /* ImagePickerVC.m */; };
 		D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CD1E961456005F00C6 /* ImagePickerCollectionCell.m */; };
 		D2B9FF24248E43D10082E8D2 /* ModelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF23248E43D10082E8D2 /* ModelMsg.m */; };
@@ -822,6 +836,34 @@
 		D2AE6E7024B80F9400C582AD /* UIViewController+RTCSampleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RTCSampleAlert.h"; sourceTree = "<group>"; };
 		D2AE6E7124B80F9400C582AD /* RTCSampleRemoteUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserModel.m; sourceTree = "<group>"; };
 		D2AE6E7224B80F9400C582AD /* RTCSampleChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleChatViewController.m; sourceTree = "<group>"; };
+		D2AE6E7924B8331800C582AD /* CertificateDealDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealDetailVC.h; sourceTree = "<group>"; };
+		D2AE6E7B24B8331800C582AD /* CertificateDealDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealDetailView.h; sourceTree = "<group>"; };
+		D2AE6E7C24B8331800C582AD /* CertificateDealImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealImageView.h; sourceTree = "<group>"; };
+		D2AE6E7E24B8331800C582AD /* CertificateDealDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealDetailVC.m; sourceTree = "<group>"; };
+		D2AE6E7F24B8331800C582AD /* CertificateDealImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealImageView.m; sourceTree = "<group>"; };
+		D2AE6E8024B8331800C582AD /* CertificateDealDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealDetailView.m; sourceTree = "<group>"; };
+		D2AE6E8224B8331800C582AD /* CertificateDealResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultCell.m; sourceTree = "<group>"; };
+		D2AE6E8324B8331800C582AD /* CertificateDealResultDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultDetailVC.m; sourceTree = "<group>"; };
+		D2AE6E8424B8331800C582AD /* CertificateDealResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultVC.m; sourceTree = "<group>"; };
+		D2AE6E8524B8331800C582AD /* CertificateDealTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealTabVC.h; sourceTree = "<group>"; };
+		D2AE6E8624B8331800C582AD /* CertificateDealResultDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealResultDetailTopView.m; sourceTree = "<group>"; };
+		D2AE6E8724B8331800C582AD /* CertificateDealResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultCell.h; sourceTree = "<group>"; };
+		D2AE6E8824B8331800C582AD /* CertificateDealResultDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultDetailVC.h; sourceTree = "<group>"; };
+		D2AE6E8924B8331800C582AD /* CertificateDealResultDetailTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultDetailTopView.h; sourceTree = "<group>"; };
+		D2AE6E8A24B8331800C582AD /* CertificateDealTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateDealTabVC.m; sourceTree = "<group>"; };
+		D2AE6E8B24B8331800C582AD /* CertificateDealResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateDealResultVC.h; sourceTree = "<group>"; };
+		D2AE6E9724B8338900C582AD /* ModelCertificateDealDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCertificateDealDetail.m; sourceTree = "<group>"; };
+		D2AE6E9824B8338900C582AD /* ModelCertificateDealCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCertificateDealCategory.m; sourceTree = "<group>"; };
+		D2AE6E9924B8338900C582AD /* ModelCertificateDealCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCertificateDealCategory.h; sourceTree = "<group>"; };
+		D2AE6E9A24B8338900C582AD /* ModelCertificateDealDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCertificateDealDetail.h; sourceTree = "<group>"; };
+		D2AE6E9D24B8358600C582AD /* ModelCertificateContentDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCertificateContentDetail.m; sourceTree = "<group>"; };
+		D2AE6E9E24B8358600C582AD /* ModelCertificateContentDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCertificateContentDetail.h; sourceTree = "<group>"; };
+		D2AE6EA024B83A0F00C582AD /* CategoryCertificationDealListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCertificationDealListVC.h; sourceTree = "<group>"; };
+		D2AE6EA124B83A0F00C582AD /* CategoryCertificationDealListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCertificationDealListVC.m; sourceTree = "<group>"; };
+		D2AE6EA324B841A400C582AD /* CertificationSubmitTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificationSubmitTabVC.h; sourceTree = "<group>"; };
+		D2AE6EA424B841A400C582AD /* CertificationSubmitTabVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificationSubmitTabVC.m; sourceTree = "<group>"; };
+		D2AE6EA624B841F200C582AD /* CertificationSubmitListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificationSubmitListVC.h; sourceTree = "<group>"; };
+		D2AE6EA724B841F200C582AD /* CertificationSubmitListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificationSubmitListVC.m; sourceTree = "<group>"; };
 		D2B6B9C91E960C97005F00C6 /* ImagePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerVC.h; sourceTree = "<group>"; };
 		D2B6B9CA1E960C97005F00C6 /* ImagePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerVC.m; sourceTree = "<group>"; };
 		D2B6B9CC1E961456005F00C6 /* ImagePickerCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerCollectionCell.h; sourceTree = "<group>"; };
@@ -2310,11 +2352,41 @@
 			path = RTC_Ali;
 			sourceTree = "<group>";
 		};
-		D2B9FF21248E43950082E8D2 /* Msg */ = {
+		D2AE6E7724B8331800C582AD /* CertificateDeal */ = {
 			isa = PBXGroup;
 			children = (
+				D2AE6E8124B8331800C582AD /* CertificateDealDetail */,
+				D2AE6E7924B8331800C582AD /* CertificateDealDetailVC.h */,
+				D2AE6E7E24B8331800C582AD /* CertificateDealDetailVC.m */,
+				D2AE6E7B24B8331800C582AD /* CertificateDealDetailView.h */,
+				D2AE6E8024B8331800C582AD /* CertificateDealDetailView.m */,
+				D2AE6E7C24B8331800C582AD /* CertificateDealImageView.h */,
+				D2AE6E7F24B8331800C582AD /* CertificateDealImageView.m */,
+				D2AE6EA324B841A400C582AD /* CertificationSubmitTabVC.h */,
+				D2AE6EA424B841A400C582AD /* CertificationSubmitTabVC.m */,
+				D2AE6EA624B841F200C582AD /* CertificationSubmitListVC.h */,
+				D2AE6EA724B841F200C582AD /* CertificationSubmitListVC.m */,
+				D2AE6EA024B83A0F00C582AD /* CategoryCertificationDealListVC.h */,
+				D2AE6EA124B83A0F00C582AD /* CategoryCertificationDealListVC.m */,
 			);
-			path = Msg;
+			path = CertificateDeal;
+			sourceTree = "<group>";
+		};
+		D2AE6E8124B8331800C582AD /* CertificateDealDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D2AE6E8224B8331800C582AD /* CertificateDealResultCell.m */,
+				D2AE6E8324B8331800C582AD /* CertificateDealResultDetailVC.m */,
+				D2AE6E8424B8331800C582AD /* CertificateDealResultVC.m */,
+				D2AE6E8524B8331800C582AD /* CertificateDealTabVC.h */,
+				D2AE6E8624B8331800C582AD /* CertificateDealResultDetailTopView.m */,
+				D2AE6E8724B8331800C582AD /* CertificateDealResultCell.h */,
+				D2AE6E8824B8331800C582AD /* CertificateDealResultDetailVC.h */,
+				D2AE6E8924B8331800C582AD /* CertificateDealResultDetailTopView.h */,
+				D2AE6E8A24B8331800C582AD /* CertificateDealTabVC.m */,
+				D2AE6E8B24B8331800C582AD /* CertificateDealResultVC.h */,
+			);
+			path = CertificateDealDetail;
 			sourceTree = "<group>";
 		};
 		D2BC9A7E1DFFA75600B0468E /* Resource */ = {
@@ -2573,6 +2645,12 @@
 		D2CC965C241BA9EB00818D87 /* Neightbor */ = {
 			isa = PBXGroup;
 			children = (
+				D2AE6E9E24B8358600C582AD /* ModelCertificateContentDetail.h */,
+				D2AE6E9D24B8358600C582AD /* ModelCertificateContentDetail.m */,
+				D2AE6E9924B8338900C582AD /* ModelCertificateDealCategory.h */,
+				D2AE6E9824B8338900C582AD /* ModelCertificateDealCategory.m */,
+				D2AE6E9A24B8338900C582AD /* ModelCertificateDealDetail.h */,
+				D2AE6E9724B8338900C582AD /* ModelCertificateDealDetail.m */,
 				D2B9FF22248E43D10082E8D2 /* ModelMsg.h */,
 				D2B9FF23248E43D10082E8D2 /* ModelMsg.m */,
 				D2CDE6082445BFCC007EA369 /* ModelQuestionariList.h */,
@@ -2930,7 +3008,7 @@
 		DAC5CF551DFFC3C20032E76F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D2B9FF21248E43950082E8D2 /* Msg */,
+				D2AE6E7724B8331800C582AD /* CertificateDeal */,
 				D2CDE5F12445BE9E007EA369 /* Meeting */,
 				D207A9E724404F72000AC836 /* Activity */,
 				D207A9DA24403D99000AC836 /* Association */,
@@ -3228,6 +3306,7 @@
 				DAB576881E305E5C006626BC /* NoResultView.m in Sources */,
 				D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */,
 				C6B343F61F20A186005FE308 /* UIImage+LHP.m in Sources */,
+				D2AE6E9424B8331900C582AD /* CertificateDealResultVC.m in Sources */,
 				D291309824172AC200CAC2E4 /* CreateAddressVC.m in Sources */,
 				D2BE30BD21070C170059929D /* ModelLabel.m in Sources */,
 				D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */,
@@ -3258,6 +3337,7 @@
 				D2996A4121E6E3AA00562587 /* UpImageWithTextVC.m in Sources */,
 				D2F7F3E0242A2F8A00F86747 /* SelectDepartmentVC.m in Sources */,
 				D285E2991E6D49E100DE9A6D /* NSDate+CategorySld.m in Sources */,
+				D2AE6E9B24B8338900C582AD /* ModelCertificateDealDetail.m in Sources */,
 				D207A9FA24404F72000AC836 /* ActivityListCell.m in Sources */,
 				D293A39A1E011987005B772A /* LoadingView.m in Sources */,
 				C6A031171F0CC7AA00C90032 /* ReturnAttributeStr.m in Sources */,
@@ -3271,12 +3351,14 @@
 				D2A15F402419DA3600A90D57 /* CommunityCollectionView.m in Sources */,
 				D242502D24132E2F0055AC42 /* PerfectSelectCell.m in Sources */,
 				D24992D11E05140C001A32DF /* BaseNavController.m in Sources */,
+				D2AE6E9124B8331900C582AD /* CertificateDealDetailView.m in Sources */,
 				D242503324132E2F0055AC42 /* LoginViewController.m in Sources */,
 				D239EACA1E2E0EB000E803F6 /* MJChiBaoZiHeader.m in Sources */,
 				D20E4AC2243D9EBA009915E2 /* HelpInfoDetailView.m in Sources */,
 				D20E4A91243C22A4009915E2 /* CommunityServiceDetailVC.m in Sources */,
 				D22F404C241E004E007A3C8A /* WebInterActionVC.m in Sources */,
 				D275DA032179C09C0060BB0E /* BaseNavView+Logical.m in Sources */,
+				D2AE6E9324B8331900C582AD /* CertificateDealResultDetailVC.m in Sources */,
 				D2FF933D20D1118D00B198EB /* UIFont+Category.m in Sources */,
 				D22BA9D21E5EB8CA00C5B391 /* FSCalendarAppearance.m in Sources */,
 				D207A9F624404F72000AC836 /* ActivityDetailView.m in Sources */,
@@ -3294,6 +3376,7 @@
 				D2BC9A901DFFA7C400B0468E /* CustomTabBarController.m in Sources */,
 				D2F7F3E6242A2FE100F86747 /* ModelDepartment.m in Sources */,
 				D20E4A93243C22A4009915E2 /* DisposalCommunityServiceVC.m in Sources */,
+				D2AE6E9224B8331900C582AD /* CertificateDealResultCell.m in Sources */,
 				D2A15F3A2419C21200A90D57 /* SelectCommunityVC.m in Sources */,
 				D22F7DA21F666A3B000DB837 /* VideoPickerVC.m in Sources */,
 				D22BA9DA1E5EB8CA00C5B391 /* FSCalendarExtensions.m in Sources */,
@@ -3335,6 +3418,7 @@
 				D29316901EF3BD980034E6FB /* GlobalMethod+Authority.m in Sources */,
 				D28E77E824188F51006383AA /* MultipleSelectView.m in Sources */,
 				D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */,
+				D2AE6EA224B83A0F00C582AD /* CategoryCertificationDealListVC.m in Sources */,
 				D290DB2C226F01F0004B18B4 /* HotLineView.m in Sources */,
 				D2F7F3E3242A2F9D00F86747 /* SelectDepartmentCell.m in Sources */,
 				D29130AA24173AF000CAC2E4 /* ArchiveListCell.m in Sources */,
@@ -3347,9 +3431,12 @@
 				D2CC967D241DB24200818D87 /* ModelShopDetailCategory.m in Sources */,
 				D2BE30C6210711430059929D /* ModelBtn.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
+				D2AE6E9624B8331900C582AD /* CertificateDealTabVC.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
+				D2AE6E9C24B8338900C582AD /* ModelCertificateDealCategory.m in Sources */,
 				D2425047241331B00055AC42 /* CommunityView.m in Sources */,
 				D28E77F42418FBB5006383AA /* LoginBottomView.m in Sources */,
+				D2AE6E8F24B8331800C582AD /* CertificateDealDetailVC.m in Sources */,
 				C699DAFA1EEA8857005DC71C /* NSString+LHP.m in Sources */,
 				D26B0ADF24220E0900977704 /* CommentStarView.m in Sources */,
 				D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */,
@@ -3454,10 +3541,12 @@
 				D20E4A90243C22A4009915E2 /* CommunityServiceDetailView.m in Sources */,
 				D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */,
 				D2D1E1D72421E9DA00ED5E0D /* ModelWhistleList.m in Sources */,
+				D2AE6E9524B8331900C582AD /* CertificateDealResultDetailTopView.m in Sources */,
 				D207A9F924404F72000AC836 /* ActivityListVC.m in Sources */,
 				D2996A4C21E6E4C700562587 /* UpImageView.m in Sources */,
 				DA85246B1D65B5AE00AB04CC /* main.m in Sources */,
 				D2BC9AB31DFFE02800B0468E /* GlobalMethod.m in Sources */,
+				D2AE6E9F24B8358600C582AD /* ModelCertificateContentDetail.m in Sources */,
 				C657C0761FCEAFED00039F53 /* NSDictionary+Model.m in Sources */,
 				D2F7F3D924299F4400F86747 /* CreateWhistleVC.m in Sources */,
 				D2C9C7DD1EE562220020E4E3 /* AMapPOI+Category.m in Sources */,
@@ -3477,6 +3566,7 @@
 				D2BE30B621070BD40059929D /* ModelImage.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
 				D26AE0642425A7900044E1DA /* HospitalListVC.m in Sources */,
+				D2AE6EA824B841F200C582AD /* CertificationSubmitListVC.m in Sources */,
 				D2A15F3D2419C25400A90D57 /* SelectCommunityView.m in Sources */,
 				D27646AB1F2B0FD2001096DB /* UIView+Coordeinate.m in Sources */,
 				D242502C24132E2F0055AC42 /* PerfectAddressDetailCell.m in Sources */,
@@ -3496,7 +3586,9 @@
 				D2CDE5FF2445BE9E007EA369 /* QuestionnaireDetailVoteView.m in Sources */,
 				D2424FB224132DDD0055AC42 /* SettingVC.m in Sources */,
 				D2BE30E5210716310059929D /* VersionUpView.m in Sources */,
+				D2AE6E9024B8331800C582AD /* CertificateDealImageView.m in Sources */,
 				D22F88F41F94B2590005944C /* UIPickerView+Category.m in Sources */,
+				D2AE6EA524B841A400C582AD /* CertificationSubmitTabVC.m in Sources */,
 				D2AE6E7624B80F9500C582AD /* RTCSampleChatViewController.m in Sources */,
 				D203760921071F260054F8A6 /* ModelVersionUp.m in Sources */,
 			);

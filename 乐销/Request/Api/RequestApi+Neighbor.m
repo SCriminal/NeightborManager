@@ -1162,4 +1162,59 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)};
     [self patchUrl:@"/admin/whistle/1_0_15/1/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+
+/**
+列表
+*/
++(void)requestCertificationDealCategoryListWithCategoryalias:(NSString *)categoryAlias
+                page:(double)page
+                count:(double)count
+                areaId:(double)areaId
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"scope":@7,
+                          @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+                           @"page":NSNumber.dou(page),
+                           @"count":NSNumber.dou(count),
+//                           @"areaId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)
+                          
+    };
+        [self getUrl:@"/admin/onekey/1_0_10/list/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+列表
+*/
++(void)requestCertificateDealCategoryListWithCategoryID:(double)categoryID
+                                               statuses:(NSString *)statuses
+                page:(double)page
+                count:(double)count
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"id":NSNumber.dou(categoryID),
+                           @"page":NSNumber.dou(page),
+                           @"count":NSNumber.dou(count),
+                              @"scope":@7,
+                              @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+                              @"statuses":RequestStrKey(statuses)
+        };
+        [self getUrl:@"/admin/onekey/participant/1_0_10/list/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+详情
+*/
++(void)requestCertSubmitDetailWithnNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"number":RequestStrKey(number),
+                              @"scope":@7,
+                              @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+        };
+        [self getUrl:@"/admin/onekey/participant/1_0_10/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

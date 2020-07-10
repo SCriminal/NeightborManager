@@ -189,10 +189,9 @@
 {
     //消息进入 直接跳转
     ModelApns * model = [ModelApns modelObjectWithDictionary:response.notification.request.content.userInfo];
-    if (model.type == 1) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
-        //        [GlobalMethod jumpToOrderList];
-    }
+    TopAlertView * top = [TopAlertView sharedInstance];
+    top.model = model;
+    [top btnClick];
     completionHandler();
 }
 

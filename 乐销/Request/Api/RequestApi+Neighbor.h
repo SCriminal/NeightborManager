@@ -617,6 +617,35 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;
 
+/**
+列表
+*/
++(void)requestCertificationDealCategoryListWithCategoryalias:(NSString *)categoryAlias
+                page:(double)page
+                count:(double)count
+                areaId:(double)areaId
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                                     failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+列表
+*/
++(void)requestCertificateDealCategoryListWithCategoryID:(double)categoryID
+                                               statuses:(NSString *)statuses
+                page:(double)page
+                count:(double)count
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                                failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+详情
+*/
++(void)requestCertSubmitDetailWithnNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                  failure:(void (^)(NSString * errorStr, id mark))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

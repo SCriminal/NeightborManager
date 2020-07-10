@@ -47,7 +47,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
         case ENUM_UP_IMAGE_TYPE_WHISTLE:
             return @"/whistle/img/";
             break;
-            
+            case ENUM_UP_IMAGE_TYPE_CERTIFICATE_DEAL:
+            return @"/onekey/participant/image/";
+
         default:
             break;
     }

@@ -16,6 +16,9 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) double type;
 @property (nonatomic, strong) NSArray *values;
+@property (nonatomic, assign) double min;
+@property (nonatomic, assign) double max;
+@property (nonatomic, strong) NSString *tip;
 
 - (NSString *)judgeRequirement;
 - (void)exchangeValue;

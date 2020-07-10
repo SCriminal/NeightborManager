@@ -14,7 +14,11 @@ NSString *const kContentIsRequired = @"isRequired";
 NSString *const kContentName = @"name";
 NSString *const kContentType = @"type";
 NSString *const kContentValues = @"values";
-
+NSString *const kModelQuestionnairDetailContentMin = @"min";
+NSString *const kModelQuestionnairDetailContentTitle = @"title";
+NSString *const kModelQuestionnairDetailContentMax = @"max";
+NSString *const kModelQuestionnairDetailContentTip = @"tip";
+NSString *const kModelQuestionnairDetailContentOptions = @"options";
 
 @interface ModelQuestionnairDetailContent ()
 @end
@@ -52,9 +56,33 @@ NSString *const kContentValues = @"values";
                break;
                case 3:
                {
+                   if (self.min && self.value.length<self.min) {
+                       return [NSString stringWithFormat:@"%@最少%@个字符",self.name,NSNumber.dou(self.min)];
+                   }
+                   if (self.max && self.value.length>self.max) {
+                       return [NSString stringWithFormat:@"%@最多%@个字符",self.name,NSNumber.dou(self.max)];
+                   }
                    return isStr(self.value)?@"":[NSString stringWithFormat:@"请填写%@",self.name];
                }
                break;
+           case 4:
+                         {
+                             return isStr(self.value)?@"":[NSString stringWithFormat:@"请选择%@",self.tip];
+                         }
+                         break;
+            case 5:
+            {
+                if ( self.min && self.values.count<self.min) {
+                    return [NSString stringWithFormat:@"%@至少%.f张",self.name,self.min];
+                }
+                if (self.max&& self.values.count>self.max) {
+                    return [NSString stringWithFormat:@"%@最多%.f张",self.name,self.max];
+                }
+                if (self.values.count == 0) {
+                    return [NSString stringWithFormat:@"请选择%@",self.name];;
+                }
+            }
+            break;
            default:
                break;
        }
@@ -72,7 +100,7 @@ NSString *const kContentValues = @"values";
                    }
                }
                break;
-               case 2:
+            case 2:
                {
                    NSArray * ary = [self.values fetchSelectModelsKeyPath:@"isSelected" value:@1];
                    NSArray * aryValues = [ary fetchValues:@"key"];
@@ -100,7 +128,18 @@ NSString *const kContentValues = @"values";
             self.name = [dict stringValueForKey:kContentName];
             self.type = [dict doubleValueForKey:kContentType];
         self.values = [GlobalMethod exchangeDic:[dict objectForKey:kContentValues] toAryWithModelName:NSStringFromClass(ModelQuestionnairDetailValues.class)];
+        self.min = [dict doubleValueForKey:kModelQuestionnairDetailContentMin];
+                   self.max = [dict doubleValueForKey:kModelQuestionnairDetailContentMax];
+                   self.tip = [dict stringValueForKey:kModelQuestionnairDetailContentTip];
+
         //disposal data
+        if (!isStr(self.name)) {
+                               self.name = [dict stringValueForKey:kModelQuestionnairDetailContentTitle];
+
+        }
+        if (!isAry(self.values)) {
+            self.values = [GlobalMethod exchangeDic:[dict objectForKey:kModelQuestionnairDetailContentOptions] toAryWithModelName:NSStringFromClass(ModelQuestionnairDetailValues.class)];
+        }
         if (self.type == 1 && isStr(self.value)) {
             for (ModelQuestionnairDetailValues * item in self.values) {
                                    item.isSelected = [self.value isEqualToString:item.key];
@@ -127,7 +166,11 @@ NSString *const kContentValues = @"values";
     [mutableDict setValue:self.name forKey:kContentName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.type] forKey:kContentType];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.values] forKey:kContentValues];
-
+    [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.values] forKey:kModelQuestionnairDetailContentOptions];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.min] forKey:kModelQuestionnairDetailContentMin];
+       [mutableDict setValue:self.name forKey:kModelQuestionnairDetailContentTitle];
+       [mutableDict setValue:[NSNumber numberWithDouble:self.max] forKey:kModelQuestionnairDetailContentMax];
+       [mutableDict setValue:self.tip forKey:kModelQuestionnairDetailContentTip];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

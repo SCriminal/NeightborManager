@@ -61,4 +61,7 @@
 #import "ModelQuestionnairDetail.h"
 #import "ModelMsg.h"
 #import "ModelTrolley.h"
+#import "ModelCertificateDealCategory.h"
+#import "ModelCertificateDealDetail.h"
+#import "ModelCertificateContentDetail.h"
 

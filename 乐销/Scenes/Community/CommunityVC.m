@@ -187,6 +187,15 @@
                 [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
             };
             return model;
+        }(),^(){
+            ModelBtn * model = [ModelBtn new];
+            model.title = @"社区办事";
+            model.tag = 1;
+            model.imageName = @"tmp_module_12";
+            model.blockClick = ^{
+                [GB_Nav pushVCName:@"CategoryCertificationDealListVC" animated:true];
+            };
+            return model;
         }()].mutableCopy];
     }
     return _collection;

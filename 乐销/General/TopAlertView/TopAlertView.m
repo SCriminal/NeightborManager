@@ -28,7 +28,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
     if (_control == nil) {
         _control = [UIControl new];
         _control.tag = 1;
-        [_control addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_control addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
         _control.backgroundColor = [UIColor clearColor];
     }
     return _control;
@@ -143,30 +143,21 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
     
 }
 #pragma mark click
-- (void)btnClick:(UIButton *)sender {
-    switch (sender.tag) {
-        case 1://数据解析  跳转页面
-        {
-            if (self.model.type == 8) {
-                NSMutableArray * ary = [NSMutableArray array];
-                for (UIViewController * vc in GB_Nav.viewControllers) {
-                    if ([vc isKindOfClass:NSClassFromString(@"WorkNoticeListVC")]) {
-                        [ary addObject:vc];
-                        [GB_Nav setViewControllers:ary animated:true];
-                        return;
-                    }else{
-                        [ary addObject:vc];
-                    }
-                }
-                [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
+- (void)btnClick{
+    if (self.model.type == 8) {
+        NSMutableArray * ary = [NSMutableArray array];
+        for (UIViewController * vc in GB_Nav.viewControllers) {
+            if ([vc isKindOfClass:NSClassFromString(@"WorkNoticeListVC")]) {
+                [ary addObject:vc];
+                [GB_Nav setViewControllers:ary animated:true];
+                return;
+            }else{
+                [ary addObject:vc];
             }
-            [self timerStop];
         }
-            break;
-            
-        default:
-            break;
+        [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
     }
+    [self timerStop];
 }
 
 @end
