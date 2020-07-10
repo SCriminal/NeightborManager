@@ -221,6 +221,10 @@
 		D2ACCC1B21DC8DFD00F39E28 /* TopAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC1A21DC8DFD00F39E28 /* TopAlertView.m */; };
 		D2ACCC2121DC8E4600F39E28 /* ModelAps.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC1D21DC8E4600F39E28 /* ModelAps.m */; };
 		D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC2021DC8E4600F39E28 /* ModelApns.m */; };
+		D2AE6E7324B80F9500C582AD /* UIViewController+RTCSampleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E6B24B80F9400C582AD /* UIViewController+RTCSampleAlert.m */; };
+		D2AE6E7424B80F9500C582AD /* RTCSampleRemoteUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E6F24B80F9400C582AD /* RTCSampleRemoteUserManager.m */; };
+		D2AE6E7524B80F9500C582AD /* RTCSampleRemoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7124B80F9400C582AD /* RTCSampleRemoteUserModel.m */; };
+		D2AE6E7624B80F9500C582AD /* RTCSampleChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E7224B80F9400C582AD /* RTCSampleChatViewController.m */; };
 		D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CA1E960C97005F00C6 /* ImagePickerVC.m */; };
 		D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CD1E961456005F00C6 /* ImagePickerCollectionCell.m */; };
 		D2B9FF24248E43D10082E8D2 /* ModelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF23248E43D10082E8D2 /* ModelMsg.m */; };
@@ -810,6 +814,14 @@
 		D2ACCC1E21DC8E4600F39E28 /* ModelApns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelApns.h; sourceTree = "<group>"; };
 		D2ACCC1F21DC8E4600F39E28 /* ModelAps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAps.h; sourceTree = "<group>"; };
 		D2ACCC2021DC8E4600F39E28 /* ModelApns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelApns.m; sourceTree = "<group>"; };
+		D2AE6E6B24B80F9400C582AD /* UIViewController+RTCSampleAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RTCSampleAlert.m"; sourceTree = "<group>"; };
+		D2AE6E6C24B80F9400C582AD /* RTCSampleRemoteUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserManager.h; sourceTree = "<group>"; };
+		D2AE6E6D24B80F9400C582AD /* RTCSampleRemoteUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserModel.h; sourceTree = "<group>"; };
+		D2AE6E6E24B80F9400C582AD /* RTCSampleChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleChatViewController.h; sourceTree = "<group>"; };
+		D2AE6E6F24B80F9400C582AD /* RTCSampleRemoteUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserManager.m; sourceTree = "<group>"; };
+		D2AE6E7024B80F9400C582AD /* UIViewController+RTCSampleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RTCSampleAlert.h"; sourceTree = "<group>"; };
+		D2AE6E7124B80F9400C582AD /* RTCSampleRemoteUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleRemoteUserModel.m; sourceTree = "<group>"; };
+		D2AE6E7224B80F9400C582AD /* RTCSampleChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCSampleChatViewController.m; sourceTree = "<group>"; };
 		D2B6B9C91E960C97005F00C6 /* ImagePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerVC.h; sourceTree = "<group>"; };
 		D2B6B9CA1E960C97005F00C6 /* ImagePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerVC.m; sourceTree = "<group>"; };
 		D2B6B9CC1E961456005F00C6 /* ImagePickerCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerCollectionCell.h; sourceTree = "<group>"; };
@@ -1718,6 +1730,7 @@
 		D275DB181DFFA2E800670A40 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D2AE6E6A24B80F9400C582AD /* RTC_Ali */,
 				D2CC966F241D0A3600818D87 /* DevelopView */,
 				D28E77E524188F43006383AA /* MultipleSelect */,
 				D29130CF2417AE9800CAC2E4 /* SwitchView */,
@@ -2280,6 +2293,21 @@
 				D2ACCC1D21DC8E4600F39E28 /* ModelAps.m */,
 			);
 			path = "推送";
+			sourceTree = "<group>";
+		};
+		D2AE6E6A24B80F9400C582AD /* RTC_Ali */ = {
+			isa = PBXGroup;
+			children = (
+				D2AE6E6E24B80F9400C582AD /* RTCSampleChatViewController.h */,
+				D2AE6E7224B80F9400C582AD /* RTCSampleChatViewController.m */,
+				D2AE6E6C24B80F9400C582AD /* RTCSampleRemoteUserManager.h */,
+				D2AE6E6F24B80F9400C582AD /* RTCSampleRemoteUserManager.m */,
+				D2AE6E6D24B80F9400C582AD /* RTCSampleRemoteUserModel.h */,
+				D2AE6E7124B80F9400C582AD /* RTCSampleRemoteUserModel.m */,
+				D2AE6E7024B80F9400C582AD /* UIViewController+RTCSampleAlert.h */,
+				D2AE6E6B24B80F9400C582AD /* UIViewController+RTCSampleAlert.m */,
+			);
+			path = RTC_Ali;
 			sourceTree = "<group>";
 		};
 		D2B9FF21248E43950082E8D2 /* Msg */ = {
@@ -3213,6 +3241,7 @@
 				D2CD1BA41E233BBE0042182B /* BaseImage.m in Sources */,
 				D22BA9DB1E5EB8CA00C5B391 /* FSCalendarHeaderView.m in Sources */,
 				D2CDE60A2445BFCC007EA369 /* ModelQuestionnairDetailContent.m in Sources */,
+				D2AE6E7424B80F9500C582AD /* RTCSampleRemoteUserManager.m in Sources */,
 				D2ACCC1B21DC8DFD00F39E28 /* TopAlertView.m in Sources */,
 				D2D1E1DB242205E300ED5E0D /* WhistleDetailVC.m in Sources */,
 				D22BA9D91E5EB8CA00C5B391 /* FSCalendarDelegationProxy.m in Sources */,
@@ -3280,6 +3309,7 @@
 				D2CC967E241DB24200818D87 /* ModelShopDetailProduct.m in Sources */,
 				D242502F24132E2F0055AC42 /* BaseTableVC+Authority.m in Sources */,
 				D242503824132E2F0055AC42 /* SelectAuthorityCell.m in Sources */,
+				D2AE6E7524B80F9500C582AD /* RTCSampleRemoteUserModel.m in Sources */,
 				D2E4837B1E5ABCF100D91AAD /* UINavigationController+EndEditing.m in Sources */,
 				D2CDE6002445BE9E007EA369 /* QuestionnaireDetailTopView.m in Sources */,
 				D207A9F524404F72000AC836 /* ActivityDetailVC.m in Sources */,
@@ -3289,6 +3319,7 @@
 				D2A076E71E10EBC700CDCA0A /* DatePicker.m in Sources */,
 				D2CDE60B2445BFCC007EA369 /* ModelQuestionariList.m in Sources */,
 				D207A9E124403D9A000AC836 /* CreateAssociationVC.m in Sources */,
+				D2AE6E7324B80F9500C582AD /* UIViewController+RTCSampleAlert.m in Sources */,
 				D2BC9A8F1DFFA7C400B0468E /* CustomTabBar.m in Sources */,
 				D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */,
 				D2B9FF3C249117B70082E8D2 /* SelectWhistleTypeVC.m in Sources */,
@@ -3466,6 +3497,7 @@
 				D2424FB224132DDD0055AC42 /* SettingVC.m in Sources */,
 				D2BE30E5210716310059929D /* VersionUpView.m in Sources */,
 				D22F88F41F94B2590005944C /* UIPickerView+Category.m in Sources */,
+				D2AE6E7624B80F9500C582AD /* RTCSampleChatViewController.m in Sources */,
 				D203760921071F260054F8A6 /* ModelVersionUp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
