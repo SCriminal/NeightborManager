@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIImageView *bg;
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UIVisualEffectView *masksView;//蒙板
+@property (nonatomic, strong) ModelRTC *model;
 
 DECLARE_SINGLETON(CallingView)
 

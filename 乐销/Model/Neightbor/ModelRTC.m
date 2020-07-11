@@ -1,13 +1,12 @@
 //
-//  ModelAPNSRTC.m
+//  ModelRTC.m
+//  NeighborManager
 //
-//  Created by 林栋 隋 on 2020/7/11
-//  Copyright (c) 2020 __MyCompanyName__. All rights reserved.
+//  Created by 隋林栋 on 2020/7/11.
+//Copyright © 2020 ping. All rights reserved.
 //
 
-#import "ModelAPNSRTC.h"
-
-
+#import "ModelRTC.h"
 NSString *const kModelAPNSRTCUserId = @"userId";
 NSString *const kModelAPNSRTCGSLB = @"gSLB";
 NSString *const kModelAPNSRTCChannelId = @"channelId";
@@ -15,12 +14,7 @@ NSString *const kModelAPNSRTCAppID = @"appID";
 NSString *const kModelAPNSRTCTimeStamp = @"timeStamp";
 NSString *const kModelAPNSRTCToken = @"token";
 NSString *const kModelAPNSRTCNonce = @"nonce";
-
-
-@interface ModelAPNSRTC ()
-@end
-
-@implementation ModelAPNSRTC
+@implementation ModelRTC
 
 @synthesize userId = _userId;
 @synthesize gSLB = _gSLB;

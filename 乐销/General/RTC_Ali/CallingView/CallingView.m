@@ -8,6 +8,7 @@
 
 #import "CallingView.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "RTCSampleChatViewController.h"
 @interface CallingView ()
 
 @end
@@ -153,7 +154,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
     [self removeFromSuperview];
 }
 - (void)btnAcceptClick{
-    [GB_Nav pushVCName:@"RTCSampleChatViewController" animated:false];
-    [self removeFromSuperview];
+    RTCSampleChatViewController * vc= [RTCSampleChatViewController new];
+    vc.model = self.model;
+    [GB_Nav pushViewController:vc animated:true];
 }
 @end

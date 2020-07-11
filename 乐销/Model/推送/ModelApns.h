@@ -7,13 +7,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class ModelRTC;
+
 @interface ModelApns : NSObject
 
 @property (nonatomic, strong) NSArray *ids;
 @property (nonatomic, assign) double type;
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, assign) double isSilent;
-//@property (nonatomic, strong) ModelAPNSRTC *rtcModel;
+
+@property (nonatomic, strong) ModelRTC *rtc;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

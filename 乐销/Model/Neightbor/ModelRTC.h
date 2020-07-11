@@ -1,16 +1,13 @@
 //
-//  ModelAPNSRTC.h
+//  ModelRTC.h
+//  NeighborManager
 //
-//  Created by 林栋 隋 on 2020/7/11
-//  Copyright (c) 2020 __MyCompanyName__. All rights reserved.
-//
+//  Created by 隋林栋 on 2020/7/11.
+//Copyright © 2020 ping. All rights reserved.
 
 #import <Foundation/Foundation.h>
 
-
-
-@interface ModelAPNSRTC : NSObject
-
+@interface ModelRTC : NSObject
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSArray *gSLB;
 @property (nonatomic, strong) NSString *channelId;
@@ -22,5 +19,4 @@
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
-
 @end

@@ -12,11 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RTCSampleChatViewController : UIViewController
-
-/**
- @brief 频道号
- */
-@property(nonatomic, copy) NSString *channelName;
+@property (nonatomic, strong) ModelRTC *model;
 
 @end
 

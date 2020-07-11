@@ -38,7 +38,7 @@ NSString *const kModelApnsDesc = @"desc";
         self.desc = [[[dict dictionaryValueForKey:@"aps"] dictionaryValueForKey:@"alert"] stringValueForKey:@"body"];
         self.isSilent =  [[dict dictionaryValueForKey:@"aps"] doubleValueForKey:@"content-available"];
         NSDictionary * dicRtc = [dict objectForKey:@"rtc"];
-//        self.rtc = [ModelAPNSRTC modelObjectWithDictionary:dicRtc];
+        self.rtc = [ModelRTC modelObjectWithDictionary:dicRtc];
     }
     
     return self;

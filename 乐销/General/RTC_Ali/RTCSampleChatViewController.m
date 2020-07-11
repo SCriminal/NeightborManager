@@ -95,16 +95,23 @@
     
     //AliRtcAuthInfo 配置项
     
-    NSString *AppID   =  @"phhs6mt3";
-    NSString *userID  =  @"4";
-    NSString *channelID  =  @"2";
-    NSString *nonce  =  @"AK-470f12b0-2597-46fa-a47d-cec564986f58";
-    long long timestamp = 1594689816;
-    NSString *token  =  @"08556d8cff08a0fc3ed3f122279914dde4c60ed4ccdb1c33d317dc796ccf9256";
-    NSArray <NSString *> *GSLB  =  @[@"https://rgslb.rtc.aliyuncs.com"];
+//    NSString *AppID   =  @"phhs6mt3";
+//    NSString *userID  =  @"4";
+//    NSString *channelID  =  @"2";
+//    NSString *nonce  =  @"AK-470f12b0-2597-46fa-a47d-cec564986f58";
+//    long long timestamp = 1594689816;
+//    NSString *token  =  @"08556d8cff08a0fc3ed3f122279914dde4c60ed4ccdb1c33d317dc796ccf9256";
+//    NSArray <NSString *> *GSLB  =  @[@"https://rgslb.rtc.aliyuncs.com"];
+//    NSArray <NSString *> *agent =  @[@"agent"];
+    NSString *AppID   =  self.model.appID;
+    NSString *userID  =  self.model.userId;
+    NSString *channelID  =  self.model.channelId;
+    NSString *nonce  =  self.model.nonce;
+    long long timestamp = self.model.timeStamp.longLongValue;
+    NSString *token  =  self.model.token;
+    NSArray <NSString *> *GSLB  =  self.model.gSLB;
     NSArray <NSString *> *agent =  @[@"agent"];
-    
-    
+
     //配置SDK
     //设置自动(手动)模式
     [self.engine setAutoPublish:YES withAutoSubscribe:YES];

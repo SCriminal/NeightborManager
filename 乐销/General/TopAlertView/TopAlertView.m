@@ -159,7 +159,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
         [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
     }
     if (self.model.type == 11) {
-        [[UIApplication sharedApplication].keyWindow addSubview:[CallingView sharedInstance]];
+        CallingView * callView = [CallingView sharedInstance];
+        callView.model = self.model.rtc;
+        [[UIApplication sharedApplication].keyWindow addSubview:callView];
     }
     [self timerStop];
 }

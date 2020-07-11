@@ -63,5 +63,5 @@
 #import "ModelCertificateDealCategory.h"
 #import "ModelCertificateDealDetail.h"
 #import "ModelCertificateContentDetail.h"
-#import "ModelAPNSRTC.h"
+#import "ModelRTC.h"
 
