@@ -35,6 +35,11 @@
 		D207A9F924404F72000AC836 /* ActivityListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D207A9F324404F72000AC836 /* ActivityListVC.m */; };
 		D207A9FA24404F72000AC836 /* ActivityListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D207A9F424404F72000AC836 /* ActivityListCell.m */; };
 		D207A9FD24405196000AC836 /* ModelActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = D207A9FB24405196000AC836 /* ModelActivity.m */; };
+		D20A59CB24B93F05000D5D72 /* CallingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20A59CA24B93F05000D5D72 /* CallingView.m */; };
+		D20A59CD24B93FD2000D5D72 /* rtc_head@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20A59CC24B93FD2000D5D72 /* rtc_head@2x.png */; };
+		D20A59CF24B93FDA000D5D72 /* rtc_refuse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20A59CE24B93FDA000D5D72 /* rtc_refuse@2x.png */; };
+		D20A59D124B93FDF000D5D72 /* rtc_accept@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20A59D024B93FDF000D5D72 /* rtc_accept@2x.png */; };
+		D20A59D324B944D0000D5D72 /* rtc_revolve@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20A59D224B944D0000D5D72 /* rtc_revolve@2x.png */; };
 		D20E4A90243C22A4009915E2 /* CommunityServiceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4A7D243C22A3009915E2 /* CommunityServiceDetailView.m */; };
 		D20E4A91243C22A4009915E2 /* CommunityServiceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4A7E243C22A4009915E2 /* CommunityServiceDetailVC.m */; };
 		D20E4A92243C22A4009915E2 /* CommunityServiceWatiListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4A80243C22A4009915E2 /* CommunityServiceWatiListVC.m */; };
@@ -453,6 +458,12 @@
 		D207A9F424404F72000AC836 /* ActivityListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListCell.m; sourceTree = "<group>"; };
 		D207A9FB24405196000AC836 /* ModelActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelActivity.m; sourceTree = "<group>"; };
 		D207A9FC24405196000AC836 /* ModelActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelActivity.h; sourceTree = "<group>"; };
+		D20A59C924B93F05000D5D72 /* CallingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallingView.h; sourceTree = "<group>"; };
+		D20A59CA24B93F05000D5D72 /* CallingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallingView.m; sourceTree = "<group>"; };
+		D20A59CC24B93FD2000D5D72 /* rtc_head@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rtc_head@2x.png"; sourceTree = "<group>"; };
+		D20A59CE24B93FDA000D5D72 /* rtc_refuse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rtc_refuse@2x.png"; sourceTree = "<group>"; };
+		D20A59D024B93FDF000D5D72 /* rtc_accept@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rtc_accept@2x.png"; sourceTree = "<group>"; };
+		D20A59D224B944D0000D5D72 /* rtc_revolve@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rtc_revolve@2x.png"; sourceTree = "<group>"; };
 		D20E4A7B243C22A3009915E2 /* CommunityServiceDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityServiceDetailVC.h; sourceTree = "<group>"; };
 		D20E4A7C243C22A3009915E2 /* CommunityServiceDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityServiceDetailView.h; sourceTree = "<group>"; };
 		D20E4A7D243C22A3009915E2 /* CommunityServiceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityServiceDetailView.m; sourceTree = "<group>"; };
@@ -1305,6 +1316,19 @@
 				D207A9EA24404F72000AC836 /* ActivityDetailView.m */,
 			);
 			path = ActivityDetail;
+			sourceTree = "<group>";
+		};
+		D20A59C824B93EF8000D5D72 /* CallingView */ = {
+			isa = PBXGroup;
+			children = (
+				D20A59D224B944D0000D5D72 /* rtc_revolve@2x.png */,
+				D20A59D024B93FDF000D5D72 /* rtc_accept@2x.png */,
+				D20A59CE24B93FDA000D5D72 /* rtc_refuse@2x.png */,
+				D20A59CC24B93FD2000D5D72 /* rtc_head@2x.png */,
+				D20A59C924B93F05000D5D72 /* CallingView.h */,
+				D20A59CA24B93F05000D5D72 /* CallingView.m */,
+			);
+			path = CallingView;
 			sourceTree = "<group>";
 		};
 		D20C7F7F1FBA8808009278C0 /* LocalData */ = {
@@ -2328,6 +2352,7 @@
 		D2AE6E6A24B80F9400C582AD /* RTC_Ali */ = {
 			isa = PBXGroup;
 			children = (
+				D20A59C824B93EF8000D5D72 /* CallingView */,
 				D2AE6E6E24B80F9400C582AD /* RTCSampleChatViewController.h */,
 				D2AE6E7224B80F9400C582AD /* RTCSampleChatViewController.m */,
 				D2AE6E6C24B80F9400C582AD /* RTCSampleRemoteUserManager.h */,
@@ -3140,6 +3165,7 @@
 			files = (
 				D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */,
 				D2821CC1218AD9B90057688B /* point.png in Resources */,
+				D20A59D124B93FDF000D5D72 /* rtc_accept@2x.png in Resources */,
 				D2CF190C22548EF800542AEF /* HTMLResource.bundle in Resources */,
 				D2821CC0218AD9B90057688B /* circle.png in Resources */,
 				D2CC965B241B52B700818D87 /* api.txt in Resources */,
@@ -3152,8 +3178,10 @@
 				D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */,
 				D2821CC3218AD9B90057688B /* point@3x.png in Resources */,
 				D2821CC2218AD9B90057688B /* point@2x.png in Resources */,
+				D20A59CD24B93FD2000D5D72 /* rtc_head@2x.png in Resources */,
 				D2821CBF218AD9B90057688B /* circle@3x.png in Resources */,
 				9CB5EBAF20F4FA1200EB22B4 /* Assets.xcassets in Resources */,
+				D20A59CF24B93FDA000D5D72 /* rtc_refuse@2x.png in Resources */,
 				D2F733B41E8642EE0008E561 /* LocalData.json in Resources */,
 				DAA3C9E71D668FF6009CFDF7 /* Images.xcassets in Resources */,
 				D2726BA721BE04DA006B626F /* AliyunEmasServices-Info.plist in Resources */,
@@ -3161,6 +3189,7 @@
 				D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */,
 				D26F088820D7442B00B258B0 /* LocalData_OrderDetail_WaitSend.json in Resources */,
 				D2CF190B22548EF800542AEF /* uni_account_login_sdk_res.bundle in Resources */,
+				D20A59D324B944D0000D5D72 /* rtc_revolve@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3422,6 +3451,7 @@
 				D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */,
 				D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */,
 				D28E77E424188CDC006383AA /* CreateArchiveView.m in Sources */,
+				D20A59CB24B93F05000D5D72 /* CallingView.m in Sources */,
 				D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */,
 				D207A9E324403D9A000AC836 /* AssociationListVC.m in Sources */,
 				D21F19441E1A46390094B90F /* BaseVC+BaseImageSelectVC.m in Sources */,

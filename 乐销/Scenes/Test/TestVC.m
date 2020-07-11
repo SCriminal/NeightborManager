@@ -10,7 +10,7 @@
  
  */
 #import "TestVC.h"
-
+#import "CallingView.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 
@@ -44,6 +44,7 @@
     [super viewDidLoad];
     WEAKSELF
     [self.view addSubview:[BaseNavView initNavBackTitle:@"1" rightTitle:@"2" rightBlock:^{
+//        [weakSelf.view addSubview:[CallingView new]];
         [GB_Nav pushVCName:@"RTCSampleChatViewController" animated:true];
     }]];
     

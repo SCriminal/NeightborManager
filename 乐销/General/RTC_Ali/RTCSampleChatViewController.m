@@ -11,10 +11,9 @@
 #import "UIViewController+RTCSampleAlert.h"
 #import "RTCSampleRemoteUserManager.h"
 #import "RTCSampleRemoteUserModel.h"
-
+#import "NSDate+YYAdd.h"
 
 @interface RTCSampleChatViewController ()<AliRtcEngineDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-
 
 /**
  @brief SDK实例
@@ -105,14 +104,15 @@
 - (void)joinBegin{
     
     //AliRtcAuthInfo 配置项
+    
     NSString *AppID   =  @"phhs6mt3";
-    NSString *userID  =  @"1";
-    NSString *channelID  =  @"1";
-    NSString *nonce  =  @"AK-83000875-3bef-4f08-a5c3-d8deb7e459de";
-    long long timestamp = 0;
-    NSString *token  =  @"";
+    NSString *userID  =  @"4";
+    NSString *channelID  =  @"2";
+    NSString *nonce  =  @"AK-470f12b0-2597-46fa-a47d-cec564986f58";
+    long long timestamp = 1594689816;
+    NSString *token  =  @"08556d8cff08a0fc3ed3f122279914dde4c60ed4ccdb1c33d317dc796ccf9256";
     NSArray <NSString *> *GSLB  =  @[@"https://rgslb.rtc.aliyuncs.com"];
-    NSArray <NSString *> *agent =  @[@""];
+    NSArray <NSString *> *agent =  @[@"agent"];
     
     
     //配置SDK
@@ -157,7 +157,6 @@
         [self leaveChannel];  //退出房间
         [UIApplication sharedApplication].idleTimerDisabled = NO;
         [self exitApplication];  //关闭应用
-        
     });
 }
 
@@ -177,7 +176,7 @@
         //离开频道
         [self.engine leaveChannel];
     }
-
+    
     [self.remoteUserView removeFromSuperview];
     
     //销毁SDK实例
@@ -209,16 +208,7 @@
     
     //记录UID
     NSString *uid = model.uid;
-    //视频流类型
-    AliRtcVideoTrack track = model.track;
-    if (track == AliRtcVideoTrackScreen) {  //默认为视频镜像,如果是屏幕则替换屏幕镜像
-        cell.CameraMirrorLabel.text = @"屏幕镜像";
-    }
-    
-    cell.switchblock = ^(BOOL isOn) {
-        [self switchClick:isOn track:track uid:uid];
-    };
-    
+
     return cell;
 }
 
@@ -232,7 +222,6 @@
     else if (track == AliRtcVideoTrackScreen) {
         canvas.view = (AliRenderView *)[self.remoteUserManager screenView:uid];
     }
-    
     if (isOn) {
         canvas.mirrorMode = AliRtcRenderMirrorModeAllEnabled;
     }else{
@@ -244,7 +233,8 @@
 #pragma mark - alirtcengine delegate
 
 - (void)onSubscribeChangedNotify:(NSString *)uid audioTrack:(AliRtcAudioTrack)audioTrack videoTrack:(AliRtcVideoTrack)videoTrack {
-    
+    [GlobalMethod showAlert:@"sld onSubscribeChangedNotify"];
+    NSLog(@"sld onSubscribeChangedNotify");
     //收到远端订阅回调
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.remoteUserManager updateRemoteUser:uid forTrack:videoTrack];
@@ -275,152 +265,25 @@
 }
 
 - (void)onRemoteUserOnLineNotify:(NSString *)uid {
-    
+    [GlobalMethod showAlert:@"onRemoteUserOnLineNotify"];
+    NSLog(@"sld onRemoteUserOnLineNotify");
 }
 
 - (void)onRemoteUserOffLineNotify:(NSString *)uid {
+    [GlobalMethod showAlert:@"onRemoteUserOffLineNotify"];
+    NSLog(@"sld onRemoteUserOffLineNotify");
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.remoteUserManager remoteUserOffLine:uid];
         [self.remoteUserView reloadData];
     });
 }
 
-typedef NS_ENUM(NSInteger, ENUM_ALI_ERROR) {
-    AliRtcErrSessionRemoved          ,
-    AliRtcErrIceConnectionHeartbeatTimeout     ,
-    AliRtcErrJoinBadAppId ,
-    AliRtcErrJoinInvalidAppId ,
-    AliRtcErrJoinBadChannel,
-    AliRtcErrJoinInvalidChannel,
-    AliRtcErrJoinBadToken,
-};
-
 - (void)onOccurError:(int)error {
+    NSLog(@"sld onOccurError");
     [self showAlertWithMessage:@"error sld" handler:^(UIAlertAction * _Nonnull action) {
         [self leaveChannel:nil];
     }];
-    /*
-    if (error == AliRtcErrSessionRemoved) {
-        // timeout - leaveChannel.
-        [self showAlertWithMessage:@"Session已经被移除,请点击确定退出" handler:^(UIAlertAction * _Nonnull action) {
-            [self leaveChannel:nil];
-        }];
-    }else if (error == AliRtcErrIceConnectionHeartbeatTimeout) {
-        [self showAlertWithMessage:@"信令心跳超时，请点击确定退出" handler:^(UIAlertAction * _Nonnull action) {
-            [self leaveChannel:nil];
-        }];
-    }
-    else if (error == AliRtcErrJoinBadAppId) {
-        [self showAlertWithMessage:@"AppId不存在，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrJoinInvalidAppId) {
-        [self showAlertWithMessage:@"AppId已失效，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrJoinBadChannel) {
-        [self showAlertWithMessage:@"频道不存在，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrJoinInvalidChannel) {
-        [self showAlertWithMessage:@"频道已失效，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrJoinBadToken) {
-        [self showAlertWithMessage:@"token不存在，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrJoinTimeout) {
-        [self showAlertWithMessage:@"加入频道超时，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrJoinBadParam) {
-        [self showAlertWithMessage:@"参数错误，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrMicOpenFail) {
-        [self showAlertWithMessage:@"采集设备初始化失败，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrSpeakerOpenFail) {
-        [self showAlertWithMessage:@"播放设备初始化失败，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrMicInterrupt) {
-        [self showAlertWithMessage:@"采集过程中出现异常，请重新join(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrSpeakerInterrupt) {
-        [self showAlertWithMessage:@"播放过程中出现异常，请重新join(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrMicAuthFail) {
-        [self showAlertWithMessage:@"麦克风设备未授权，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrMicNotAvailable) {
-        [self showAlertWithMessage:@"无可用的音频采集设备，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrSpeakerNotAvailable) {
-        [self showAlertWithMessage:@"无可用的音频播放设备，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrCameraOpenFail) {
-        [self showAlertWithMessage:@"采集设备初始化失败，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrCameraInterrupt) {
-        [self showAlertWithMessage:@"采集过程中出现异常，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrDisplayOpenFail) {
-        [self showAlertWithMessage:@"渲染设备初始化失败，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrDisplayInterrupt) {
-        [self showAlertWithMessage:@"渲染过程中出现异常，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrIceConnectionConnectFail) {
-        [self showAlertWithMessage:@"媒体通道建立失败，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrIceConnectionReconnectFail) {
-        [self showAlertWithMessage:@"媒体通道重连失败，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrSdkInvalidState) {
-        [self showAlertWithMessage:@"sdk状态错误，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    else if (error == AliRtcErrInner) {
-        [self showAlertWithMessage:@"其他错误，请重新pub、sub(仅提示)" handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-    }
-    */
+    
 }
 
 - (void)onBye:(int)code {
@@ -432,13 +295,39 @@ typedef NS_ENUM(NSInteger, ENUM_ALI_ERROR) {
 #pragma mark - add subviews
 
 - (void)addSubviews {
+    {
+        UIButton *btnRefuse = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btnRefuse addTarget:self action:@selector(btnRefuseClick) forControlEvents:UIControlEventTouchUpInside];
+        btnRefuse.backgroundColor = [UIColor clearColor];
+        btnRefuse.widthHeight = XY(W(65),W(65));
+        [btnRefuse setBackgroundImage:[UIImage imageNamed:@"rtc_refuse"] forState:UIControlStateNormal];
+        btnRefuse.centerXBottom = XY(SCREEN_WIDTH/2.0, SCREEN_HEIGHT - iphoneXBottomInterval - W(64));
+        [self.view addSubview:btnRefuse];
+        
+        UILabel *refuse = [UILabel new];
+        refuse.textColor = [UIColor whiteColor];
+        refuse.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+        [refuse fitTitle:@"挂断" variable:0];
+        refuse.centerXTop = XY(btnRefuse.centerX, btnRefuse.bottom + W(15));
+        [self.view addSubview:refuse];
+    }
     
-    UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    exitButton.frame = CGRectMake(0, 0, 60, 40);
-    [exitButton setTitle:@"退出" forState:UIControlStateNormal];
-    [exitButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [exitButton addTarget:self action:@selector(leaveChannel:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:exitButton];
+    {
+        UIButton *btnSwitch = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btnSwitch addTarget:self action:@selector(btnSwitchClick) forControlEvents:UIControlEventTouchUpInside];
+        btnSwitch.backgroundColor = [UIColor clearColor];
+        btnSwitch.widthHeight = XY(W(65),W(65));
+        [btnSwitch setBackgroundImage:[UIImage imageNamed:@"rtc_revolve"] forState:UIControlStateNormal];
+        btnSwitch.rightBottom = XY(SCREEN_WIDTH-W(30), SCREEN_HEIGHT - iphoneXBottomInterval - W(64));
+        [self.view addSubview:btnSwitch];
+        
+        UILabel *s = [UILabel new];
+        s .textColor = [UIColor whiteColor];
+        s .font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+        [s  fitTitle:@"切换摄像头" variable:0];
+        s.centerXTop = XY(btnSwitch.centerX, btnSwitch.bottom + W(15));
+        [self.view addSubview:s];
+    }
     
     CGRect rcScreen = [UIScreen mainScreen].bounds;
     CGRect rc = rcScreen;
@@ -463,13 +352,20 @@ typedef NS_ENUM(NSInteger, ENUM_ALI_ERROR) {
     
 }
 
+- (void)btnRefuseClick{
+    [self leaveChannel];
+    [GB_Nav popViewControllerAnimated:false];
+}
+
+- (void)btnSwitchClick{
+    [self.engine switchCamera];
+}
 @end
 
 @implementation RTCRemoterUserView
 {
     AliRenderView *viewRemote;
 }
-
 - (instancetype)initWithFrame:(CGRect)frame {
     
     self = [super initWithFrame:frame];
@@ -478,44 +374,13 @@ typedef NS_ENUM(NSInteger, ENUM_ALI_ERROR) {
         CGRect rc  = CGRectMake(0, 0, 140, 200);
         viewRemote = [[AliRenderView alloc] initWithFrame:rc];
         self.backgroundColor = [UIColor clearColor];
-        
-        CGRect viewrc  = CGRectMake(0, 200, 140, 40);
-        _view = [[UIView alloc] initWithFrame:viewrc];
-        _view.backgroundColor = [UIColor darkGrayColor];
-        [self addSubview:self.view];
-        
-        rc.origin.x = 8;
-        rc.size = CGSizeMake(70, 40);
-        _CameraMirrorLabel = [[UILabel alloc] initWithFrame:rc];
-        self.CameraMirrorLabel.text = @"视频镜像";  //默认
-        self.CameraMirrorLabel.textAlignment = 0;
-        self.CameraMirrorLabel.font = [UIFont systemFontOfSize:17];
-        self.CameraMirrorLabel.textColor = [UIColor whiteColor];
-        self.CameraMirrorLabel.textAlignment = NSTextAlignmentLeft;
-        [self.view addSubview:self.CameraMirrorLabel];
-        
-        rc.origin.x = 81;
-        rc.origin.y = 4.5;
-        rc.size = CGSizeMake(51, 31);
-        _CameraMirrorSwitch = [[UISwitch alloc] initWithFrame:rc];
-        _CameraMirrorSwitch.transform = CGAffineTransformMakeScale(0.8,0.8);
-        [self.CameraMirrorSwitch addTarget:self action:@selector(onCameraMirrorClicked:)  forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.CameraMirrorSwitch];
     }
     return self;
 }
-
 - (void)updateUserRenderview:(AliRenderView *)view {
     view.backgroundColor = [UIColor clearColor];
     view.frame = viewRemote.frame;
     viewRemote = view;
     [self addSubview:viewRemote];
 }
-
-- (void)onCameraMirrorClicked:(UISwitch *)switchView{
-    if (self.switchblock) {
-        self.switchblock(switchView.on);
-    }
-}
-
 @end
