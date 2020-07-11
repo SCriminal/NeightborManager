@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UIVisualEffectView *masksView;//蒙板
 
+DECLARE_SINGLETON(CallingView)
+
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;
 

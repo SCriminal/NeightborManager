@@ -212,6 +212,12 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     if (model.type == 9) {
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_CERT_NOTICE_REFERSH object:nil];
     }
+    if (model.type == 11) {
+        TopAlertView * top = [TopAlertView sharedInstance];
+           top.model = model;
+           [top btnClick];
+        return;
+    }
     [[TopAlertView sharedInstance]showWithModel:model];
 }
 

@@ -47,8 +47,8 @@
     // Do any additional setup after loading the view.
     
     //导航栏名称等基本设置
-    [self baseSetting];
-    
+    self.view.backgroundColor = [UIColor grayColor];
+
     //初始化SDK内容
     [self initializeSDK];
     
@@ -63,16 +63,6 @@
     
 }
 
-
-#pragma mark - baseSetting
-/**
- @brief 基础设置
- */
-- (void)baseSetting{
-    self.title = @"视频通话";
-    self.view.backgroundColor = [UIColor whiteColor];
-}
-
 #pragma mark - initializeSDK
 /**
  @brief 初始化SDK
@@ -80,7 +70,7 @@
 - (void)initializeSDK{
     // 创建SDK实例，注册delegate，extras可以为空
     _engine = [AliRtcEngine sharedInstance:self extras:@""];
-    
+    [AliRtcEngine setH5CompatibleMode:true];
 }
 
 - (void)startPreview{
@@ -118,9 +108,9 @@
     //配置SDK
     //设置自动(手动)模式
     [self.engine setAutoPublish:YES withAutoSubscribe:YES];
-    
+
     //随机生成用户名，仅是demo展示使用
-    NSString *userName = [NSString stringWithFormat:@"iOSUser%u",arc4random()%1234];
+    NSString *userName = [NSString stringWithFormat:@"%@",[GlobalData sharedInstance].GB_UserModel.account];
     
     //AliRtcAuthInfo:各项参数均需要客户App Server(客户的server端) 通过OpenAPI来获取，然后App Server下发至客户端，客户端将各项参数赋值后，即可joinChannel
     AliRtcAuthInfo *authInfo = [[AliRtcAuthInfo alloc] init];
@@ -149,16 +139,7 @@
     [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
-/**
- @brief 离开频道
- */
-- (void)leaveChannel:(UIButton *)sender {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self leaveChannel];  //退出房间
-        [UIApplication sharedApplication].idleTimerDisabled = NO;
-        [self exitApplication];  //关闭应用
-    });
-}
+
 
 #pragma mark - private
 
@@ -181,6 +162,9 @@
     
     //销毁SDK实例
     [AliRtcEngine destroy];
+    
+    [GB_Nav popViewControllerAnimated:false];
+
 }
 
 - (void)exitApplication{
@@ -206,8 +190,8 @@
     AliRenderView *view = model.view;
     [cell updateUserRenderview:view];
     
-    //记录UID
-    NSString *uid = model.uid;
+//    //记录UID
+//    NSString *uid = model.uid;
 
     return cell;
 }
@@ -280,8 +264,8 @@
 
 - (void)onOccurError:(int)error {
     NSLog(@"sld onOccurError");
-    [self showAlertWithMessage:@"error sld" handler:^(UIAlertAction * _Nonnull action) {
-        [self leaveChannel:nil];
+    [self showAlertWithMessage:@"视频出错，请重新开启" handler:^(UIAlertAction * _Nonnull action) {
+        [self leaveChannel];
     }];
     
 }
@@ -289,6 +273,9 @@
 - (void)onBye:(int)code {
     if (code == AliRtcOnByeChannelTerminated) {
         // channel结束
+        [self showAlertWithMessage:@"视频结束" handler:^(UIAlertAction * _Nonnull action) {
+            [self leaveChannel];
+        }];
     }
 }
 
@@ -297,7 +284,7 @@
 - (void)addSubviews {
     {
         UIButton *btnRefuse = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btnRefuse addTarget:self action:@selector(btnRefuseClick) forControlEvents:UIControlEventTouchUpInside];
+        [btnRefuse addTarget:self action:@selector(leaveChannel) forControlEvents:UIControlEventTouchUpInside];
         btnRefuse.backgroundColor = [UIColor clearColor];
         btnRefuse.widthHeight = XY(W(65),W(65));
         [btnRefuse setBackgroundImage:[UIImage imageNamed:@"rtc_refuse"] forState:UIControlStateNormal];
@@ -350,11 +337,6 @@
     
     _remoteUserManager = [RTCSampleRemoteUserManager shareManager];
     
-}
-
-- (void)btnRefuseClick{
-    [self leaveChannel];
-    [GB_Nav popViewControllerAnimated:false];
 }
 
 - (void)btnSwitchClick{

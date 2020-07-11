@@ -7,6 +7,7 @@
 //
 
 #import "TopAlertView.h"
+#import "CallingView.h"
 
 @implementation TopAlertView
 
@@ -156,6 +157,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
             }
         }
         [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
+    }
+    if (self.model.type == 11) {
+        [[UIApplication sharedApplication].keyWindow addSubview:[CallingView sharedInstance]];
     }
     [self timerStop];
 }

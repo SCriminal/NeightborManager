@@ -288,9 +288,11 @@
 
 //显示提示
 + (void)showAlert:(NSString *)strAlert{
-    UIWindow * window = [UIApplication sharedApplication].keyWindow;
-    [window endEditing:true];
-    [[GlobalData sharedInstance].GB_NoticeView showNotice:strAlert time:1 frame:[UIScreen mainScreen].bounds viewShow:window ];
+    [GlobalMethod mainQueueBlock:^{
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        [window endEditing:true];
+        [[GlobalData sharedInstance].GB_NoticeView showNotice:strAlert time:1 frame:[UIScreen mainScreen].bounds viewShow:window ];
+    }];
 }
 
 

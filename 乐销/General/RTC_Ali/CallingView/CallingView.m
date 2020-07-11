@@ -7,12 +7,15 @@
 //
 
 #import "CallingView.h"
-
+#import <AudioToolbox/AudioToolbox.h>
 @interface CallingView ()
 
 @end
 
 @implementation CallingView
+
+SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
+
 #pragma mark 懒加载
 - (UIVisualEffectView *)masksView
 {
@@ -75,10 +78,17 @@
 }
 - (UIImageView *)bg{
     if (_bg == nil) {
-        _bg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rtc_head"]];
-//        _bg.image = [UIImage imageNamed:@"rtc_head"];
-        _bg.widthHeight = XY(SCREEN_WIDTH,SCREEN_WIDTH);
+        _bg = [UIImageView new];
+        _bg.image = [UIImage imageNamed:@"rtc_head"];
+        _bg.widthHeight = XY(SCREEN_WIDTH,SCREEN_HEIGHT);
         _bg.contentMode = UIViewContentModeScaleAspectFill;
+        _bg.backgroundColor = [UIColor redColor];
+        [_bg addSubview:^(){
+            UIView * viewBlack = [UIView new];
+            viewBlack.backgroundColor = COLOR_BLACK_ALPHA_PER60;
+            viewBlack.widthHeight = XY(SCREEN_WIDTH, SCREEN_HEIGHT);
+            return viewBlack;
+        }()];
         [_bg addSubview:self.masksView];
     }
     return _bg;
@@ -114,6 +124,9 @@
     [self addSubview:self.icon];
     [self addSubview:self.title];
 
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+//    AudioServicesPlaySystemSound(1000);
+
     //初始化页面
     [self resetViewWithModel:nil];
 }
@@ -133,8 +146,6 @@
     self.accept.centerXTop = XY(self.btnAccept.centerX,self.btnAccept.bottom+W(15));
 
     self.icon.centerXTop = XY(SCREEN_WIDTH/2.0, self.title.bottom+W(98));
-
-    [self.bg sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
 }
 
 #pragma mark 点击事件
@@ -142,6 +153,7 @@
     [self removeFromSuperview];
 }
 - (void)btnAcceptClick{
+    [GB_Nav pushVCName:@"RTCSampleChatViewController" animated:false];
     [self removeFromSuperview];
 }
 @end

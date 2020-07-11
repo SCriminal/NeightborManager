@@ -40,6 +40,7 @@
 		D20A59CF24B93FDA000D5D72 /* rtc_refuse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20A59CE24B93FDA000D5D72 /* rtc_refuse@2x.png */; };
 		D20A59D124B93FDF000D5D72 /* rtc_accept@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20A59D024B93FDF000D5D72 /* rtc_accept@2x.png */; };
 		D20A59D324B944D0000D5D72 /* rtc_revolve@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20A59D224B944D0000D5D72 /* rtc_revolve@2x.png */; };
+		D20A59D624B964D0000D5D72 /* ModelAPNSRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20A59D524B964D0000D5D72 /* ModelAPNSRTC.m */; };
 		D20E4A90243C22A4009915E2 /* CommunityServiceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4A7D243C22A3009915E2 /* CommunityServiceDetailView.m */; };
 		D20E4A91243C22A4009915E2 /* CommunityServiceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4A7E243C22A4009915E2 /* CommunityServiceDetailVC.m */; };
 		D20E4A92243C22A4009915E2 /* CommunityServiceWatiListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4A80243C22A4009915E2 /* CommunityServiceWatiListVC.m */; };
@@ -224,7 +225,6 @@
 		D2A946DD2192C66900AD1E5B /* GlobalMethod+Logical.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946DC2192C66900AD1E5B /* GlobalMethod+Logical.m */; };
 		D2AC4FA41E04BBF800385682 /* BaseNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AC4FA31E04BBF800385682 /* BaseNavView.m */; };
 		D2ACCC1B21DC8DFD00F39E28 /* TopAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC1A21DC8DFD00F39E28 /* TopAlertView.m */; };
-		D2ACCC2121DC8E4600F39E28 /* ModelAps.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC1D21DC8E4600F39E28 /* ModelAps.m */; };
 		D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC2021DC8E4600F39E28 /* ModelApns.m */; };
 		D2AE6E7324B80F9500C582AD /* UIViewController+RTCSampleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E6B24B80F9400C582AD /* UIViewController+RTCSampleAlert.m */; };
 		D2AE6E7424B80F9500C582AD /* RTCSampleRemoteUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AE6E6F24B80F9400C582AD /* RTCSampleRemoteUserManager.m */; };
@@ -464,6 +464,8 @@
 		D20A59CE24B93FDA000D5D72 /* rtc_refuse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rtc_refuse@2x.png"; sourceTree = "<group>"; };
 		D20A59D024B93FDF000D5D72 /* rtc_accept@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rtc_accept@2x.png"; sourceTree = "<group>"; };
 		D20A59D224B944D0000D5D72 /* rtc_revolve@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rtc_revolve@2x.png"; sourceTree = "<group>"; };
+		D20A59D424B964D0000D5D72 /* ModelAPNSRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAPNSRTC.h; sourceTree = "<group>"; };
+		D20A59D524B964D0000D5D72 /* ModelAPNSRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAPNSRTC.m; sourceTree = "<group>"; };
 		D20E4A7B243C22A3009915E2 /* CommunityServiceDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityServiceDetailVC.h; sourceTree = "<group>"; };
 		D20E4A7C243C22A3009915E2 /* CommunityServiceDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityServiceDetailView.h; sourceTree = "<group>"; };
 		D20E4A7D243C22A3009915E2 /* CommunityServiceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityServiceDetailView.m; sourceTree = "<group>"; };
@@ -831,9 +833,7 @@
 		D2AC4FA31E04BBF800385682 /* BaseNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavView.m; sourceTree = "<group>"; };
 		D2ACCC1921DC8DFD00F39E28 /* TopAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAlertView.h; sourceTree = "<group>"; };
 		D2ACCC1A21DC8DFD00F39E28 /* TopAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopAlertView.m; sourceTree = "<group>"; };
-		D2ACCC1D21DC8E4600F39E28 /* ModelAps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAps.m; sourceTree = "<group>"; };
 		D2ACCC1E21DC8E4600F39E28 /* ModelApns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelApns.h; sourceTree = "<group>"; };
-		D2ACCC1F21DC8E4600F39E28 /* ModelAps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAps.h; sourceTree = "<group>"; };
 		D2ACCC2021DC8E4600F39E28 /* ModelApns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelApns.m; sourceTree = "<group>"; };
 		D2AE6E6B24B80F9400C582AD /* UIViewController+RTCSampleAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RTCSampleAlert.m"; sourceTree = "<group>"; };
 		D2AE6E6C24B80F9400C582AD /* RTCSampleRemoteUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSampleRemoteUserManager.h; sourceTree = "<group>"; };
@@ -2343,8 +2343,6 @@
 			children = (
 				D2ACCC1E21DC8E4600F39E28 /* ModelApns.h */,
 				D2ACCC2021DC8E4600F39E28 /* ModelApns.m */,
-				D2ACCC1F21DC8E4600F39E28 /* ModelAps.h */,
-				D2ACCC1D21DC8E4600F39E28 /* ModelAps.m */,
 			);
 			path = "推送";
 			sourceTree = "<group>";
@@ -2642,6 +2640,8 @@
 		D2CC965C241BA9EB00818D87 /* Neightbor */ = {
 			isa = PBXGroup;
 			children = (
+				D20A59D424B964D0000D5D72 /* ModelAPNSRTC.h */,
+				D20A59D524B964D0000D5D72 /* ModelAPNSRTC.m */,
 				D2AE6E9E24B8358600C582AD /* ModelCertificateContentDetail.h */,
 				D2AE6E9D24B8358600C582AD /* ModelCertificateContentDetail.m */,
 				D2AE6E9924B8338900C582AD /* ModelCertificateDealCategory.h */,
@@ -3496,7 +3496,6 @@
 				D2913082241721B000CAC2E4 /* ArchiveListVC.m in Sources */,
 				D23327AC21854FE000495488 /* MapView.m in Sources */,
 				D207A9FD24405196000AC836 /* ModelActivity.m in Sources */,
-				D2ACCC2121DC8E4600F39E28 /* ModelAps.m in Sources */,
 				D216F5401E56AB9800E11ED2 /* NSMutableArray+Safe.m in Sources */,
 				D20E4AC1243D9EBA009915E2 /* HelpInfoDetailVC.m in Sources */,
 				D29130D22417AEB900CAC2E4 /* SwitchView.m in Sources */,
@@ -3509,6 +3508,7 @@
 				D2BC9AC81DFFFA3A00B0468E /* BaseVC.m in Sources */,
 				D22BA9D51E5EB8CA00C5B391 /* FSCalendarCollectionView.m in Sources */,
 				D20E4A9C243C22FC009915E2 /* ModelCommunityServiceList.m in Sources */,
+				D20A59D624B964D0000D5D72 /* ModelAPNSRTC.m in Sources */,
 				D2996A4321E6E3AA00562587 /* ImageInfoDetailView.m in Sources */,
 				D265F8AB207C52DF00CB11DD /* BaseTableVC+Select.m in Sources */,
 				D2996A4421E6E3AA00562587 /* ImageDetailBigView.m in Sources */,

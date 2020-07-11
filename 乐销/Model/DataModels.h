@@ -28,7 +28,6 @@
 
 //推送
 #import "ModelApns.h"
-#import "ModelAps.h"
 
 
 //neightbor-------------------------------------------------------
@@ -64,4 +63,5 @@
 #import "ModelCertificateDealCategory.h"
 #import "ModelCertificateDealDetail.h"
 #import "ModelCertificateContentDetail.h"
+#import "ModelAPNSRTC.h"
 
