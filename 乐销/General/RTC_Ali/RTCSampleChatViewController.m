@@ -13,30 +13,34 @@
 #import "RTCSampleRemoteUserModel.h"
 #import "NSDate+YYAdd.h"
 
+#define RTCREMOTE_CELL_SIZE CGSizeMake(W(110), W(160))
 @interface RTCSampleChatViewController ()<AliRtcEngineDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 /**
  @brief SDK实例
  */
 @property (nonatomic, strong) AliRtcEngine *engine;
-
+@property (nonatomic, strong) AliRenderView *viewLocal;
 
 /**
  @brief 远端用户管理
  */
 @property(nonatomic, strong) RTCSampleRemoteUserManager *remoteUserManager;
 
-
 /**
  @brief 远端用户视图
  */
 @property(nonatomic, strong) UICollectionView *remoteUserView;
 
-
 /**
  @brief 是否入会
  */
 @property(nonatomic, assign) BOOL isJoinChannel;
+
+@property (nonatomic, strong) NSString * uidReplace;
+@property (nonatomic, strong) UILabel *connecting;
+@property (nonatomic, strong) NSTimer * timer;
+@property (nonatomic, assign) double timeReference;
 
 @end
 
@@ -48,7 +52,7 @@
     
     //导航栏名称等基本设置
     self.view.backgroundColor = [UIColor grayColor];
-
+    
     //初始化SDK内容
     [self initializeSDK];
     
@@ -79,30 +83,20 @@
     AliRenderView *viewLocal = [[AliRenderView alloc] initWithFrame:self.view.bounds];
     canvas.view = viewLocal;
     canvas.renderMode = AliRtcRenderModeAuto;
+    self.viewLocal = viewLocal;
     [self.view addSubview:viewLocal];
     [self.engine setLocalViewConfig:canvas forTrack:AliRtcVideoTrackCamera];
-    
     // 开启本地预览
     [self.engine startPreview];
 }
 
 #pragma mark - action (需手动填写鉴权信息)
-
 /**
  @brief 登陆服务器，并开始推流
  */
 - (void)joinBegin{
-    
     //AliRtcAuthInfo 配置项
     
-//    NSString *AppID   =  @"phhs6mt3";
-//    NSString *userID  =  @"4";
-//    NSString *channelID  =  @"2";
-//    NSString *nonce  =  @"AK-470f12b0-2597-46fa-a47d-cec564986f58";
-//    long long timestamp = 1594689816;
-//    NSString *token  =  @"08556d8cff08a0fc3ed3f122279914dde4c60ed4ccdb1c33d317dc796ccf9256";
-//    NSArray <NSString *> *GSLB  =  @[@"https://rgslb.rtc.aliyuncs.com"];
-//    NSArray <NSString *> *agent =  @[@"agent"];
     NSString *AppID   =  self.model.appID;
     NSString *userID  =  self.model.userId;
     NSString *channelID  =  self.model.channelId;
@@ -111,11 +105,11 @@
     NSString *token  =  self.model.token;
     NSArray <NSString *> *GSLB  =  self.model.gSLB;
     NSArray <NSString *> *agent =  @[@"agent"];
-
+    
     //配置SDK
     //设置自动(手动)模式
     [self.engine setAutoPublish:YES withAutoSubscribe:YES];
-
+    
     //随机生成用户名，仅是demo展示使用
     NSString *userName = [NSString stringWithFormat:@"%@",[GlobalData sharedInstance].GB_UserModel.account];
     
@@ -146,14 +140,14 @@
     [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
-
-
 #pragma mark - private
 
 /**
  @brief 离开频需要取消本地预览、离开频道、销毁SDK
  */
 - (void)leaveChannel {
+    
+    [self timerStop];
     
     [self.remoteUserManager removeAllUser];
     
@@ -171,18 +165,9 @@
     [AliRtcEngine destroy];
     
     [GB_Nav popViewControllerAnimated:false];
-
+    
 }
 
-- (void)exitApplication{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [UIView animateWithDuration:0.5f animations:^{
-        window.alpha = 0;
-        window.frame = CGRectMake(window.bounds.size.width/2.0, window.bounds.size.width, 0, 0);
-    } completion:^(BOOL finished) {
-        exit(0);
-    }];
-}
 
 #pragma mark - uicollectionview delegate & datasource
 
@@ -194,15 +179,36 @@
     
     RTCRemoterUserView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     RTCSampleRemoteUserModel *model =  [self.remoteUserManager allOnlineUsers][indexPath.row];
-    AliRenderView *view = model.view;
-    [cell updateUserRenderview:view];
-    
-//    //记录UID
-//    NSString *uid = model.uid;
-
+    if ([model.uid isEqualToString:self.uidReplace]) {
+        // 设置本地预览视频
+        [self.viewLocal removeFromSuperview];
+        [cell updateUserRenderview:self.viewLocal];
+    }else {
+        AliRenderView *view = model.view;
+        [cell updateUserRenderview:view];
+    }
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    RTCSampleRemoteUserModel *model =  [self.remoteUserManager allOnlineUsers][indexPath.row];
+    if ([self.uidReplace isEqualToString:model.uid]) {
+        self.uidReplace = nil;
+        [self.remoteUserView reloadData];
+        
+        [self.viewLocal removeFromSuperview];
+        self.viewLocal.frame = self.view.bounds;
+        [self.view insertSubview:self.viewLocal atIndex:0];
+    }else {
+        self.uidReplace = model.uid;
+        [self.remoteUserView reloadData];
+        [model.view removeFromSuperview];
+        model.view.frame = self.view.bounds;
+        [self.view insertSubview:model.view atIndex:0];
+    }
+    
+    
+}
 //远端用户镜像按钮点击事件
 - (void)switchClick:(BOOL)isOn track:(AliRtcVideoTrack)track uid:(NSString *)uid {
     AliVideoCanvas *canvas = [[AliVideoCanvas alloc] init];
@@ -221,11 +227,15 @@
     [self.engine setRemoteViewConfig:canvas uid:uid forTrack:track];
 }
 
+
 #pragma mark - alirtcengine delegate
 
 - (void)onSubscribeChangedNotify:(NSString *)uid audioTrack:(AliRtcAudioTrack)audioTrack videoTrack:(AliRtcVideoTrack)videoTrack {
-    [GlobalMethod showAlert:@"sld onSubscribeChangedNotify"];
     NSLog(@"sld onSubscribeChangedNotify");
+    if (!self.timeReference) {
+        self.timeReference = [NSDate timeIntervalSinceReferenceDate];
+        [self timerStart];
+    }
     //收到远端订阅回调
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.remoteUserManager updateRemoteUser:uid forTrack:videoTrack];
@@ -256,15 +266,20 @@
 }
 
 - (void)onRemoteUserOnLineNotify:(NSString *)uid {
-    [GlobalMethod showAlert:@"onRemoteUserOnLineNotify"];
     NSLog(@"sld onRemoteUserOnLineNotify");
 }
 
 - (void)onRemoteUserOffLineNotify:(NSString *)uid {
-    [GlobalMethod showAlert:@"onRemoteUserOffLineNotify"];
     NSLog(@"sld onRemoteUserOffLineNotify");
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.remoteUserManager remoteUserOffLine:uid];
+        if ([self.remoteUserManager allOnlineUsers].count <= 0) {
+            [self leaveChannel];
+        }
+        if ([uid isEqualToString:self.uidReplace]) {
+            self.uidReplace = nil;
+            [self startPreview];
+        }
         [self.remoteUserView reloadData];
     });
 }
@@ -304,6 +319,17 @@
         [refuse fitTitle:@"挂断" variable:0];
         refuse.centerXTop = XY(btnRefuse.centerX, btnRefuse.bottom + W(15));
         [self.view addSubview:refuse];
+        
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+        l.textColor = [UIColor whiteColor];
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 0;
+        l.lineSpace = W(0);
+        [l fitTitle:@"正在连接中" variable:SCREEN_WIDTH - W(30)];
+        l.centerXBottom = XY(SCREEN_WIDTH/2.0, btnRefuse.top - W(20));
+        self.connecting = l;
+        [self.view addSubview:l];
     }
     
     {
@@ -323,29 +349,54 @@
         [self.view addSubview:s];
     }
     
-    CGRect rcScreen = [UIScreen mainScreen].bounds;
-    CGRect rc = rcScreen;
-    rc.origin.x = 10;
-    rc.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height+20+44;
-    rc.size = CGSizeMake(self.view.frame.size.width-20, 280);
+    
+    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake(140, 280);
+    flowLayout.itemSize = RTCREMOTE_CELL_SIZE;
     flowLayout.minimumLineSpacing = 10;
     flowLayout.minimumInteritemSpacing = 10;
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.remoteUserView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-    self.remoteUserView.frame = rc;
+    self.remoteUserView.frame = CGRectMake(0, STATUSBAR_HEIGHT + W(30), SCREEN_WIDTH, RTCREMOTE_CELL_SIZE.height);
+    self.remoteUserView.contentInset = UIEdgeInsetsMake(0, W(10), 0, W(10));
     self.remoteUserView.backgroundColor = [UIColor clearColor];
     self.remoteUserView.delegate   = self;
     self.remoteUserView.dataSource = self;
     self.remoteUserView.showsHorizontalScrollIndicator = NO;
     [self.remoteUserView registerClass:[RTCRemoterUserView class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:self.remoteUserView];
-    
+    if (@available(iOS 9.0, *)) {
+        self.remoteUserView.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
+    }
     _remoteUserManager = [RTCSampleRemoteUserManager shareManager];
     
 }
 
+#pragma mark timer
+- (void)timerStart{
+    //开启定时器
+    if (_timer == nil) {
+        _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)timerRun{
+    [GlobalMethod mainQueueBlock:^{
+        double timeInterval = ([NSDate timeIntervalSinceReferenceDate]-self.timeReference);
+        int min = timeInterval/60;
+        int sec = ((long) timeInterval)%60;
+        [self.connecting fitTitle:[NSString stringWithFormat:@"%2d:%2d",min,sec] variable:0];
+    }];
+}
+
+- (void)timerStop{
+    //停止定时器
+    if (_timer != nil) {
+        [_timer invalidate];
+        self.timer = nil;
+    }
+}
+#pragma mark click
 - (void)btnSwitchClick{
     [self.engine switchCamera];
 }
@@ -360,15 +411,16 @@
     self = [super initWithFrame:frame];
     if (self) {
         //设置远端流界面
-        CGRect rc  = CGRectMake(0, 0, 140, 200);
+        CGRect rc  = CGRectMake(0, 0, RTCREMOTE_CELL_SIZE.width, RTCREMOTE_CELL_SIZE.height);
         viewRemote = [[AliRenderView alloc] initWithFrame:rc];
+        
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
 - (void)updateUserRenderview:(AliRenderView *)view {
     view.backgroundColor = [UIColor clearColor];
-    view.frame = viewRemote.frame;
+    view.frame = CGRectMake(0, 0, RTCREMOTE_CELL_SIZE.width, RTCREMOTE_CELL_SIZE.height);
     viewRemote = view;
     [self addSubview:viewRemote];
 }

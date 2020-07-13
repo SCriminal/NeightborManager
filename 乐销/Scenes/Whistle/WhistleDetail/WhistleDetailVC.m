@@ -15,6 +15,7 @@
 #import "CreateWhistleVC.h"
 #import "DisposalWhistleVC.h"
 #import "SelectWhistleTypeVC.h"
+#import "RTCSampleChatViewController.h"
 
 @interface WhistleDetailVC ()
 @property (nonatomic, strong) Collection_Image *collection_Image;
@@ -75,6 +76,9 @@
                    [weakSelf requestChangeType:model.iDProperty];
                };
                [GB_Nav pushViewController:vc animated:true];
+        };
+        _topView.blockRTCClick = ^{
+            [weakSelf reqeustRTCToken];
         };
     }
     return _topView;
@@ -196,6 +200,17 @@
     }];
 }
 
+-(void)reqeustRTCToken{
+    [RequestApi requestRtcTokenWithUserid:self.modelDetail.whistlerId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelRTC * model = [ModelRTC modelObjectWithDictionary:response];
+        RTCSampleChatViewController * vc = [RTCSampleChatViewController new];
+        vc.model = model;
+        vc.isPusher = true;
+        [GB_Nav pushViewController:vc animated:true];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
 -(void)requestChangeType:(double)categoryID{
     [RequestApi requestModifyWhistleCategoryid:categoryID identity:strDotF(self.modelList.iDProperty) delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"修改成功"];

@@ -27,9 +27,11 @@
 @property (strong, nonatomic) UILabel *typeTitle;
 @property (strong, nonatomic) UILabel *type;
 @property (strong, nonatomic) UIButton *typeSelect;
+@property (strong, nonatomic) UIImageView *rtc;
 
 @property (nonatomic, strong) ModelWhistleList *model;
 @property (nonatomic, strong) void (^blockChangeTypeClick)(void);
+@property (nonatomic, strong) void (^blockRTCClick)(void);
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelWhistleList *)model;

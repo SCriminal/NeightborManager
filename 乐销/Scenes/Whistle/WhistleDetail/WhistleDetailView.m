@@ -136,7 +136,20 @@
     }
     return _phone;
 }
-
+- (UIImageView *)rtc{
+    if (!_rtc) {
+        _rtc = ^(){
+             UIImageView * iv = [UIImageView new];
+                   iv.backgroundColor = [UIColor clearColor];
+                   iv.contentMode = UIViewContentModeScaleAspectFill;
+                   iv.clipsToBounds = true;
+                   iv.image = [UIImage imageNamed:@"rtc_video"];
+                   iv.widthHeight = XY(W(20),W(20));
+            return iv;
+        }();
+    }
+    return _rtc;
+}
 
 - (UILabel *)problem{
     if (_problem == nil) {
@@ -188,6 +201,7 @@
     [self addSubview:self.typeTitle];
     [self addSubview:self.type];
     [self addSubview:self.typeSelect];
+    [self addSubview:self.rtc];
 
     [self addSubview:self.problem];
     [self addSubview:self.problemDetail];
@@ -217,6 +231,12 @@
     self.nameTtitle.rightTop = XY(W(92),self.IDTitle.bottom+W(20));
     [self.name fitTitle:UnPackStr(model.realName) variable:0];
     self.name.leftTop = XY(W(122),self.nameTtitle.top);
+    
+    self.rtc.hidden = self.nameTtitle.hidden;
+    if (!self.nameTtitle.hidden) {
+        self.rtc.leftCenterY = XY(self.name.right + W(7), self.name.centerY);
+        [self addControlFrame:CGRectMake(0, self.nameTtitle.top - W(10), SCREEN_WIDTH, self.nameTtitle.height + W(20)) belowView:self.rtc target:self action:@selector(rtcClick)];
+    }
     
     self.timeTitle.rightTop = XY(W(92),isStr(model.realName)?self.nameTtitle.bottom+W(20):self.IDTitle.bottom+W(20));
     [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.whistleTime andFormatter:TIME_HOUR_SHOW] variable:0];
@@ -260,6 +280,11 @@
 - (void)typeClick{
     if (self.blockChangeTypeClick) {
         self.blockChangeTypeClick();
+    }
+}
+- (void)rtcClick{
+    if (self.blockRTCClick) {
+        self.blockRTCClick();
     }
 }
 @end

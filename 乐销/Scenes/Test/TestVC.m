@@ -10,7 +10,9 @@
  
  */
 #import "TestVC.h"
-#import "CallingView.h"
+#import "TopAlertView.h"
+//request
+#import "RequestApi+Neighbor.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 
@@ -44,10 +46,25 @@
     [super viewDidLoad];
     WEAKSELF
     [self.view addSubview:[BaseNavView initNavBackTitle:@"1" rightTitle:@"2" rightBlock:^{
-        [weakSelf.view addSubview:[CallingView new]];
-//        [GB_Nav pushVCName:@"RTCSampleChatViewController" animated:true];
+        //        [weakSelf.view addSubview:[CallingView new]];
+        TopAlertView * top = [TopAlertView sharedInstance];
+        top.model = ^(){
+            ModelApns * modelAp = [ModelApns new];
+            modelAp.type = 11;
+            ModelRTC * model = [ModelRTC new];
+            model.appID = @"phhs6mt3";
+            model.userId = @"4";
+            model.channelId = @"2";
+            model.nonce = @"AK-470f12b0-2597-46fa-a47d-cec564986f58";
+            model.timeStamp = @"1594689816";
+            model.token = @"08556d8cff08a0fc3ed3f122279914dde4c60ed4ccdb1c33d317dc796ccf9256";
+            model.gSLB = @[@"https://rgslb.rtc.aliyuncs.com"];
+            modelAp.rtc = model;
+            return modelAp;
+        }();
+        [top btnClick];
     }]];
-    
+
     return;
 }
 

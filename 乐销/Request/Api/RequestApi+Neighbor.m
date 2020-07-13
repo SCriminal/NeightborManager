@@ -1234,4 +1234,15 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
         };
         [self patchUrl:@"/admin/onekey/participant/1_0_10/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+获取token配置
+*/
++(void)requestRtcTokenWithUserid:(double)userId
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"userId":NSNumber.dou(userId)};
+        [self getUrl:@"/resident/rtc/token" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

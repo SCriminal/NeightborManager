@@ -654,6 +654,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                 success:(void (^)(NSDictionary * response, id mark))success
                                       failure:(void (^)(NSString * errorStr, id mark))failure;
 
+/**
+获取token配置
+*/
++(void)requestRtcTokenWithUserid:(double)userId
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END
