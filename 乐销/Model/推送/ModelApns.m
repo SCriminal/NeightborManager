@@ -37,7 +37,8 @@ NSString *const kModelApnsDesc = @"desc";
         self.type = [dict doubleValueForKey:kModelApnsType];
         self.desc = [[[dict dictionaryValueForKey:@"aps"] dictionaryValueForKey:@"alert"] stringValueForKey:@"body"];
         self.isSilent =  [[dict dictionaryValueForKey:@"aps"] doubleValueForKey:@"content-available"];
-        NSDictionary * dicRtc = [dict objectForKey:@"rtc"];
+        NSString * strRtc = [dict stringValueForKey:@"rtc"];
+        NSDictionary * dicRtc = [GlobalMethod exchangeStringToDic:strRtc];
         self.rtc = [ModelRTC modelObjectWithDictionary:dicRtc];
     }
     

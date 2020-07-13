@@ -43,7 +43,12 @@ NSString *const kModelAPNSRTCNonce = @"nonce";
             self.timeStamp = [dict stringValueForKey:kModelAPNSRTCTimeStamp];
             self.token = [dict stringValueForKey:kModelAPNSRTCToken];
             self.nonce = [dict stringValueForKey:kModelAPNSRTCNonce];
-
+        if (!isStr(self.appID)) {
+            self.appID = [dict stringValueForKey:@"appId"];
+        }
+        if (!isAry(self.gSLB)) {
+            self.gSLB = [dict arrayValueForKey:@"gslb"];
+        }
     }
     
     return self;
