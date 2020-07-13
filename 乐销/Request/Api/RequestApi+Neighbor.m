@@ -391,7 +391,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           //                          @"categoryId":NSNumber.dou(categoryId),
                           @"categoryAlias":@"work_notice",
                           @"scope":NSNumber.dou(4)};
-    [self getUrl:@"/resident/content/1_0_15/user/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/resident/content/1_0_26/user/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  详情
@@ -1242,7 +1242,10 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"userId":NSNumber.dou(userId)};
-        [self getUrl:@"/resident/rtc/token" delegate:delegate parameters:dic success:success failure:failure];
+        NSDictionary *dic = @{@"userId":NSNumber.dou(userId),
+                              @"toId":NSNumber.dou(userId),
+                              @"scope":@7
+        };
+        [self getUrl:@"/resident/rtc/1_0_26/token" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

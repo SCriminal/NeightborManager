@@ -52,12 +52,12 @@
             ModelApns * modelAp = [ModelApns new];
             modelAp.type = 11;
             ModelRTC * model = [ModelRTC new];
-            model.appID = @"phhs6mt3";
-            model.userId = @"4";
-            model.channelId = @"2";
-            model.nonce = @"AK-470f12b0-2597-46fa-a47d-cec564986f58";
-            model.timeStamp = @"1594689816";
-            model.token = @"08556d8cff08a0fc3ed3f122279914dde4c60ed4ccdb1c33d317dc796ccf9256";
+            model.appID = @"ei5yafsa";
+            model.userId = @"38";
+            model.channelId = @"38";
+            model.nonce = @"AK-ba73bd52efe64b22b4e02f6477918fa6";
+            model.timeStamp = @"1594664408";
+            model.token = @"c7e6206425b160d4f3f78d90186eef0aba2aeaed56e53569824103b9ae146908";
             model.gSLB = @[@"https://rgslb.rtc.aliyuncs.com"];
             modelAp.rtc = model;
             return modelAp;

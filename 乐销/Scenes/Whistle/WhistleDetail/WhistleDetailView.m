@@ -227,7 +227,7 @@
     self.IDNumber.leftTop = XY(W(122),self.IDTitle.top);
 
     
-    self.nameTtitle.hidden = !isStr(model.realName);
+//    self.nameTtitle.hidden = !isStr(model.realName);
     self.nameTtitle.rightTop = XY(W(92),self.IDTitle.bottom+W(20));
     [self.name fitTitle:UnPackStr(model.realName) variable:0];
     self.name.leftTop = XY(W(122),self.nameTtitle.top);
