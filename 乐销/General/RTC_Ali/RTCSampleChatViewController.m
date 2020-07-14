@@ -155,10 +155,9 @@
     //停止本地预览
     [self.engine stopPreview];
     
-    if (_isJoinChannel) {
-        //离开频道
-        [self.engine leaveChannel];
-    }
+            
+    [self.engine leaveChannel];
+
     
     [self.remoteUserView removeFromSuperview];
     
@@ -274,12 +273,13 @@
         [self.remoteUserManager remoteUserOffLine:uid];
         if ([self.remoteUserManager allOnlineUsers].count <= 0) {
             [self leaveChannel];
+        }else {
+            if ([uid isEqualToString:self.uidReplace]) {
+                       self.uidReplace = nil;
+                       [self startPreview];
+                   }
+                   [self.remoteUserView reloadData];
         }
-        if ([uid isEqualToString:self.uidReplace]) {
-            self.uidReplace = nil;
-            [self startPreview];
-        }
-        [self.remoteUserView reloadData];
     });
 }
 
