@@ -26,6 +26,8 @@ NSString *const kModelCertificateDealDetailParticipant = @"participant";
 NSString *const kModelCertificateDealDetailOnekeyId = @"onekeyId";
 NSString *const kModelCertificateDealDetailTitle = @"title";
 NSString *const kModelCertificateDealDetailId = @"id";
+NSString *const kModelCertificateDealDetailTotal = @"total";
+NSString *const kModelCertificateDealDetailTotalTodo = @"totalTodo";
 
 @interface ModelCertificateDealDetail ()
 @end
@@ -76,6 +78,8 @@ NSString *const kModelCertificateDealDetailId = @"id";
         self.onekeyId = [dict doubleValueForKey:kModelCertificateDealDetailOnekeyId];
         self.title = [dict stringValueForKey:kModelCertificateDealDetailTitle];
         self.iDProperty = [dict doubleValueForKey:kModelCertificateDealDetailId];
+        self.total = [dict doubleValueForKey:kModelCertificateDealDetailTotal];
+        self.totalTodo = [dict doubleValueForKey:kModelCertificateDealDetailTotalTodo];
 
         self.participant =  [GlobalMethod exchangeDic:[dict objectForKey:kModelCertificateDealDetailParticipant] toAryWithModelName:@"ModelQuestionnairDetailContent"];
 
@@ -135,6 +139,8 @@ NSString *const kModelCertificateDealDetailId = @"id";
     [mutableDict setValue:[NSNumber numberWithDouble:self.onekeyId] forKey:kModelCertificateDealDetailOnekeyId];
     [mutableDict setValue:self.title forKey:kModelCertificateDealDetailTitle];
     [mutableDict setValue:[NSNumber numberWithDouble:self.iDProperty] forKey:kModelCertificateDealDetailId];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.total] forKey:kModelCertificateDealDetailTotal];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.totalTodo] forKey:kModelCertificateDealDetailTotalTodo];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

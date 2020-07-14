@@ -132,7 +132,7 @@
     self.name.leftTop = XY(W(15),W(18));
     [self.category fitTitle:UnPackStr(model.categoryName) variable:W(180)];
     self.category.leftTop = XY(self.name.left,self.name.bottom+W(12));
-    [self.num fitTitle:[NSString stringWithFormat:@"已提交0   已办理0"] variable:0];
+    [self.num fitTitle:[NSString stringWithFormat:@"已提交%@   待处理%@",NSNumber.dou(model.total).stringValue,NSNumber.dou(model.totalTodo).stringValue] variable:0];
     self.num.rightTop = XY(SCREEN_WIDTH -  W(15),self.category.top);
 
     //设置总高度

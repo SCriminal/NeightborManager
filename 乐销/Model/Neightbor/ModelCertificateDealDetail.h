@@ -29,6 +29,8 @@
 @property (nonatomic, assign) double onekeyId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) double iDProperty;
+@property (nonatomic, assign) double total;
+@property (nonatomic, assign) double totalTodo;
 
 //logical
 @property (nonatomic, strong) NSString *statusShow;
