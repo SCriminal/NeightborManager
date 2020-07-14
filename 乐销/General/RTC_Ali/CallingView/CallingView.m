@@ -151,9 +151,11 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
 #pragma mark 点击事件
 - (void)btnRefuseClick{
     [self stopAudio];
+    [self removeFromSuperview];
 }
 - (void)btnAcceptClick{
     [self stopAudio];
+    [self removeFromSuperview];
     RTCSampleChatViewController * vc= [RTCSampleChatViewController new];
     vc.model = self.model;
     [GB_Nav pushViewController:vc animated:true];
