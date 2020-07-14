@@ -134,13 +134,13 @@ NSString *const kModelCommunityServiceListNumber = @"number";
         switch ((int)self.status) {
             case 1:
             {
-                self.statusShow = @"已发哨";
+                self.statusShow = @"待处理";
                 self.statusColorShow = COLOR_ORANGE;
             }
                 break;
             case 3:
             {
-                self.statusShow = @"已吹哨";
+                self.statusShow = @"待处理";
                 self.statusColorShow = [UIColor colorWithHexString:@"#FF6A00"];
             }
                 break;

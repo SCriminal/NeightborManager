@@ -233,7 +233,7 @@
 
 - (void)onSubscribeChangedNotify:(NSString *)uid audioTrack:(AliRtcAudioTrack)audioTrack videoTrack:(AliRtcVideoTrack)videoTrack {
     NSLog(@"sld onSubscribeChangedNotify");
-   
+    
     //收到远端订阅回调
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.remoteUserManager updateRemoteUser:uid forTrack:videoTrack];
@@ -260,15 +260,12 @@
             [self.engine setRemoteViewConfig:canvas2 uid:uid forTrack:AliRtcVideoTrackScreen];
         }
         [self.remoteUserView reloadData];
+        
     });
 }
 
 - (void)onRemoteUserOnLineNotify:(NSString *)uid {
     NSLog(@"sld onRemoteUserOnLineNotify");
-    if (!self.timeReference) {
-           self.timeReference = [NSDate timeIntervalSinceReferenceDate];
-           [self timerStart];
-       }
 }
 
 - (void)onRemoteUserOffLineNotify:(NSString *)uid {
@@ -284,6 +281,22 @@
         }
         [self.remoteUserView reloadData];
     });
+}
+
+- (void)onFirstPacketReceivedWithAudioTrack:(AliRtcAudioTrack)audioTrack videoTrack:(AliRtcVideoTrack)videoTrack{
+    if (!self.timeReference) {
+        [self timerStart];
+    }
+    RTCSampleRemoteUserModel *model =  [self.remoteUserManager allOnlineUsers].lastObject;
+    if (self.uidReplace == nil && model.view) {
+        [GlobalMethod mainQueueBlock:^{
+            self.uidReplace = model.uid;
+            [self.remoteUserView reloadData];
+            [model.view removeFromSuperview];
+            model.view.frame = self.view.bounds;
+            [self.view insertSubview:model.view atIndex:0];
+        }];
+    }
 }
 
 - (void)onOccurError:(int)error {
@@ -379,6 +392,7 @@
     //开启定时器
     if (_timer == nil) {
         [GlobalMethod mainQueueBlock:^{
+            self.timeReference = [NSDate timeIntervalSinceReferenceDate];
             _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
         }];
     }
