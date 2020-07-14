@@ -154,7 +154,7 @@
 }
 
 - (void)requestAdmit:(BOOL)isAdmit{
-    [RequestApi requestCertDisposalAuditWithIsapproval:1 number:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCertDisposalAuditWithIsapproval:isAdmit?1:0 number:self.modelItem.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.modelItem.status = isAdmit?2:3;
         self.modelItem = [ModelCertificateDealDetail modelObjectWithDictionary:self.modelItem.dictionaryRepresentation];
         [self.topView resetViewWithModel:self.modelItem];

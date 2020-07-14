@@ -158,6 +158,19 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
         }
         [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
     }
+    if (self.model.type == 9) {
+        NSMutableArray * ary = [NSMutableArray array];
+        for (UIViewController * vc in GB_Nav.viewControllers) {
+            if ([vc isKindOfClass:NSClassFromString(@"CategoryCertificationDealListVC")]) {
+                [ary addObject:vc];
+                [GB_Nav setViewControllers:ary animated:true];
+                return;
+            }else{
+                [ary addObject:vc];
+            }
+        }
+        [GB_Nav pushVCName:@"CategoryCertificationDealListVC" animated:true];
+    }
     if (self.model.type == 11) {
         CallingView * callView = [CallingView sharedInstance];
         if (callView.superview || [GB_Nav hasClass:@"RTCSampleChatViewController"]) {
