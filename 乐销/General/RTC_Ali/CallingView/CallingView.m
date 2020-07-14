@@ -7,11 +7,10 @@
 //
 
 #import "CallingView.h"
-#import <AudioToolbox/AudioToolbox.h>
 #import "RTCSampleChatViewController.h"
+#import <AVFoundation/AVFoundation.h>
 @interface CallingView ()
-@property (nonatomic, strong) NSTimer * timer;
-
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @end
 
 @implementation CallingView
@@ -19,6 +18,14 @@
 SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
 
 #pragma mark 懒加载
+- (AVAudioPlayer *)audioPlayer{
+    if (!_audioPlayer) {
+        NSString *str = [[NSBundle mainBundle] pathForResource:@"WechatCall" ofType:@"caf"];
+        NSURL *url = [NSURL fileURLWithPath:str];
+        _audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    }
+    return _audioPlayer;
+}
 - (UIVisualEffectView *)masksView
 {
     if (_masksView == nil) {
@@ -50,13 +57,13 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
 }
 -(UIButton *)btnAccept{
     if (_btnAccept == nil) {
-                _btnAccept = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnAccept = [UIButton buttonWithType:UIButtonTypeCustom];
         [_btnAccept addTarget:self action:@selector(btnAcceptClick) forControlEvents:UIControlEventTouchUpInside];
         _btnAccept.backgroundColor = [UIColor clearColor];
         _btnAccept.widthHeight = XY(W(65),W(65));
         [_btnAccept setBackgroundImage:[UIImage imageNamed:@"rtc_accept"] forState:UIControlStateNormal];
-
-
+        
+        
     }
     return _btnAccept;
 }
@@ -113,6 +120,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
         self.width = SCREEN_WIDTH;
         self.height = SCREEN_HEIGHT;
         [self addSubView];
+        [self.audioPlayer prepareToPlay];
     }
     return self;
 }
@@ -133,16 +141,16 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     self.title.centerXTop = XY(SCREEN_WIDTH/2.0,STATUSBAR_HEIGHT + iphoneXTopInterval + W(12));
-
+    
     //刷新view
     self.btnRefuse.leftBottom = XY(W(61),SCREEN_HEIGHT - W(64) - iphoneXBottomInterval);
-
+    
     self.refuse.centerXTop = XY(self.btnRefuse.centerX,self.btnRefuse.bottom+W(15));
-
+    
     self.btnAccept.rightTop = XY(SCREEN_WIDTH - W(61),self.btnRefuse.top);
-
+    
     self.accept.centerXTop = XY(self.btnAccept.centerX,self.btnAccept.bottom+W(15));
-
+    
     self.icon.centerXTop = XY(SCREEN_WIDTH/2.0, self.title.bottom+W(98));
 }
 
@@ -160,16 +168,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
 }
 
 #pragma mark audio
-static SystemSoundID soundID = 0;
 - (void)playAudio{
-        NSString *str = [[NSBundle mainBundle] pathForResource:@"WechatCall" ofType:@"caf"];
-        NSURL *url = [NSURL fileURLWithPath:str];
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)(url), &soundID);
-        AudioServicesPlayAlertSoundWithCompletion(soundID, ^{
-            NSLog(@"播放完成");
-        });
+    [self.audioPlayer play];
 }
 - (void)stopAudio{
-    AudioServicesDisposeSystemSoundID(soundID);
+    [self.audioPlayer stop];
 }
 @end

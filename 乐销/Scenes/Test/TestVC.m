@@ -13,7 +13,7 @@
 #import "TopAlertView.h"
 //request
 #import "RequestApi+Neighbor.h"
-
+#import "CallingView.h"
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 
 @property (nonatomic, strong) UIWebView *web;
@@ -46,23 +46,7 @@
     [super viewDidLoad];
     WEAKSELF
     [self.view addSubview:[BaseNavView initNavBackTitle:@"1" rightTitle:@"2" rightBlock:^{
-        //        [weakSelf.view addSubview:[CallingView new]];
-        TopAlertView * top = [TopAlertView sharedInstance];
-        top.model = ^(){
-            ModelApns * modelAp = [ModelApns new];
-            modelAp.type = 11;
-            ModelRTC * model = [ModelRTC new];
-            model.appID = @"ei5yafsa";
-            model.userId = @"38";
-            model.channelId = @"38";
-            model.nonce = @"AK-ba73bd52efe64b22b4e02f6477918fa6";
-            model.timeStamp = @"1594664408";
-            model.token = @"c7e6206425b160d4f3f78d90186eef0aba2aeaed56e53569824103b9ae146908";
-            model.gSLB = @[@"https://rgslb.rtc.aliyuncs.com"];
-            modelAp.rtc = model;
-            return modelAp;
-        }();
-        [top btnClick];
+        [[CallingView sharedInstance]playAudio];
     }]];
 
     return;
