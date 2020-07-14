@@ -232,10 +232,7 @@
 
 - (void)onSubscribeChangedNotify:(NSString *)uid audioTrack:(AliRtcAudioTrack)audioTrack videoTrack:(AliRtcVideoTrack)videoTrack {
     NSLog(@"sld onSubscribeChangedNotify");
-    if (!self.timeReference) {
-        self.timeReference = [NSDate timeIntervalSinceReferenceDate];
-        [self timerStart];
-    }
+   
     //收到远端订阅回调
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.remoteUserManager updateRemoteUser:uid forTrack:videoTrack];
@@ -267,6 +264,10 @@
 
 - (void)onRemoteUserOnLineNotify:(NSString *)uid {
     NSLog(@"sld onRemoteUserOnLineNotify");
+    if (!self.timeReference) {
+           self.timeReference = [NSDate timeIntervalSinceReferenceDate];
+           [self timerStart];
+       }
 }
 
 - (void)onRemoteUserOffLineNotify:(NSString *)uid {
@@ -376,7 +377,9 @@
 - (void)timerStart{
     //开启定时器
     if (_timer == nil) {
-        _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+        [GlobalMethod mainQueueBlock:^{
+            _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+        }];
     }
 }
 
@@ -385,7 +388,8 @@
         double timeInterval = ([NSDate timeIntervalSinceReferenceDate]-self.timeReference);
         int min = timeInterval/60;
         int sec = ((long) timeInterval)%60;
-        [self.connecting fitTitle:[NSString stringWithFormat:@"%2d:%2d",min,sec] variable:0];
+        [self.connecting fitTitle:[NSString stringWithFormat:@"%02d:%02d",min,sec] variable:0];
+        self.connecting.centerX = SCREEN_WIDTH/2.0;
     }];
 }
 

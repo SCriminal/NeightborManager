@@ -138,6 +138,7 @@
 		D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145CE1E32ECA700E8107F /* UITableView+Category.m */; };
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
+		D25651B124BD3D7000CB7A4E /* WechatCall.caf in Resources */ = {isa = PBXBuildFile; fileRef = D25651AE24BD3CFE00CB7A4E /* WechatCall.caf */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */ = {isa = PBXBuildFile; fileRef = D25EB6BB20EA230C0082AD73 /* EditVC_Title.m */; };
 		D25F55D92178801000FD4898 /* 闪屏.m4v in Resources */ = {isa = PBXBuildFile; fileRef = D25F55D82178801000FD4898 /* 闪屏.m4v */; };
@@ -663,6 +664,7 @@
 		D25145D11E33055300E8107F /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
 		D2545A5B1E72AD2500DEC7CE /* UIControl+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Category.h"; sourceTree = "<group>"; };
 		D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Category.m"; sourceTree = "<group>"; };
+		D25651AE24BD3CFE00CB7A4E /* WechatCall.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WechatCall.caf; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
 		D25EB6BA20EA230C0082AD73 /* EditVC_Title.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditVC_Title.h; sourceTree = "<group>"; };
@@ -1321,6 +1323,7 @@
 		D20A59C824B93EF8000D5D72 /* CallingView */ = {
 			isa = PBXGroup;
 			children = (
+				D25651AE24BD3CFE00CB7A4E /* WechatCall.caf */,
 				D20A59D224B944D0000D5D72 /* rtc_revolve@2x.png */,
 				D20A59D024B93FDF000D5D72 /* rtc_accept@2x.png */,
 				D20A59CE24B93FDA000D5D72 /* rtc_refuse@2x.png */,
@@ -3181,6 +3184,7 @@
 				D20A59CD24B93FD2000D5D72 /* rtc_head@2x.png in Resources */,
 				D2821CBF218AD9B90057688B /* circle@3x.png in Resources */,
 				9CB5EBAF20F4FA1200EB22B4 /* Assets.xcassets in Resources */,
+				D25651B124BD3D7000CB7A4E /* WechatCall.caf in Resources */,
 				D20A59CF24B93FDA000D5D72 /* rtc_refuse@2x.png in Resources */,
 				D2F733B41E8642EE0008E561 /* LocalData.json in Resources */,
 				DAA3C9E71D668FF6009CFDF7 /* Images.xcassets in Resources */,

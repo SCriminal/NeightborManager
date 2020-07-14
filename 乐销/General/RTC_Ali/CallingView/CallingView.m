@@ -126,8 +126,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
     [self addSubview:self.icon];
     [self addSubview:self.title];
 
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    [self timerStart];
+    [self playAudio];
     //初始化页面
     [self resetViewWithModel:nil];
 }
@@ -148,34 +147,29 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
 
     self.icon.centerXTop = XY(SCREEN_WIDTH/2.0, self.title.bottom+W(98));
 }
-#pragma mark 定时器相关
-- (void)timerStart{
-    //开启定时器
-    if (_timer == nil) {
-        _timer =[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
-    }
-}
 
-- (void)timerRun{
-        AudioServicesPlaySystemSound(1000);
-}
-
-- (void)timerStop{
-    //停止定时器
-    if (_timer != nil) {
-        [_timer invalidate];
-        self.timer = nil;
-    }
-    [self removeFromSuperview];
-}
 #pragma mark 点击事件
 - (void)btnRefuseClick{
-    [self timerStop];
+    [self stopAudio];
 }
 - (void)btnAcceptClick{
-    [self timerStop];
+    [self stopAudio];
     RTCSampleChatViewController * vc= [RTCSampleChatViewController new];
     vc.model = self.model;
     [GB_Nav pushViewController:vc animated:true];
+}
+
+#pragma mark audio
+static SystemSoundID soundID = 0;
+- (void)playAudio{
+        NSString *str = [[NSBundle mainBundle] pathForResource:@"WechatCall" ofType:@"caf"];
+        NSURL *url = [NSURL fileURLWithPath:str];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)(url), &soundID);
+        AudioServicesPlayAlertSoundWithCompletion(soundID, ^{
+            NSLog(@"播放完成");
+        });
+}
+- (void)stopAudio{
+    AudioServicesDisposeSystemSoundID(soundID);
 }
 @end
