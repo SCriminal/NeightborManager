@@ -160,6 +160,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
     }
     if (self.model.type == 11) {
         CallingView * callView = [CallingView sharedInstance];
+        if (callView.superview || [GB_Nav hasClass:@"RTCSampleChatViewController"]) {
+            return;
+        }
         callView.model = self.model.rtc;
         [[UIApplication sharedApplication].keyWindow addSubview:callView];
     }

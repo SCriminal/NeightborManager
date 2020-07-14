@@ -90,51 +90,33 @@
             <Locations>
                <Location
                   uuid = "0660A685-AD29-4AF4-863C-214F1F514B6D - f5dcdde3e57d1230"
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "+[RequestApi(Neighbor) requestLoginWithAccount:password:delegate:success:failure:]"
                   moduleName = "NeighborManager"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%E7%AE%A1%E7%90%86%E7%AB%AF/%E4%B9%90%E9%94%80/Request/Api/RequestApi+Neighbor.m"
-                  timestampString = "606742551.535513"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
                   endingLineNumber = "71"
-                  offsetFromSymbolStart = "1556">
+                  offsetFromSymbolStart = "1540">
                </Location>
                <Location
                   uuid = "0660A685-AD29-4AF4-863C-214F1F514B6D - 2f2da33d41334fc2"
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__82+[RequestApi(Neighbor) requestLoginWithAccount:password:delegate:success:failure:]_block_invoke"
                   moduleName = "NeighborManager"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%E7%AE%A1%E7%90%86%E7%AB%AF/%E4%B9%90%E9%94%80/Request/Api/RequestApi+Neighbor.m"
-                  timestampString = "606742551.537869"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
                   endingLineNumber = "71"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  uuid = "0660A685-AD29-4AF4-863C-214F1F514B6D - c002a2530d6df9e1"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.73"
-                  moduleName = "NeighborManager"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%E7%AE%A1%E7%90%86%E7%AB%AF/%E4%B9%90%E9%94%80/Request/Api/RequestApi+Neighbor.m"
-                  timestampString = "606742551.539963"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -876,6 +858,70 @@
             startingLineNumber = "380"
             endingLineNumber = "380"
             landmarkName = "-timerStart"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7861541C-F137-4AD7-919C-8EDC97C8B6CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/AppDelegate/AppDelegate.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-configureAPIKey"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7861541C-F137-4AD7-919C-8EDC97C8B6CC - 1ae65c2d606322a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AppDelegate configureAPIKey]"
+                  moduleName = "NeighborManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%E7%AE%A1%E7%90%86%E7%AB%AF/%E4%B9%90%E9%94%80/AppDelegate/AppDelegate.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "7861541C-F137-4AD7-919C-8EDC97C8B6CC - 3e44a58aaf18242b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__30-[AppDelegate configureAPIKey]_block_invoke"
+                  moduleName = "NeighborManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%E7%AE%A1%E7%90%86%E7%AB%AF/%E4%B9%90%E9%94%80/AppDelegate/AppDelegate.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B25DF790-4BF3-4B31-92F0-579A67B18997"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/AppDelegate/AppDelegate.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-configureAPIKey"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
