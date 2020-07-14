@@ -74,6 +74,7 @@
 - (void)initializeSDK{
     // 创建SDK实例，注册delegate，extras可以为空
     _engine = [AliRtcEngine sharedInstance:self extras:@""];
+    [_engine enableSpeakerphone:true];
     [AliRtcEngine setH5CompatibleMode:true];
 }
 
