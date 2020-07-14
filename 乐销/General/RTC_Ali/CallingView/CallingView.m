@@ -125,8 +125,6 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(CallingView)
     [self addSubview:self.accept];
     [self addSubview:self.icon];
     [self addSubview:self.title];
-
-    [self playAudio];
     //初始化页面
     [self resetViewWithModel:nil];
 }

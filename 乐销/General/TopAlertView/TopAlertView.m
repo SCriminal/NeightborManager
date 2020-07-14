@@ -164,6 +164,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
             return;
         }
         callView.model = self.model.rtc;
+        [callView playAudio];
         [[UIApplication sharedApplication].keyWindow addSubview:callView];
     }
     [self timerStop];

@@ -23,5 +23,5 @@ DECLARE_SINGLETON(CallingView)
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;
-
+- (void)playAudio;
 @end
