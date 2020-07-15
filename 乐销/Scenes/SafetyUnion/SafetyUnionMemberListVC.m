@@ -10,11 +10,11 @@
 //request
 #import "RequestApi+Neighbor.h"
 #import "RTCSampleChatViewController.h"
-#import "SelectDepartmentCell.h"
+#import "SafetySearchView.h"
 #import "SelectCommunityPickerView.h"
 
 @interface SafetyUnionMemberListVC ()
-@property (nonatomic, strong) SearchNavView *searchView;
+@property (nonatomic, strong) SafetySearchView *searchView;
 @property (nonatomic, assign) double estateID;
 @end
 
@@ -31,16 +31,18 @@
     }
     return _noResultView;
 }
-- (SearchNavView *)searchView{
+- (SafetySearchView *)searchView{
     if (!_searchView) {
-        _searchView = [SearchNavView new];
+        _searchView = [SafetySearchView new];
         _searchView.top = NAVIGATIONBAR_HEIGHT;
-        _searchView.userInteractionEnabled = false;
-        _searchView.tfSearch.placeholder = @"请选择小区";
-        UIControl * con = [UIControl new];
-        con.frame = _searchView.frame;
-        [con addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:con];
+        WEAKSELF
+        _searchView.blockClose = ^{
+            [weakSelf removeSearchData];
+        };
+        _searchView.blockSearch = ^{
+            [weakSelf searchClick];
+        };
+        
     }
     return _searchView;
 }
@@ -79,6 +81,10 @@
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
     WEAKSELF
     cell.blockRTC = ^(ModelSafetyUnion *item) {
+        if ([item.account isEqualToString:[GlobalData sharedInstance].GB_UserModel.account]) {
+            [GlobalMethod showAlert:@"不能给自己发视频"];
+            return;
+        }
         [weakSelf reqeustRTCToken:item];
     };
     return cell;
@@ -123,15 +129,20 @@
     WEAKSELF
     viewSelect.blockSeleted = ^(ModelUserAuthority *selected) {
         weakSelf.searchView.tfSearch.text = selected.name;
+        weakSelf.searchView.iconClose.highlighted = true;
         weakSelf.estateID = selected.iDProperty;
         [weakSelf refreshHeaderAll];
     };
     viewSelect.blockCancelClick = ^{
-        weakSelf.searchView.tfSearch.text = nil;
-        weakSelf.estateID = 0;
-        [weakSelf refreshHeaderAll];
+        [weakSelf removeSearchData];
     };
     [self.view addSubview:viewSelect];
+}
+- (void)removeSearchData{
+    self.searchView.tfSearch.text = nil;
+           self.estateID = 0;
+           self.searchView.iconClose.highlighted = false;
+           [self refreshHeaderAll];
 }
 @end
 

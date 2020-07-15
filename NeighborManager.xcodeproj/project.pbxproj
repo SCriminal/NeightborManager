@@ -141,6 +141,7 @@
 		D25651B124BD3D7000CB7A4E /* WechatCall.caf in Resources */ = {isa = PBXBuildFile; fileRef = D25651AE24BD3CFE00CB7A4E /* WechatCall.caf */; };
 		D25651B424BECA7E00CB7A4E /* ModelSafetyUnion.m in Sources */ = {isa = PBXBuildFile; fileRef = D25651B224BECA7E00CB7A4E /* ModelSafetyUnion.m */; };
 		D25651B824BECBEF00CB7A4E /* SafetyUnionMemberListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D25651B724BECBEF00CB7A4E /* SafetyUnionMemberListVC.m */; };
+		D25651BB24BEDCA500CB7A4E /* SafetySearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = D25651BA24BEDCA400CB7A4E /* SafetySearchView.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */ = {isa = PBXBuildFile; fileRef = D25EB6BB20EA230C0082AD73 /* EditVC_Title.m */; };
 		D25F55D92178801000FD4898 /* 闪屏.m4v in Resources */ = {isa = PBXBuildFile; fileRef = D25F55D82178801000FD4898 /* 闪屏.m4v */; };
@@ -671,6 +672,8 @@
 		D25651B324BECA7E00CB7A4E /* ModelSafetyUnion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelSafetyUnion.h; sourceTree = "<group>"; };
 		D25651B624BECBEF00CB7A4E /* SafetyUnionMemberListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafetyUnionMemberListVC.h; sourceTree = "<group>"; };
 		D25651B724BECBEF00CB7A4E /* SafetyUnionMemberListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafetyUnionMemberListVC.m; sourceTree = "<group>"; };
+		D25651B924BEDCA400CB7A4E /* SafetySearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafetySearchView.h; sourceTree = "<group>"; };
+		D25651BA24BEDCA400CB7A4E /* SafetySearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafetySearchView.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
 		D25EB6BA20EA230C0082AD73 /* EditVC_Title.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditVC_Title.h; sourceTree = "<group>"; };
@@ -1720,6 +1723,8 @@
 			children = (
 				D25651B624BECBEF00CB7A4E /* SafetyUnionMemberListVC.h */,
 				D25651B724BECBEF00CB7A4E /* SafetyUnionMemberListVC.m */,
+				D25651B924BEDCA400CB7A4E /* SafetySearchView.h */,
+				D25651BA24BEDCA400CB7A4E /* SafetySearchView.m */,
 			);
 			path = SafetyUnion;
 			sourceTree = "<group>";
@@ -3328,6 +3333,7 @@
 				D26A14A21E49C25700126F7A /* NSMutableDictionary+Category.m in Sources */,
 				DAB576881E305E5C006626BC /* NoResultView.m in Sources */,
 				D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */,
+				D25651BB24BEDCA500CB7A4E /* SafetySearchView.m in Sources */,
 				C6B343F61F20A186005FE308 /* UIImage+LHP.m in Sources */,
 				D291309824172AC200CAC2E4 /* CreateAddressVC.m in Sources */,
 				D2BE30BD21070C170059929D /* ModelLabel.m in Sources */,
