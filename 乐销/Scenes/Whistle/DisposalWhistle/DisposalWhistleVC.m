@@ -42,7 +42,7 @@
         _result.numberOfLines = 1;
         _result.lineSpace = 0;
         [_result fitTitle:@"处理结果" variable:0];
-
+        
     }
     return _result;
 }
@@ -53,7 +53,7 @@
         _bg.widthHeight = XY(W(345), W(200));
         [_bg     addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:10 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#EFF2F1"]];
         
-
+        
     }
     return _bg;
 }
@@ -82,14 +82,18 @@
     [self.view addSubview:self.textView];
     
     //刷新view
-
+    
     self.result.leftTop = XY(W(25),W(25)+NAVIGATIONBAR_HEIGHT);
-
+    
     self.bg.leftTop = XY(W(15),self.result.bottom+W(15));
     self.textView.widthHeight = XY(self.bg.width - W(30),self.bg.height - W(30));
     self.textView.leftTop = XY( self.bg.left + W(15),self.bg.top+W(15));
     self.btn.centerXTop = XY(SCREEN_WIDTH/2.0,self.bg.bottom + W(35));
-
+    
+    [self.view addTarget:self action:@selector(hideKeyboardClick)];
+}
+-(void)hideKeyboardClick{
+    [GlobalMethod endEditing];
 }
 
 #pragma mark 添加导航栏

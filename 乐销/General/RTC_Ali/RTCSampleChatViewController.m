@@ -154,10 +154,8 @@
     
     //停止本地预览
     [self.engine stopPreview];
-    
             
     [self.engine leaveChannel];
-
     
     [self.remoteUserView removeFromSuperview];
     

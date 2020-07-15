@@ -13,6 +13,7 @@
 #import "RequestApi+Neighbor.h"
 #import "SelectDepartmentVC.h"
 #import "SelectWhistleTypeVC.h"
+#import "BaseVC+KeyboardObserve.h"
 
 @interface CreateWhistleVC ()
 @property (nonatomic, strong) YellowButton *btn;
@@ -189,9 +190,11 @@
     [self.view addSubview:self.arrowRight];
 
     [self reconfigView];
-    
+    [self.view addTarget:self action:@selector(hideKeyboardClick)];
 }
-
+-(void)hideKeyboardClick{
+    [GlobalMethod endEditing];
+}
 - (void)reconfigView{
     //刷新view
     self.type.leftTop = XY(W(25),W(25)+NAVIGATIONBAR_HEIGHT);
@@ -232,10 +235,7 @@
 }
 
 - (void)requestCreate{
-    if (self.arySelected.count == 0) {
-        [GlobalMethod showAlert:@"请选择吹哨部门"];
-        return;
-    }
+    
     if (!isStr(self.textView.text)) {
         [GlobalMethod showAlert:@"请填写吹哨原因"];
         return;
