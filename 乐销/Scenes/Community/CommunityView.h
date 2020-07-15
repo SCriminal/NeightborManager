@@ -20,14 +20,6 @@
 @end
 
 
-@interface CommunityPoliceView : UIView
-//属性
-@property (strong, nonatomic) UIImageView *arrowLocal;
-@property (nonatomic, strong) void (^blockPoliceClick)(void);
-@property (nonatomic, strong) void (^blockNetClick)(void);
-
-
-@end
 
 
 @interface CommunityInfoCell : UITableViewCell

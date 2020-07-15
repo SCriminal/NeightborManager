@@ -8,6 +8,9 @@
 
 #import "RTCSampleRemoteUserManager.h"
 
+#if TARGET_IPHONE_SIMULATOR
+#else
+
 @interface RTCSampleRemoteUserManager ()
 
 /**
@@ -170,3 +173,5 @@
 }
 
 @end
+
+#endif

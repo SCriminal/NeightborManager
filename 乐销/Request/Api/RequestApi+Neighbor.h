@@ -661,6 +661,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure;
+
++(void)requestSafetyUnionMemberListWithPage:(double)page
+   count:(double)count
+estateId:(double)estateId
+delegate:(id <RequestDelegate>)delegate
+ success:(void (^)(NSDictionary * response, id mark))success
+                                    failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

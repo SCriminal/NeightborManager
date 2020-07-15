@@ -64,4 +64,5 @@
 #import "ModelCertificateDealDetail.h"
 #import "ModelCertificateContentDetail.h"
 #import "ModelRTC.h"
+#import "ModelSafetyUnion.h"
 

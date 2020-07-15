@@ -13,11 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RTCSampleChatViewController : UIViewController
 @property (nonatomic, strong) ModelRTC *model;
-@property (nonatomic, assign) BOOL isPusher;
 @end
 
-
-
+@class AliRenderView;
 @interface RTCRemoterUserView : UICollectionViewCell
 /**
  @brief 用户流视图

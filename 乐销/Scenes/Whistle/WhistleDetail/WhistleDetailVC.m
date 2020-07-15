@@ -205,7 +205,6 @@
         ModelRTC * model = [ModelRTC modelObjectWithDictionary:response];
         RTCSampleChatViewController * vc = [RTCSampleChatViewController new];
         vc.model = model;
-        vc.isPusher = true;
         [GB_Nav pushViewController:vc animated:true];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         

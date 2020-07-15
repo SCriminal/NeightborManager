@@ -7,13 +7,17 @@
 //
 
 #import "RTCSampleChatViewController.h"
+#import "NSDate+YYAdd.h"
+
+#define RTCREMOTE_CELL_SIZE CGSizeMake(W(110), W(160))
+
+
+#if !(TARGET_IPHONE_SIMULATOR)
 #import <AVFoundation/AVFoundation.h>
 #import "UIViewController+RTCSampleAlert.h"
 #import "RTCSampleRemoteUserManager.h"
 #import "RTCSampleRemoteUserModel.h"
-#import "NSDate+YYAdd.h"
 
-#define RTCREMOTE_CELL_SIZE CGSizeMake(W(110), W(160))
 @interface RTCSampleChatViewController ()<AliRtcEngineDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 /**
@@ -419,6 +423,11 @@
 }
 @end
 
+
+
+
+
+
 @implementation RTCRemoterUserView
 {
     AliRenderView *viewRemote;
@@ -442,3 +451,9 @@
     [self addSubview:viewRemote];
 }
 @end
+
+
+#else
+@implementation RTCSampleChatViewController
+@end
+#endif

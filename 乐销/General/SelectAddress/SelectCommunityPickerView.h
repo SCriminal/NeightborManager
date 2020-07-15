@@ -10,6 +10,7 @@
 
 @interface SelectCommunityPickerView : UIView<RequestDelegate>
 @property (nonatomic, strong) void (^blockSeleted)(ModelUserAuthority *);
+@property (nonatomic, strong) void (^blockCancelClick)(void);
 @property (nonatomic, strong) LoadingView * loadingView;//loading动画
 
 @end

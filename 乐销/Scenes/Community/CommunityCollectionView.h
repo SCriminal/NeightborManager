@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) UICollectionView *myCollectionView;
 @property (nonatomic, strong) NSMutableArray *aryModel;/// 标题数组
-@property (nonatomic, strong) UILongPressGestureRecognizer *longPress;
 @property (nonatomic, strong) void (^blockCommunitySelect)(ModelBtn *);//选中单元格
 @property (nonatomic, assign) CGFloat cellHeight;
 

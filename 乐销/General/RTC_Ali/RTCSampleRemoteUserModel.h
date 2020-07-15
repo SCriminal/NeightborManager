@@ -6,18 +6,21 @@
 //  Copyright © 2019年 tiantian. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
-#import <AliRTCSdk/AliRTCSdk.h>
+
+
+
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class AliRenderView;
 @interface RTCSampleRemoteUserModel : NSObject
 
 @property (nonatomic, strong) AliRenderView *view;
 
 @property (nonatomic, strong) NSString *uid;
 
-@property (nonatomic, assign) AliRtcVideoTrack track;
+@property (nonatomic, assign) NSUInteger track;
 
 @end
 

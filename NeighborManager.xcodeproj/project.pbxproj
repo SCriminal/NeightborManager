@@ -139,6 +139,8 @@
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
 		D25651B124BD3D7000CB7A4E /* WechatCall.caf in Resources */ = {isa = PBXBuildFile; fileRef = D25651AE24BD3CFE00CB7A4E /* WechatCall.caf */; };
+		D25651B424BECA7E00CB7A4E /* ModelSafetyUnion.m in Sources */ = {isa = PBXBuildFile; fileRef = D25651B224BECA7E00CB7A4E /* ModelSafetyUnion.m */; };
+		D25651B824BECBEF00CB7A4E /* SafetyUnionMemberListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D25651B724BECBEF00CB7A4E /* SafetyUnionMemberListVC.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */ = {isa = PBXBuildFile; fileRef = D25EB6BB20EA230C0082AD73 /* EditVC_Title.m */; };
 		D25F55D92178801000FD4898 /* 闪屏.m4v in Resources */ = {isa = PBXBuildFile; fileRef = D25F55D82178801000FD4898 /* 闪屏.m4v */; };
@@ -665,6 +667,10 @@
 		D2545A5B1E72AD2500DEC7CE /* UIControl+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Category.h"; sourceTree = "<group>"; };
 		D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Category.m"; sourceTree = "<group>"; };
 		D25651AE24BD3CFE00CB7A4E /* WechatCall.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WechatCall.caf; sourceTree = "<group>"; };
+		D25651B224BECA7E00CB7A4E /* ModelSafetyUnion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelSafetyUnion.m; sourceTree = "<group>"; };
+		D25651B324BECA7E00CB7A4E /* ModelSafetyUnion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelSafetyUnion.h; sourceTree = "<group>"; };
+		D25651B624BECBEF00CB7A4E /* SafetyUnionMemberListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafetyUnionMemberListVC.h; sourceTree = "<group>"; };
+		D25651B724BECBEF00CB7A4E /* SafetyUnionMemberListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafetyUnionMemberListVC.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
 		D25EB6BA20EA230C0082AD73 /* EditVC_Title.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditVC_Title.h; sourceTree = "<group>"; };
@@ -1709,6 +1715,15 @@
 			path = BaseTableView;
 			sourceTree = "<group>";
 		};
+		D25651B524BECBD800CB7A4E /* SafetyUnion */ = {
+			isa = PBXGroup;
+			children = (
+				D25651B624BECBEF00CB7A4E /* SafetyUnionMemberListVC.h */,
+				D25651B724BECBEF00CB7A4E /* SafetyUnionMemberListVC.m */,
+			);
+			path = SafetyUnion;
+			sourceTree = "<group>";
+		};
 		D25EB6B920EA22FB0082AD73 /* EditVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2643,6 +2658,8 @@
 		D2CC965C241BA9EB00818D87 /* Neightbor */ = {
 			isa = PBXGroup;
 			children = (
+				D25651B324BECA7E00CB7A4E /* ModelSafetyUnion.h */,
+				D25651B224BECA7E00CB7A4E /* ModelSafetyUnion.m */,
 				D226E60C24B9686C00DFB5FB /* ModelRTC.h */,
 				D226E60D24B9686C00DFB5FB /* ModelRTC.m */,
 				D2AE6E9E24B8358600C582AD /* ModelCertificateContentDetail.h */,
@@ -3008,6 +3025,7 @@
 		DAC5CF551DFFC3C20032E76F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D25651B524BECBD800CB7A4E /* SafetyUnion */,
 				D2AE6E7724B8331800C582AD /* CertificateDeal */,
 				D2CDE5F12445BE9E007EA369 /* Meeting */,
 				D207A9E724404F72000AC836 /* Activity */,
@@ -3344,6 +3362,7 @@
 				D2AE6E9B24B8338900C582AD /* ModelCertificateDealDetail.m in Sources */,
 				D207A9FA24404F72000AC836 /* ActivityListCell.m in Sources */,
 				D293A39A1E011987005B772A /* LoadingView.m in Sources */,
+				D25651B824BECBEF00CB7A4E /* SafetyUnionMemberListVC.m in Sources */,
 				C6A031171F0CC7AA00C90032 /* ReturnAttributeStr.m in Sources */,
 				D2478141218C35A1005747FC /* DVFoodPieModel.m in Sources */,
 				D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */,
@@ -3355,6 +3374,7 @@
 				D2A15F402419DA3600A90D57 /* CommunityCollectionView.m in Sources */,
 				D242502D24132E2F0055AC42 /* PerfectSelectCell.m in Sources */,
 				D24992D11E05140C001A32DF /* BaseNavController.m in Sources */,
+				D25651B424BECA7E00CB7A4E /* ModelSafetyUnion.m in Sources */,
 				D2AE6E9124B8331900C582AD /* CertificateDealDetailView.m in Sources */,
 				D242503324132E2F0055AC42 /* LoginViewController.m in Sources */,
 				D226E60E24B9686C00DFB5FB /* ModelRTC.m in Sources */,
@@ -3747,6 +3767,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RMT7KDQ67T;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*]" = "\"$(SRCROOT)/Pods/AliRTCSdk\"";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/乐销/SDKFile",

@@ -13,29 +13,11 @@
 @end
 
 @implementation CommunityCollectionView
-@synthesize aryModel = _aryModel;
 
 #pragma mark 懒加载
--(UILongPressGestureRecognizer *)longPress{
-    if (!_longPress) {
-        _longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(lonePressMoving:)];
-    }
-    return _longPress;
-}
 
-- (void)setAryModel:(NSMutableArray *)aryModel{
-    NSInteger num = 4;
-    if (aryModel.count > num) {
-        num = aryModel.count%4 == 0 ? aryModel.count : aryModel.count/4 *4 + 4;
-    }
-    for ( NSInteger i = aryModel.count; i< num; i++) {
-        [aryModel addObject:[ModelBtn new]];
-    }
-    _aryModel = aryModel;
-}
 - (NSMutableArray *)aryModel{
     if (!_aryModel) {
-        //        _aryModel = [GlobalMethod readAry:[NSString stringWithFormat:@"%@%@",LOCAL_MODULE,[self fetchParentID]] modelName:@"ModelCropListItem"];
         _aryModel = [NSMutableArray array];
     }
     return _aryModel;
@@ -74,88 +56,31 @@
         [_myCollectionView registerClass:[CommunityCollectionCell class] forCellWithReuseIdentifier:@"CommunityCollectionCell"];
         [_myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"foot"];
         [_myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head"];
-        
-        [_myCollectionView addGestureRecognizer:self.longPress];
-        
+            
     }
     return _myCollectionView;
 }
-
-#pragma mark----- 长按手势
-- (void)lonePressMoving:(UILongPressGestureRecognizer *)longPress
-{
-    
-    switch (longPress.state) {
-        case UIGestureRecognizerStateBegan: {
-            {
-                NSIndexPath *selectIndexPath = [self.myCollectionView indexPathForItemAtPoint:[longPress locationInView:self.myCollectionView]];
-                [self.myCollectionView beginInteractiveMovementForItemAtIndexPath:selectIndexPath];
-            }
-            break;
-        }
-        case UIGestureRecognizerStateChanged: {
-            [self.myCollectionView updateInteractiveMovementTargetPosition:[longPress locationInView:longPress.view]];
-            break;
-        }
-        case UIGestureRecognizerStateEnded: {
-            [self.myCollectionView endInteractiveMovement];
-            break;
-        }
-        default: [self.myCollectionView cancelInteractiveMovement];
-            break;
-    }
-}
-- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(nonnull NSIndexPath *)sourceIndexPath toIndexPath:(nonnull NSIndexPath *)destinationIndexPath
-{
-    //取出源item数据
-    id objc = [self.aryModel objectAtIndex:sourceIndexPath.item];
-    //从资源数组中移除该数据
-    [self.aryModel removeObject:objc];
-    //将数据插入到资源数组中的目标位置上
-    [self.aryModel insertObject:objc atIndex:destinationIndexPath.item];
-    //重新排序
-    [self resortAry];
-    [self performSelector:@selector(reload) withObject:nil afterDelay:0.5];
-}
-- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
-    ModelBtn * model =  self.aryModel[indexPath.row];
-    return  false;
-    
-}
-
-//resetAry
-- (void)resortAry{
-    NSMutableArray * aryMu = [NSMutableArray new];
-    for (ModelBtn * model in self.aryModel) {
-        if (model.tag != 0) {
-            [aryMu addObject:model];
-        }
-    }
-    self.aryModel = aryMu;
-}
-//刷新
-- (void)reload{
-    [self.myCollectionView reloadData];
-}
-
 
 #pragma mark - UICollectionView数据源方法
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return self.aryModel.count;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.aryModel.count;
+    ModelBaseData * model = self.aryModel[section];
+    return model.aryDatas.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
     // 1.获得cell
+    
     CommunityCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CommunityCollectionCell" forIndexPath:indexPath];
-    ModelBtn * model = self.aryModel[indexPath.row];
+    ModelBaseData * modelSection = self.aryModel[indexPath.section];
+    ModelBtn * model = modelSection.aryDatas[indexPath.row];
     [cell resetCellWithModel:model];
     return cell;
 }
@@ -163,7 +88,8 @@
 #pragma mark - 代理方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ModelBtn * model = self.aryModel[indexPath.row];
+    ModelBaseData * modelSection = self.aryModel[indexPath.section];
+    ModelBtn * model = modelSection.aryDatas[indexPath.row];
     if (model.blockClick ) {
         if (model.tag) {
             model.blockClick();
@@ -184,7 +110,7 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(SCREEN_WIDTH, CGFLOAT_MIN);
+    return CGSizeMake(SCREEN_WIDTH, W(47));
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
@@ -195,6 +121,17 @@
 {
     if (kind == UICollectionElementKindSectionHeader) {
         UICollectionReusableView * view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head" forIndexPath:indexPath];
+        [view removeAllSubViews];
+        ModelBaseData * modelSection = self.aryModel[indexPath.section];
+        [view addSubview:^(){
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(17) weight:UIFontWeightMedium];
+            l.textColor = COLOR_333;
+            l.backgroundColor = [UIColor clearColor];
+            [l fitTitle:modelSection.string variable:SCREEN_WIDTH - W(30)];
+            l.leftCenterY = XY(W(20), W(47)/2.0);
+            return l;
+        }()];
         return view;
     }
     UICollectionReusableView * view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"foot" forIndexPath:indexPath];
@@ -214,9 +151,13 @@
 #pragma mark reset view
 - (void)resetWithAry:(NSMutableArray *)ary{
     self.aryModel = ary;
-    int numLine = (int)(ary.count/4+(ary.count%4==0?0:1));
+    int numLine = 0;
+    for (ModelBaseData * item in self.aryModel) {
+        numLine += (int)(item.aryDatas.count/4+(item.aryDatas.count%4==0?0:1));
+    }
+     
     self.width = SCREEN_WIDTH;
-    self.height = (self.cellHeight+1)*numLine;
+    self.height = (self.cellHeight+1)*numLine + W(49)*ary.count;
     
     self.myCollectionView.height = self.height;
     self.myCollectionView.width = SCREEN_WIDTH ;

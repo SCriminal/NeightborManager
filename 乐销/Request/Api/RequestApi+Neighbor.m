@@ -1248,4 +1248,22 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
         };
         [self getUrl:@"/resident/rtc/1_0_26/token" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+
++(void)requestSafetyUnionMemberListWithPage:(double)page
+                            count:(double)count
+                                   estateId:(double)estateId
+                         delegate:(id <RequestDelegate>)delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"page":NSNumber.dou(page),
+                          @"count":NSNumber.dou(count),
+                          @"scope":@7,
+                          @"estateId":RequestLongKey(estateId),
+                          @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+                          @"types":@"3"
+    };
+    [self getUrl:@"/admin/area/member/list/1_0_26/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end

@@ -29,12 +29,28 @@
 @property (nonatomic, strong) CommunityCollectionView *collection;
 @property (nonatomic, strong) UIView *tableHeaderView;
 @property (nonatomic, strong) NSArray *aryADs;
+@property (nonatomic, strong) UIView *signInView;
+
 
 @end
 
 @implementation CommunityVC
 
 #pragma mark lazy init
+- (UIView *)signInView{
+    if (!_signInView) {
+        _signInView = [UIView new];
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.widthHeight = XY(W(345), W(40));
+        btn.centerX = SCREEN_WIDTH/2.0;
+        [btn setBackgroundImage:[UIImage imageNamed:@"community_signin"] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnSignInClick) forControlEvents:UIControlEventTouchUpInside];
+        [_signInView addSubview:btn];
+        _signInView.widthHeight = XY(SCREEN_WIDTH, btn.height);
+    }
+    return _signInView;
+}
 - (AutoScView *)autoSCView{
     if (!_autoSCView) {
         _autoSCView = [[AutoScView alloc]initWithFrame:CGRectMake(W(15), NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH - W(30), W(125)) image:@[@"temp_community1"]];
@@ -62,141 +78,152 @@
 - (CommunityCollectionView *)collection{
     if (!_collection) {
         _collection = [CommunityCollectionView new];
-        [_collection resetWithAry:@[^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"小红哨";
-            model.tag = 1;
-            model.imageName = @"tmp_module_0";
-            model.blockClick = ^{
-                    WhistleTabVC * whislterVC = [WhistleTabVC new];
-                    [GB_Nav pushViewController:whislterVC animated:true];
-            };
+        ModelBaseData * model0 = ^(){
+            ModelBaseData * model = [ModelBaseData new];
+            model.string = @"社区";
+            model.aryDatas = @[^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"小红哨";
+                model.tag = 1;
+                model.imageName = @"tmp_module_0";
+                model.blockClick = ^{
+                        WhistleTabVC * whislterVC = [WhistleTabVC new];
+                        [GB_Nav pushViewController:whislterVC animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"社区哨";
+                model.tag = 1;
+                model.imageName = @"tmp_module_10";
+                model.blockClick = ^{
+                    [GB_Nav pushVCName:@"SendWhistleTabVC" animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"工作通知";
+                model.tag = 1;
+                model.imageName = @"tmp_module_11";
+                model.blockClick = ^{
+                    [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"平安联盟";
+                model.tag = 1;
+                model.imageName = @"tmp_module_13";
+                model.blockClick = ^{
+                    [GB_Nav pushVCName:@"SafetyUnionMemberListVC" animated:true];
+                };
+                return model;
+            }()].mutableCopy;
             return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"纠纷调解";
-            model.tag = 1;
-            model.imageName = @"tmp_module_1";
-            model.blockClick = ^{
-                CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
-                vc.serviceType = ENUM_COMMUNITY_SERVICE_ARGUE;
-                [GB_Nav pushViewController:vc animated:true];
-            };
+        }();
+        ModelBaseData * model1 = ^(){
+            ModelBaseData * model = [ModelBaseData new];
+            model.string = @"办事";
+            model.aryDatas = @[^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"社区办事";
+                model.tag = 1;
+                model.imageName = @"tmp_module_12";
+                model.blockClick = ^{
+                    [GB_Nav pushVCName:@"CategoryCertificationDealListVC" animated:true];
+                };
+                return model;
+            }()         ,^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"议事厅";
+                model.tag = 1;
+                model.imageName = @"tmp_module_7";
+                model.blockClick = ^{
+                     [GB_Nav pushVCName:@"MeetingListVC" animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"爱心救助";
+                model.tag = 1;
+                model.imageName = @"tmp_module_5";
+                model.blockClick = ^{
+                    [GB_Nav pushVCName:@"HelpInfoListVC" animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"纠纷调解";
+                model.tag = 1;
+                model.imageName = @"tmp_module_1";
+                model.blockClick = ^{
+                    CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
+                    vc.serviceType = ENUM_COMMUNITY_SERVICE_ARGUE;
+                    [GB_Nav pushViewController:vc animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"社区活动";
+                model.tag = 1;
+                model.imageName = @"tmp_module_6";
+                model.blockClick = ^{
+                    [GB_Nav pushVCName:@"ActivityListVC" animated:true];
+                     
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"社团管理";
+                model.tag = 1;
+                model.imageName = @"tmp_module_8";
+                model.blockClick = ^{
+                     [GB_Nav pushVCName:@"AssociationListVC" animated:true];
+                };
+                return model;
+            }(),].mutableCopy;
             return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"安保";
-            model.tag = 1;
-            model.imageName = @"tmp_module_2";
-            model.blockClick = ^{
-                 CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
-                                vc.serviceType = ENUM_COMMUNITY_SERVICE_SECURITY;
-                                [GB_Nav pushViewController:vc animated:true];
-            };
+        }();
+        ModelBaseData * model2 = ^(){
+            ModelBaseData * model = [ModelBaseData new];
+            model.string = @"物业";
+            model.aryDatas = @[^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"小区安保";
+                model.tag = 1;
+                model.imageName = @"tmp_module_2";
+                model.blockClick = ^{
+                     CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
+                                    vc.serviceType = ENUM_COMMUNITY_SERVICE_SECURITY;
+                                    [GB_Nav pushViewController:vc animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"小区保洁";
+                model.tag = 1;
+                model.imageName = @"tmp_module_3";
+                model.blockClick = ^{
+                     CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
+                                    vc.serviceType = ENUM_COMMUNITY_SERVICE_CLEAN;
+                                    [GB_Nav pushViewController:vc animated:true];
+                };
+                return model;
+            }(),^(){
+                ModelBtn * model = [ModelBtn new];
+                model.title = @"小区维修";
+                model.tag = 1;
+                model.imageName = @"tmp_module_4";
+                model.blockClick = ^{
+                     CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
+                                    vc.serviceType = ENUM_COMMUNITY_SERVICE_MAINTAIN;
+                                    [GB_Nav pushViewController:vc animated:true];
+                };
+                return model;
+            }()].mutableCopy;
             return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"保洁";
-            model.tag = 1;
-            model.imageName = @"tmp_module_3";
-            model.blockClick = ^{
-                 CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
-                                vc.serviceType = ENUM_COMMUNITY_SERVICE_CLEAN;
-                                [GB_Nav pushViewController:vc animated:true];
-            };
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"维修";
-            model.tag = 1;
-            model.imageName = @"tmp_module_4";
-            model.blockClick = ^{
-                 CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
-                                vc.serviceType = ENUM_COMMUNITY_SERVICE_MAINTAIN;
-                                [GB_Nav pushViewController:vc animated:true];
-            };
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"爱心救助";
-            model.tag = 1;
-            model.imageName = @"tmp_module_5";
-            model.blockClick = ^{
-                [GB_Nav pushVCName:@"HelpInfoListVC" animated:true];
-            };
-            return model;
-        }(),
-
-                                     ^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"社区活动";
-            model.tag = 1;
-            model.imageName = @"tmp_module_6";
-            model.blockClick = ^{
-                [GB_Nav pushVCName:@"ActivityListVC" animated:true];
-                 
-            };
-            return model;
-        }(),
-
-                                     ^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"议事厅";
-            model.tag = 1;
-            model.imageName = @"tmp_module_7";
-            model.blockClick = ^{
-                 [GB_Nav pushVCName:@"MeetingListVC" animated:true];
-            };
-            return model;
-        }(),
-
-                                     ^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"社团";
-            model.tag = 1;
-            model.imageName = @"tmp_module_8";
-            model.blockClick = ^{
-                 [GB_Nav pushVCName:@"AssociationListVC" animated:true];
-            };
-            return model;
-        }(),
-                                     ^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"签到";
-            model.tag = 1;
-            model.imageName = @"tmp_module_9";
-            model.blockClick = ^{
-                [GB_Nav pushVCName:@"SignInVC" animated:true];
-            };
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"社区哨";
-            model.tag = 1;
-            model.imageName = @"tmp_module_10";
-            model.blockClick = ^{
-                [GB_Nav pushVCName:@"SendWhistleTabVC" animated:true];
-            };
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"工作通知";
-            model.tag = 1;
-            model.imageName = @"tmp_module_11";
-            model.blockClick = ^{
-                [GB_Nav pushVCName:@"WorkNoticeListVC" animated:true];
-            };
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"社区办事";
-            model.tag = 1;
-            model.imageName = @"tmp_module_12";
-            model.blockClick = ^{
-                [GB_Nav pushVCName:@"CategoryCertificationDealListVC" animated:true];
-            };
-            return model;
-        }()].mutableCopy];
+        }();
+        [_collection resetWithAry:@[model0,model1,model2].mutableCopy];
     }
     return _collection;
 }
@@ -208,6 +235,7 @@
     }
     return _tableHeaderView;
 }
+
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -228,15 +256,16 @@
     //auto sc
     [self.tableHeaderView addSubview:self.autoSCView];
 
-    self.collection.top = self.autoSCView.bottom+W(15);
+    self.signInView.top = self.autoSCView.bottom+W(15);
+    [self.tableHeaderView addSubview:self.signInView];
+
+    self.collection.top = self.signInView.bottom+W(15);
     [self.tableHeaderView addSubview:self.collection];
-    
-    
-    
     
     self.tableHeaderView.height = self.collection.bottom+W(13.5);
     self.tableView.tableHeaderView = self.tableHeaderView;
 }
+
 #pragma mark 添加导航栏
 - (void)addNav{
 
@@ -262,8 +291,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
 }
-#pragma mark request
 
+#pragma mark request
 - (void)requestADList{
     [RequestApi requestADListWithGroupalias:@"admin_community_1" scopeId:1 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelAD"];
@@ -273,6 +302,11 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+}
+
+#pragma mark click
+- (void)btnSignInClick{
+    [GB_Nav pushVCName:@"SignInVC" animated:true];
 }
 
 @end
