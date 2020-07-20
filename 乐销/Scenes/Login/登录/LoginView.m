@@ -88,6 +88,10 @@
         [_btn resetViewWithWidth:W(295) :W(45) :@"登录"];
         WEAKSELF
         _btn.blockClick = ^{
+            if (!weakSelf.authorityView.iconAlert.highlighted) {
+                [GlobalMethod showAlert:@"请先阅读并同意用户协议"];
+                return;
+            }
             if (weakSelf.blockLoginClick) {
                 weakSelf.blockLoginClick();
             }
@@ -102,6 +106,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        [self addTarget:self action:@selector(hideKeyboard)];
         self.width = SCREEN_WIDTH;
         [self addSubView];
     }
@@ -113,7 +118,7 @@
     [self addSubview:self.secondBG];
     [self addSubview:self.tfPhone];
     [self addSubview:self.tfSecond];
-//    [self addSubview:self.authorityView];
+    [self addSubview:self.authorityView];
     [self addSubview:self.btn];
     
     //初始化页面
@@ -125,6 +130,9 @@
 }
 - (void)secondClick{
     [self.tfSecond becomeFirstResponder];
+}
+- (void)hideKeyboard{
+    [GlobalMethod hideKeyboard];
 }
 - ( BOOL)textFieldShouldReturn:(UITextField *)textField{
     [GlobalMethod endEditing];
@@ -146,7 +154,7 @@
     
     self.authorityView.leftTop = XY(W(40), self.secondBG.bottom + W(25));
 
-    self.btn.centerXTop = XY(SCREEN_WIDTH/2.0,self.secondBG.bottom+W(45));
+    self.btn.centerXTop = XY(SCREEN_WIDTH/2.0,self.authorityView.bottom+W(45));
     
     //设置总高度
     self.height = self.btn.bottom;
@@ -189,9 +197,11 @@
         _tfPhone.delegate = self;
         _tfPhone.numericFormatter = [AKNumericFormatter formatterWithMask:@"*** **** ****" placeholderCharacter:'*'];
         _tfPhone.keyboardType = UIKeyboardTypeNumberPad;
+        [_tfPhone addTarget:self action:@selector(textFileAction:) forControlEvents:(UIControlEventEditingChanged)];
         NSString * strValue = [GlobalMethod readStrFromUser:LOCAL_PHONE exchange:false];
         if (isStr(strValue)) {
             _tfPhone.text = [self exchangePhone:strValue];
+            self.time.textColor = COLOR_BLUE;
         }
     }
     return _tfPhone;
@@ -231,6 +241,10 @@
         [_btn resetViewWithWidth:W(295) :W(45) :@"登录"];
         WEAKSELF
         _btn.blockClick = ^{
+            if (!weakSelf.authorityView.iconAlert.highlighted) {
+                [GlobalMethod showAlert:@"请先阅读并同意用户协议"];
+                return;
+            }
             if (weakSelf.blockLoginClick) {
                 weakSelf.blockLoginClick();
             }
@@ -261,6 +275,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        [self addTarget:self action:@selector(hideKeyboard)];
         self.width = SCREEN_WIDTH;
         [self addSubView];
     }
@@ -315,27 +330,37 @@
     [GlobalMethod endEditing];
     return true;
 }
+#pragma mark textfild change
+- (void)textFileAction:(UITextField *)textField {
+    if (self.timer) {
+        return;
+    }
+    NSString * strPhone = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    self.time.textColor = strPhone.length>=11?COLOR_BLUE:[UIColor colorWithHexString:@"#D9D9D9"];
+}
 #pragma mark 定时器相关
 - (void)timerStart{
     //开启定时器
     if (_timer == nil) {
         _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
         self.numTime = 60;
+        self.time.textColor = [UIColor colorWithHexString:@"#D9D9D9"];
         [self timerRun];
     }
 }
 
 - (void)timerRun{
+    _numTime --;
     //每秒的动作
     if (_numTime <=0) {
         //刷新按钮 开始
         [self timerStop];
         [self.time fitTitle:@"重新发送" variable:0];
+        self.time.textColor = COLOR_BLUE;
         self.controlResendCode.userInteractionEnabled = true;
         self.time.right = self.secondBG.right - W(15);
         return;
     }
-    _numTime --;
     [self.time fitTitle:[NSString stringWithFormat:@"%.lf秒以后重新获取",_numTime] variable:0];
     self.time.right = self.secondBG.right - W(15);
     self.controlResendCode.userInteractionEnabled = false;
@@ -354,6 +379,9 @@
     if (self.blockSendCodeClick) {
         self.blockSendCodeClick();
     }
+}
+- (void)hideKeyboard{
+    [GlobalMethod hideKeyboard];
 }
 @end
 
@@ -405,12 +433,26 @@
         _tfPhone.delegate = self;
         _tfPhone.numericFormatter = [AKNumericFormatter formatterWithMask:@"*** **** ****" placeholderCharacter:'*'];
         _tfPhone.keyboardType = UIKeyboardTypeNumberPad;
-
-
-
+        [_tfPhone addTarget:self action:@selector(textFileAction:) forControlEvents:(UIControlEventEditingChanged)];
+        NSString * strValue = [GlobalMethod readStrFromUser:LOCAL_PHONE exchange:false];
+        if (isStr(strValue)) {
+            _tfPhone.text = [self exchangePhone:strValue];
+            self.time.textColor = COLOR_BLUE;
+        }
     }
     return _tfPhone;
 }
+- (NSString *)exchangePhone:(NSString*)str{
+    str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSMutableString * strReturn = [NSMutableString stringWithString:str];
+    if (strReturn.length >= 11) {
+        [strReturn insertString:@" " atIndex:7];
+        [strReturn insertString:@" " atIndex:3];
+        return strReturn;
+    }
+    return str;
+}
+
 - (UITextField *)tfSecond{
     if (_tfSecond == nil) {
         _tfSecond = [UITextField new];
@@ -433,6 +475,7 @@
         _tfThird.borderStyle = UITextBorderStyleNone;
         _tfThird.backgroundColor = [UIColor clearColor];
         _tfThird.placeholder  = @"请输入新密码";
+        _tfThird.secureTextEntry = true;
         _tfThird.delegate = self;
     }
     return _tfThird;
@@ -474,6 +517,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        [self addTarget:self action:@selector(hideKeyboard)];
         self.width = SCREEN_WIDTH;
         [self addSubView];
     }
@@ -536,27 +580,37 @@
     [GlobalMethod endEditing];
     return true;
 }
+- (void)textFileAction:(UITextField *)textField {
+    if (self.timer) {
+        return;
+    }
+    NSString * strPhone = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    self.time.textColor = strPhone.length>=11?COLOR_BLUE:[UIColor colorWithHexString:@"#D9D9D9"];
+}
+
 #pragma mark 定时器相关
 - (void)timerStart{
     //开启定时器
     if (_timer == nil) {
         _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
         self.numTime = 60;
+        self.time.textColor = [UIColor colorWithHexString:@"#D9D9D9"];
         [self timerRun];
     }
 }
 
 - (void)timerRun{
+    _numTime --;
     //每秒的动作
     if (_numTime <=0) {
         //刷新按钮 开始
         [self timerStop];
         [self.time fitTitle:@"重新发送" variable:0];
         self.controlResendCode.userInteractionEnabled = true;
+        self.time.textColor = COLOR_BLUE;
         self.time.right = self.secondBG.right - W(15);
         return;
     }
-    _numTime --;
     [self.time fitTitle:[NSString stringWithFormat:@"%.lf秒以后重新获取",_numTime] variable:0];
     self.time.right = self.secondBG.right - W(15);
     self.controlResendCode.userInteractionEnabled = false;
@@ -576,9 +630,23 @@
         self.blockSendCodeClick();
     }
 }
+- (void)hideKeyboard{
+    [GlobalMethod hideKeyboard];
+}
 @end
 
 @implementation LoginAuthorityView
+- (UIImageView *)iconAlert{
+    if (_iconAlert == nil) {
+        _iconAlert = [UIImageView new];
+        _iconAlert.image = [UIImage imageNamed:@"signin_select_default"];
+        _iconAlert.highlightedImage = [UIImage imageNamed:@"select_highlighted"];
+        _iconAlert.widthHeight = XY(W(15),W(15));
+        _iconAlert.highlighted = true;
+        [_iconAlert addTarget:self action:@selector(click)];
+    }
+    return _iconAlert;
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -592,12 +660,16 @@
 }
 //添加subview
 - (void)addSubView{
-    CGFloat left = 0;
+    [self addSubview:self.iconAlert];
+    self.iconAlert.left = 0;
+
+    CGFloat left = self.iconAlert.right + W(7);
+    
     {
         UILabel * label = [UILabel new];
         label.fontNum = F(12);
         label.textColor = COLOR_999;
-        [label fitTitle:@"已阅并同意" variable:0];
+        [label fitTitle:@"已阅读并同意" variable:0];
         label.left = left;
         left = label.right;
         [self addSubview:label];
@@ -605,7 +677,7 @@
     {
         UILabel * label = [UILabel new];
         label.fontNum = F(12);
-        label.textColor = COLOR_ORANGE;
+        label.textColor = COLOR_BLUE;
         [label fitTitle:@"《用户协议》" variable:0];
         label.left = left;
         left = label.right;
@@ -625,7 +697,7 @@
     {
         UILabel * label = [UILabel new];
         label.fontNum = F(12);
-        label.textColor = COLOR_ORANGE;
+        label.textColor = COLOR_BLUE;
         [label fitTitle:@"《隐私政策》" variable:0];
         label.left = left;
         left = label.right;
@@ -640,14 +712,16 @@
 - (void)userContractClick{
     WebVC * vc = [WebVC new];
     vc.navTitle = @"用户协议";
-    vc.url = @"https://www.zhongcheyun.cn/user/agreement";
+    vc.url = @"https://wsq.hongjiafu.cn/agreement?id=8";
     [GB_Nav pushViewController:vc animated:true];
 }
 - (void)privacyContractClick{
     WebVC * vc = [WebVC new];
     vc.navTitle = @"隐私政策";
-    vc.url = @"https://www.zhongcheyun.cn/privacy";
+    vc.url = @"https://wsq.hongjiafu.cn/agreement?id=9";
     [GB_Nav pushViewController:vc animated:true];
 }
-
+-(void)click{
+    self.iconAlert.highlighted = !self.iconAlert.highlighted;
+}
 @end

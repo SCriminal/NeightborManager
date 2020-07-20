@@ -139,11 +139,43 @@
 
 - (void)reconfig{
     for (UIView * subView in self.subviews) {
-        subView.hidden = true;
+        subView.hidden = false;
     }
-    self.btnForget.hidden= false;
-    self.btnForget.centerX = SCREEN_WIDTH/2.0;
+    self.btnWechat.hidden= true;
+    switch (self.type) {
+        case ENUM_LOGIN_BTN_PWD:
+            {
+                self.btnCode.centerX = SCREEN_WIDTH/2.0;
+                self.btnCode.right = SCREEN_WIDTH/2.0-W(47)/2.0;
 
+                self.btnWechat.right = self.btnCode.left - W(47);
+                self.btnForget.left = self.btnCode.right + W(47);
+                self.btnPwd.hidden = true;
+            }
+            break;
+        case ENUM_LOGIN_BTN_CODE:
+        {
+            self.btnPwd.centerX = SCREEN_WIDTH/2.0;
+            self.btnPwd.right = SCREEN_WIDTH/2.0-W(47)/2.0;
+
+            self.btnWechat.right = self.btnPwd.left - W(47);
+            self.btnForget.left = self.btnPwd.right + W(47);
+            self.btnCode.hidden = true;
+        }
+            break;
+        case ENUM_LOGIN_BTN_FORGET:
+        {
+            self.btnPwd.centerX = SCREEN_WIDTH/2.0;
+            self.btnPwd.right = SCREEN_WIDTH/2.0-W(47)/2.0;
+
+            self.btnWechat.right = self.btnPwd.left - W(47);
+            self.btnCode.left = self.btnPwd.right + W(47);
+            self.btnForget.hidden = true;
+        }
+            break;
+        default:
+            break;
+    }
     self.pwd.hidden = self.btnPwd.hidden;
     self.code.hidden = self.btnCode.hidden;
     self.forget.hidden = self.btnForget.hidden;

@@ -58,4 +58,6 @@
 @end
 
 @interface LoginAuthorityView : UIView
+@property (strong, nonatomic) UIImageView *iconAlert;
+
 @end
