@@ -359,8 +359,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Whistle/WhistleDetail/WhistleDetailView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "754"
-            endingLineNumber = "754"
+            startingLineNumber = "756"
+            endingLineNumber = "756"
             landmarkName = "-resetViewWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -375,8 +375,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Whistle/WhistleDetail/WhistleDetailView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "756"
-            endingLineNumber = "756"
+            startingLineNumber = "758"
+            endingLineNumber = "758"
             landmarkName = "-resetViewWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -391,8 +391,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Whistle/WhistleDetail/WhistleDetailView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "774"
-            endingLineNumber = "774"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
             landmarkName = "-resetViewWithModel:"
             landmarkType = "7">
          </BreakpointContent>

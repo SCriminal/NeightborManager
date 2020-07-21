@@ -30,6 +30,7 @@
 - (WhistleDetailTopView *)topView{
     if (!_topView) {
         _topView = [WhistleDetailTopView new];
+        _topView.isManagementWhistle = true;
     }
     return _topView;
 }

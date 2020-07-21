@@ -28,7 +28,7 @@
 @property (strong, nonatomic) UILabel *type;
 @property (strong, nonatomic) UIButton *typeSelect;
 @property (strong, nonatomic) UIImageView *rtc;
-
+@property (nonatomic, assign) BOOL isManagementWhistle;
 @property (nonatomic, strong) ModelWhistleList *model;
 @property (nonatomic, strong) void (^blockChangeTypeClick)(void);
 @property (nonatomic, strong) void (^blockRTCClick)(void);

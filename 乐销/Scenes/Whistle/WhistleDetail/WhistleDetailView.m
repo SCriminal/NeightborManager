@@ -226,19 +226,21 @@
     [self.IDNumber fitTitle:UnPackStr(model.serialNumber) variable:0];
     self.IDNumber.leftTop = XY(W(122),self.IDTitle.top);
 
-    
-//    self.nameTtitle.hidden = !isStr(model.realName);
+    self.nameTtitle.hidden = false;
+    if (self.isManagementWhistle) {
+        self.nameTtitle.hidden = !isStr(model.realName);
+    }
     self.nameTtitle.rightTop = XY(W(92),self.IDTitle.bottom+W(20));
     [self.name fitTitle:UnPackStr(model.realName) variable:0];
     self.name.leftTop = XY(W(122),self.nameTtitle.top);
     
-    self.rtc.hidden = self.nameTtitle.hidden;
-    if (!self.nameTtitle.hidden) {
+    self.rtc.hidden = self.nameTtitle.hidden || self.isManagementWhistle;
+    if (!self.rtc.hidden) {
         self.rtc.leftCenterY = XY(self.name.right + W(7), self.name.centerY);
         [self addControlFrame:CGRectMake(0, self.nameTtitle.top - W(10), SCREEN_WIDTH, self.nameTtitle.height + W(20)) belowView:self.rtc target:self action:@selector(rtcClick)];
     }
     
-    self.timeTitle.rightTop = XY(W(92),isStr(model.realName)?self.nameTtitle.bottom+W(20):self.IDTitle.bottom+W(20));
+    self.timeTitle.rightTop = XY(W(92),self.nameTtitle.hidden?self.IDTitle.bottom+W(20):self.nameTtitle.bottom+W(20));
     [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.whistleTime andFormatter:TIME_HOUR_SHOW] variable:0];
     self.time.leftTop = XY(W(122),self.timeTitle.top);
 
