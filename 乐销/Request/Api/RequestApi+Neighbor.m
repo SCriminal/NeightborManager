@@ -22,8 +22,10 @@
     NSDictionary *dic = @{@"app":@"2",
                           @"cellphone":RequestStrKey(cellPhone),
                           @"smsType":NSNumber.dou(smsType),
-                          @"scope":@1};
-    [self postUrl:@"/resident/smscode" delegate:delegate parameters:dic success:success failure:failure];
+                          @"scope":@1,
+                          @"userType":@2
+    };
+    [self postUrl:@"/resident/smscode/1_0_30/3" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
@@ -37,6 +39,7 @@
     NSDictionary *dic = @{@"app":@"2",
                           @"scene":@"2",
                           @"terminalType":@1,
+                          @"userType":@2,
                           @"terminalNumber":RequestStrKey([CloudPushSDK getDeviceId]),
                           @"cellphone":RequestStrKey(cellPhone),
                           @"smsCode":RequestStrKey(smsCode),
@@ -64,11 +67,12 @@
     NSDictionary *dic = @{@"app":@"2",
                           @"scene":@"2",
                           @"terminalType":@1,
+                          @"userType":@2,
                           @"account":RequestStrKey(account),
                           @"password":RequestStrKey([password base64Encode]),
                           @"terminalNumber":RequestStrKey([CloudPushSDK getDeviceId]),
                           @"scope":@1};
-    [self postUrl:@"/auth/user/login/2" delegate:delegate parameters:dic success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [self postUrl:@"/auth/user/login/1_1_0" delegate:delegate parameters:dic success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalData sharedInstance].GB_Key = [response stringValueForKey:@"token"];
         [self requestUserInfoWithScope:0 delegate:delegate success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             ModelUser * model = [ModelUser modelObjectWithDictionary:response];
@@ -88,6 +92,7 @@
                             success:(void (^)(NSDictionary * response, id mark))success
                             failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"app":@"2",
+                          @"userType":@2,
                           @"account":RequestStrKey(account),
                           @"scope":@1};
     [self postUrl:@"/auth/smscode" delegate:delegate parameters:dic success:success failure:failure];
@@ -102,6 +107,7 @@
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"app":@"2",
+                          @"userType":@2,
                           @"account":RequestStrKey(account),
                           @"password":RequestStrKey([password base64Encode]),
                           @"smsCode":RequestStrKey(smsCode)};

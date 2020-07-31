@@ -114,7 +114,6 @@
     [self.view addSubview:self.codeView];
     [self addObserveOfKeyboard];
      
-    [self.view addTarget:self action:@selector(hideKeyboard)];
     
 }
 - (void)hideKeyboard{
