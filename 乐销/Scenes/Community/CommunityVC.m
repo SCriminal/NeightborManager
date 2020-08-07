@@ -21,7 +21,7 @@
 //请求单例
 #import "RequestInstance.h"
 #import "WebVC.h"
-
+#import "BindPhoneAlertView.h"
 
 @interface CommunityVC ()
 @property (nonatomic, strong) CommunityNavView *navView;
@@ -249,6 +249,7 @@
 
     [self.tableView registerClass:[CommunityInfoCell class] forCellReuseIdentifier:@"CommunityInfoCell"];
     [self requestADList];
+    [self reqeustCellPhone];
 }
 
 - (void)reconfigView{
@@ -303,7 +304,18 @@
         
     }];
 }
-
+- (void)reqeustCellPhone{
+    [RequestApi requestPersonlInfoWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSString * cellPhone = [response stringValueForKey:@"cellPhone"];
+        if (!isStr(cellPhone)) {
+            BindPhoneAlertView * bindView = [BindPhoneAlertView new];
+            [[UIApplication sharedApplication].keyWindow addSubview:bindView];
+        }
+        
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
 #pragma mark click
 - (void)btnSignInClick{
     [GB_Nav pushVCName:@"SignInVC" animated:true];

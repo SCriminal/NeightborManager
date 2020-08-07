@@ -19,7 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
                            delegate:(id <RequestDelegate>)delegate
                             success:(void (^)(NSDictionary * response, id mark))success
                             failure:(void (^)(NSString * errorStr, id mark))failure;
-
+/**
+ 获取绑定手机验证码
+ */
++(void)requestSendBindPhoneCode:(NSString *)phone
+                           delegate:(id <RequestDelegate>)delegate
+                            success:(void (^)(NSDictionary * response, id mark))success
+                        failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
  登录(手机号自动注册)
  */
@@ -671,6 +677,15 @@ estateId:(double)estateId
 delegate:(id <RequestDelegate>)delegate
  success:(void (^)(NSDictionary * response, id mark))success
                                     failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+绑定
+*/
++(void)requestBindPhone:(NSString *)phone
+                code:(NSString *)code
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

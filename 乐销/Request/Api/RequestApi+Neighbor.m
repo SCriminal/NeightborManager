@@ -27,7 +27,20 @@
     };
     [self postUrl:@"/resident/smscode/1_0_30/3" delegate:delegate parameters:dic success:success failure:failure];
 }
-
+/**
+ 获取绑定手机验证码
+ */
++(void)requestSendBindPhoneCode:(NSString *)phone
+                           delegate:(id <RequestDelegate>)delegate
+                            success:(void (^)(NSDictionary * response, id mark))success
+                            failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"app":@"2",
+                          @"phone":RequestStrKey(phone),
+                          @"scope":@7,
+                          @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)
+    };
+    [self postUrl:@"/auth/smscode/1_1_0/4" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
  登录(手机号自动注册)
  */
@@ -1281,6 +1294,20 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"types":@"3"
     };
     [self getUrl:@"/admin/area/member/list/1_0_26/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+绑定
+*/
++(void)requestBindPhone:(NSString *)phone
+                code:(NSString *)code
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"phone":RequestStrKey(phone),
+                           @"code":RequestStrKey(code),
+                           @"scope":NSNumber.dou(4)};
+        [self postUrl:@"/resident/bind/phone/1_0_30" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 @end

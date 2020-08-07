@@ -22,7 +22,7 @@
 - (BindPhoneTitleView *)titleView{
     if (!_titleView) {
         _titleView = [BindPhoneTitleView new];
-        [_titleView resetWithBigTitle:@"解绑手机"];
+        [_titleView resetWithBigTitle:@"解绑手机" subTitle:@"解绑后，您的账号可能面临安全风险。您将无法通过手机号找回密码及登录"];
         _titleView.top = NAVIGATIONBAR_HEIGHT + W(21);
     }
     return _titleView;
@@ -31,7 +31,7 @@
     if (!_codeView) {
         _codeView = [BindPhoneCodeView new];
         _codeView.top = self.titleView.bottom + W(50);
-        _codeView.hidden = true;
+        [_codeView.btn resetViewWithWidth:W(295) :W(45) :@"解绑"];
         WEAKSELF
         _codeView.blockLoginClick = ^{
             [weakSelf requestCodeLogin];

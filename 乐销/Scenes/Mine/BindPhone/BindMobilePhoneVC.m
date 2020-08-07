@@ -22,7 +22,7 @@
 - (BindPhoneTitleView *)titleView{
     if (!_titleView) {
         _titleView = [BindPhoneTitleView new];
-        [_titleView resetWithBigTitle:@"绑定手机"];
+        [_titleView resetWithBigTitle:@"绑定手机" subTitle:@"为了您的账号安全，需要验证绑定手机号"];
         _titleView.top = NAVIGATIONBAR_HEIGHT + W(21);
     }
     return _titleView;
@@ -31,7 +31,6 @@
     if (!_codeView) {
         _codeView = [BindPhoneCodeView new];
         _codeView.top = self.titleView.bottom + W(50);
-        _codeView.hidden = true;
         WEAKSELF
         _codeView.blockLoginClick = ^{
             [weakSelf requestCodeLogin];
@@ -70,12 +69,13 @@
         [GlobalMethod showAlert:@"请输入有效手机号"];
         return;
     }
-    
-    [RequestApi requestSendCodeWithCellPhone:strPhone smsType:3 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestSendBindPhoneCode:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.codeView timerStart];
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+   
 }
 
 
@@ -90,16 +90,14 @@
         [GlobalMethod showAlert:@"请输入验证码"];
         return;
     }
-    
-    [RequestApi requestLoginWithCode:self.codeView.tfSecond.text cellPhone:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        //保存手机号
-        [GlobalMethod writeStr:strPhone forKey:LOCAL_PHONE exchange:false];
-        
-        
-        [GB_Nav popToRootViewControllerAnimated:true];
-        
+    [RequestApi requestBindPhone:strPhone code:self.codeView.tfSecond.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"绑定成功"];
+        [GlobalData sharedInstance].GB_UserModel.cellPhone = strPhone;
+        [GlobalData saveUserModel];
+        [GB_Nav popViewControllerAnimated:true];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+   
 }
 @end

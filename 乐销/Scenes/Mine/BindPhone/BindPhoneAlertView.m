@@ -1,141 +1,25 @@
 //
-//  BindPhoneView.m
+//  BindPhoneAlertView.m
 //  NeighborManager
 //
 //  Created by 隋林栋 on 2020/8/7.
 //Copyright © 2020 ping. All rights reserved.
 //
 
-#import "BindPhoneView.h"
+#import "BindPhoneAlertView.h"
 
-@implementation BindPhoneTitleView
-
-#pragma mark 懒加载
-- (UILabel *)title{
-    if (_title == nil) {
-        _title = [UILabel new];
-        _title.textColor = [UIColor blackColor];
-        _title.font =  [UIFont systemFontOfSize:F(18) weight:UIFontWeightMedium];
-        _title.numberOfLines = 1;
-        _title.lineSpace = 0;
-    }
-    return _title;
-}
-- (UIView *)yellowBlock{
-    if (_yellowBlock == nil) {
-        _yellowBlock = [UIView new];
-        _yellowBlock.backgroundColor = [UIColor colorWithHexString:@"#D8E5FB"];
-    }
-    return _yellowBlock;
-}
-- (UIImageView *)arrowRight{
-    if (_arrowRight == nil) {
-        _arrowRight = [UIImageView new];
-        _arrowRight.image = [UIImage imageNamed:@"arrow_right"];
-        _arrowRight.widthHeight = XY(W(15),W(15));
-    }
-    return _arrowRight;
-}
-- (UILabel *)more{
-    if (_more == nil) {
-        _more = [UILabel new];
-        _more.textColor = COLOR_666;
-        _more.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
-        _more.numberOfLines = 1;
-        _more.lineSpace = 0;
-    }
-    return _more;
-}
-- (UILabel *)subTitle{
-    if (_subTitle == nil) {
-        _subTitle = [UILabel new];
-        _subTitle.textColor = COLOR_666;
-        _subTitle.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
-        _subTitle.numberOfLines = 0;
-        _subTitle.lineSpace = W(6);
-    }
-    return _subTitle;
-}
-
-#pragma mark 初始化
-- (instancetype)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        self.width = SCREEN_WIDTH;
-        [self addSubView];
-    }
-    return self;
-}
-//添加subview
-- (void)addSubView{
-    [self addSubview:self.yellowBlock];
-    [self addSubview:self.title];
-    [self addSubview:self.subTitle];
-    [self addSubview:self.arrowRight];
-    [self addSubview:self.more];
-    
-    //初始化页面
-    [self resetViewWithModel:nil];
-}
-
-#pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
-    [self removeSubViewWithTag:TAG_LINE];//移除线
-    //刷新view
-    [self.title fitTitle:@"动态快报" variable:0];
-    self.title.leftTop = XY(W(20),W(0));
-    self.yellowBlock.widthHeight = XY(self.title.width+ W(6), W(7));
-    self.yellowBlock.centerXBottom = XY(self.title.centerX,self.title.bottom+W(2));
-    [self.yellowBlock addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft|UIRectCornerBottomRight radius:self.yellowBlock.height/2.0];
-
-    //设置总高度
-    self.height = self.yellowBlock.bottom;
-    
-    self.arrowRight.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0);
-    [self.more fitTitle:@"更多" variable:0];
-    self.more.rightCenterY = XY(self.arrowRight.left - W(3),self.arrowRight.centerY);
-    
-    [self addControlFrame:CGRectMake(self.more.left-W(20), 0, SCREEN_WIDTH - (self.more.left-W(20)), self.height) belowView:self.more target:self action:@selector(moreClick)];
-}
-
-#pragma mark 刷新view
-- (void)resetWithBigTitle:(NSString *)title subTitle:(NSString *)subTitle{
-    self.title.fontNum = F(30);
-    [self.title fitTitle:title variable:0];
-    self.title.leftTop = XY(W(43),W(0));
-    
-    self.yellowBlock.widthHeight = XY(self.title.width+ W(6), W(7));
-    self.yellowBlock.centerXBottom = XY(self.title.centerX,self.title.bottom+W(2));
-    [self.yellowBlock addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft|UIRectCornerBottomRight radius:self.yellowBlock.height/2.0];
-    self.more.hidden = true;
-    self.arrowRight.hidden = true;
-    
-    [self.subTitle fitTitle:UnPackStr(subTitle) variable:W(275)];
-    self.subTitle.leftTop = XY(W(45), self.title.bottom + W(22));
-    
-    self.height = self.subTitle.bottom;
-
-}
-
-#pragma mark click
-- (void)moreClick{
-    if (self.blockClick) {
-        self.blockClick();
-    }
-}
+@interface BindPhoneAlertView ()
 
 @end
 
-
-@implementation BindPhoneCodeView
+@implementation BindPhoneAlertView
 #pragma mark 懒加载
 - (UIView *)phoneBG{
     if (_phoneBG == nil) {
         _phoneBG = [UIView new];
         _phoneBG.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
-        _phoneBG.widthHeight = XY(W(295), W(50));
-        [_phoneBG addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:10 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#EFF2F1"]];
+        _phoneBG.widthHeight = XY(W(250), W(41));
+        [_phoneBG addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:5 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#EFF2F1"]];
         [_phoneBG addTarget:self action:@selector(phoneClick)];
 
     }
@@ -145,17 +29,38 @@
     if (_secondBG == nil) {
         _secondBG = [UIView new];
         _secondBG.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
-        _secondBG.widthHeight = XY(W(295), W(50));
-        [_secondBG addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:10 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#EFF2F1"]];
+        _secondBG.widthHeight = XY(W(250), W(41));
+        [_secondBG addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:5 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#EFF2F1"]];
         [_secondBG addTarget:self action:@selector(secondClick)];
 
     }
     return _secondBG;
 }
+- (UILabel *)title{
+    if (!_title) {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(17) weight:UIFontWeightRegular];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:@"绑定手机" variable:0];
+        _title = l;
+    }
+    return _title;
+}
+- (UIImageView *)close{
+    if (!_close) {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.image = [UIImage imageNamed:@"inputClose"];
+        iv.widthHeight = XY(W(25),W(25));
+        _close = iv;
+    }
+    return _close;
+}
 - (UITextField *)tfPhone{
     if (_tfPhone == nil) {
         _tfPhone = [UITextField new];
-        _tfPhone.font = [UIFont systemFontOfSize:F(14)];
+        _tfPhone.font = [UIFont systemFontOfSize:F(15)];
         _tfPhone.textAlignment = NSTextAlignmentLeft;
         _tfPhone.textColor = COLOR_333;
         _tfPhone.borderStyle = UITextBorderStyleNone;
@@ -186,7 +91,7 @@
 - (UITextField *)tfSecond{
     if (_tfSecond == nil) {
         _tfSecond = [UITextField new];
-        _tfSecond.font = [UIFont systemFontOfSize:F(14)];
+        _tfSecond.font = [UIFont systemFontOfSize:F(15)];
         _tfSecond.textAlignment = NSTextAlignmentLeft;
         _tfSecond.textColor = COLOR_333;
         _tfSecond.borderStyle = UITextBorderStyleNone;
@@ -196,17 +101,15 @@
     }
     return _tfSecond;
 }
-- (YellowButton *)btn{
+- (UIButton *)btn{
     if (!_btn) {
-        _btn = [YellowButton new];
-        [_btn resetViewWithWidth:W(295) :W(45) :@"绑定"];
-        WEAKSELF
-        _btn.blockClick = ^{
-           
-            if (weakSelf.blockLoginClick) {
-                weakSelf.blockLoginClick();
-            }
-        };
+        _btn = [UIButton new];
+        _btn.widthHeight = XY(W(290), W(55));
+        [_btn setBackgroundColor:[UIColor clearColor]];
+        _btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_btn setTitle:@"绑定" forState:UIControlStateNormal];
+        [_btn setTitleColor:COLOR_BLUE forState:UIControlStateNormal];
+        [_btn addTarget:self action:@selector(bindClick)];
         
     }
     return _btn;
@@ -215,7 +118,7 @@
     if (_time == nil) {
         _time = [UILabel new];
         _time.textColor = [UIColor colorWithHexString:@"#D9D9D9"];
-        _time.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        _time.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
         _time.numberOfLines = 1;
         _time.lineSpace = 0;
     }
@@ -228,19 +131,33 @@
     }
     return _controlResendCode;
 }
+- (UIView *)viewBG{
+    if (!_viewBG) {
+        _viewBG = [UIView new];
+        _viewBG.backgroundColor = [UIColor whiteColor];
+        _viewBG.widthHeight = XY(W(290), W(323));
+        _viewBG.centerXCenterY = XY(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0);
+        [_viewBG addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:10 lineWidth:1 lineColor:[UIColor clearColor]];
+    }
+    return _viewBG;
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = COLOR_BLACK_ALPHA_PER60;
         [self addTarget:self action:@selector(hideKeyboard)];
         self.width = SCREEN_WIDTH;
+        self.height = SCREEN_HEIGHT;
         [self addSubView];
     }
     return self;
 }
 //添加subview
 - (void)addSubView{
+    [self addSubview:self.viewBG];
+    [self addSubview:self.title];
+    [self addSubview:self.close];
     [self addSubview:self.phoneBG];
     [self addSubview:self.secondBG];
     [self addSubview:self.tfPhone];
@@ -262,9 +179,15 @@
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.phoneBG.centerXTop = XY(SCREEN_WIDTH/2.0,0);
     
-    self.secondBG.centerXTop = XY(SCREEN_WIDTH/2.0,self.phoneBG.bottom+W(30));
+    self.title.centerXTop = XY(SCREEN_WIDTH/2.0, self.viewBG.top + W(25));
+    
+    self.close.rightTop = XY(SCREEN_WIDTH - W(58.5), self.viewBG.top + W(21));
+    [self addControlFrame:CGRectInset(self.close.frame, -W(10), -W(10)) belowView:self.close target:self action:@selector(closeClick)];
+
+    self.phoneBG.centerXTop = XY(SCREEN_WIDTH/2.0,self.viewBG.top + W(77));
+    
+    self.secondBG.centerXTop = XY(SCREEN_WIDTH/2.0,self.phoneBG.bottom+W(20));
     
     self.tfPhone.widthHeight = XY(self.phoneBG.width - W(30), self.tfPhone.font.lineHeight);
     self.tfPhone.leftCenterY = XY(self.phoneBG.left + W(15),self.phoneBG.centerY);
@@ -275,37 +198,35 @@
     
     self.tfSecond.widthHeight = XY(self.secondBG.width - W(110), self.tfSecond.font.lineHeight);
     self.tfSecond.leftCenterY = XY(self.secondBG.left + W(15),self.secondBG.centerY);
-        
-    self.btn.centerXTop = XY(SCREEN_WIDTH/2.0,self.secondBG.bottom + W(25));
-    
-    CGFloat top = self.btn.bottom;
+            
+    CGFloat top = self.secondBG.bottom;
     {
         UILabel * l = [UILabel new];
-        l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        l.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
         l.textColor = COLOR_999;
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(5);
         [l fitTitle:@"· 您可以使用此手机号找回密码及登录" variable:W(271)];
-        l.leftTop = XY(W(45), top + W(30));
+        l.leftTop = XY(W(65), top + W(20));
         [self addSubview:l];
         top = l.bottom;
     }
     {
         UILabel * l = [UILabel new];
-        l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        l.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
         l.textColor = COLOR_999;
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(5);
         [l fitTitle:@"· 请勿随意泄露手机号，以防不法分子利用账号信息" variable:W(271)];
-        l.leftTop = XY(W(45), top + W(10));
+        l.leftTop = XY(W(65), top + W(10));
         [self addSubview:l];
         top = l.bottom;
     }
     
-    //设置总高度
-    self.height = top;
+    self.btn.centerXBottom = XY(SCREEN_WIDTH/2.0,self.viewBG.bottom );
+    [self addLineFrame:CGRectMake(self.viewBG.left, self.btn.top, self.viewBG.width, 1)];
 }
 - ( BOOL)textFieldShouldReturn:(UITextField *)textField{
     [GlobalMethod endEditing];
@@ -356,6 +277,9 @@
 }
 
 #pragma mark click
+- (void)closeClick{
+    [self removeFromSuperview];
+}
 - (void)sendCodeClick{
     if (self.blockSendCodeClick) {
         self.blockSendCodeClick();
@@ -363,5 +287,10 @@
 }
 - (void)hideKeyboard{
     [GlobalMethod hideKeyboard];
+}
+- (void)bindClick{
+    if (self.blockLoginClick) {
+                   self.blockLoginClick();
+               }
 }
 @end

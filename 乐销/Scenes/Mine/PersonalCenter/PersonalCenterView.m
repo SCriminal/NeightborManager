@@ -38,7 +38,7 @@
     if (_name == nil) {
         _name = [UILabel new];
         _name.textColor = [UIColor whiteColor];
-        _name.font =  [UIFont systemFontOfSize:F(20) weight:UIFontWeightRegular];
+        _name.font =  [UIFont systemFontOfSize:F(20) weight:UIFontWeightMedium];
         _name.numberOfLines = 1;
         _name.lineSpace = 0;
     }
@@ -50,14 +50,13 @@
         _iconBind.image = [UIImage imageNamed:@"personal_iconBind"];
         _iconBind.highlightedImage = [UIImage imageNamed:@"personal_iconBinded"];
         _iconBind.widthHeight = XY(W(17),W(17));
-        _iconBind.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _iconBind;
 }
 - (UILabel *)bind{
     if (_bind == nil) {
         _bind = [UILabel new];
-        _bind.textColor = [UIColor blackColor];
+        _bind.textColor = [UIColor whiteColor];
         _bind.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
         _bind.numberOfLines = 1;
         _bind.lineSpace = 0;
