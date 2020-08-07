@@ -320,6 +320,9 @@
 		D2DFD78522969D6100363142 /* ModelAuthorityImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD78122969D6100363142 /* ModelAuthorityImage.m */; };
 		D2E4837B1E5ABCF100D91AAD /* UINavigationController+EndEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E4837A1E5ABCF100D91AAD /* UINavigationController+EndEditing.m */; };
 		D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */; };
+		D2F09E9A24DD30DE00CE85C3 /* BindMobilePhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F09E9924DD30DE00CE85C3 /* BindMobilePhoneVC.m */; };
+		D2F09E9D24DD30EF00CE85C3 /* UnbindMobilePhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F09E9C24DD30EF00CE85C3 /* UnbindMobilePhoneVC.m */; };
+		D2F09EA024DD31C600CE85C3 /* BindPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F09E9F24DD31C600CE85C3 /* BindPhoneView.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F7F3C524284BA100F86747 /* SelectCommunityCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F7F3C424284BA100F86747 /* SelectCommunityCityVC.m */; };
 		D2F7F3C824284FEA00F86747 /* SelectCommunityCityView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F7F3C724284FEA00F86747 /* SelectCommunityCityView.m */; };
@@ -1015,6 +1018,12 @@
 		D2E4837A1E5ABCF100D91AAD /* UINavigationController+EndEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+EndEditing.m"; sourceTree = "<group>"; };
 		D2E50D081E319E650045AD3F /* BaseVC+KeyboardObserve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseVC+KeyboardObserve.h"; sourceTree = "<group>"; };
 		D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseVC+KeyboardObserve.m"; sourceTree = "<group>"; };
+		D2F09E9824DD30DE00CE85C3 /* BindMobilePhoneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindMobilePhoneVC.h; sourceTree = "<group>"; };
+		D2F09E9924DD30DE00CE85C3 /* BindMobilePhoneVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindMobilePhoneVC.m; sourceTree = "<group>"; };
+		D2F09E9B24DD30EF00CE85C3 /* UnbindMobilePhoneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnbindMobilePhoneVC.h; sourceTree = "<group>"; };
+		D2F09E9C24DD30EF00CE85C3 /* UnbindMobilePhoneVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnbindMobilePhoneVC.m; sourceTree = "<group>"; };
+		D2F09E9E24DD31C600CE85C3 /* BindPhoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneView.h; sourceTree = "<group>"; };
+		D2F09E9F24DD31C600CE85C3 /* BindPhoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneView.m; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F7F3C324284BA100F86747 /* SelectCommunityCityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCommunityCityVC.h; sourceTree = "<group>"; };
 		D2F7F3C424284BA100F86747 /* SelectCommunityCityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCommunityCityVC.m; sourceTree = "<group>"; };
@@ -1564,8 +1573,8 @@
 			isa = PBXGroup;
 			children = (
 				D2424FA924132DDC0055AC42 /* SettingCell.h */,
-				D2424FAA24132DDC0055AC42 /* SettingVC.h */,
 				D2424FAE24132DDC0055AC42 /* SettingCell.m */,
+				D2424FAA24132DDC0055AC42 /* SettingVC.h */,
 				D2424FAF24132DDD0055AC42 /* SettingVC.m */,
 			);
 			path = Setting;
@@ -1986,6 +1995,7 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D2F09E9724DD30CB00CE85C3 /* BindPhone */,
 				D29130862417227900CAC2E4 /* MemeberManage */,
 				D291307F241721A300CAC2E4 /* Archive */,
 				D291307724171F5800CAC2E4 /* MessageCenter */,
@@ -2838,6 +2848,19 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
+		D2F09E9724DD30CB00CE85C3 /* BindPhone */ = {
+			isa = PBXGroup;
+			children = (
+				D2F09E9B24DD30EF00CE85C3 /* UnbindMobilePhoneVC.h */,
+				D2F09E9C24DD30EF00CE85C3 /* UnbindMobilePhoneVC.m */,
+				D2F09E9824DD30DE00CE85C3 /* BindMobilePhoneVC.h */,
+				D2F09E9924DD30DE00CE85C3 /* BindMobilePhoneVC.m */,
+				D2F09E9E24DD31C600CE85C3 /* BindPhoneView.h */,
+				D2F09E9F24DD31C600CE85C3 /* BindPhoneView.m */,
+			);
+			path = BindPhone;
+			sourceTree = "<group>";
+		};
 		D2F7F3CC24285A0900F86747 /* ManualSelectCommunity */ = {
 			isa = PBXGroup;
 			children = (
@@ -3350,6 +3373,7 @@
 				D2CDE60A2445BFCC007EA369 /* ModelQuestionnairDetailContent.m in Sources */,
 				D2AE6E7424B80F9500C582AD /* RTCSampleRemoteUserManager.m in Sources */,
 				D2ACCC1B21DC8DFD00F39E28 /* TopAlertView.m in Sources */,
+				D2F09E9D24DD30EF00CE85C3 /* UnbindMobilePhoneVC.m in Sources */,
 				D2D1E1DB242205E300ED5E0D /* WhistleDetailVC.m in Sources */,
 				D22BA9D91E5EB8CA00C5B391 /* FSCalendarDelegationProxy.m in Sources */,
 				D2CC9672241D0A5000818D87 /* DevelopVC.m in Sources */,
@@ -3363,6 +3387,7 @@
 				D20375FA210717B10054F8A6 /* ModelBaseData.m in Sources */,
 				D29130A72417377400CAC2E4 /* MemberListCell.m in Sources */,
 				D2996A4121E6E3AA00562587 /* UpImageWithTextVC.m in Sources */,
+				D2F09EA024DD31C600CE85C3 /* BindPhoneView.m in Sources */,
 				D2F7F3E0242A2F8A00F86747 /* SelectDepartmentVC.m in Sources */,
 				D285E2991E6D49E100DE9A6D /* NSDate+CategorySld.m in Sources */,
 				D2AE6E9B24B8338900C582AD /* ModelCertificateDealDetail.m in Sources */,
@@ -3564,6 +3589,7 @@
 				D2CC966E241D002F00818D87 /* ModelCommunity.m in Sources */,
 				D2BE30C5210711430059929D /* ModelAryIndex.m in Sources */,
 				D2CC9659241B503E00818D87 /* RequestApi+Neighbor.m in Sources */,
+				D2F09E9A24DD30DE00CE85C3 /* BindMobilePhoneVC.m in Sources */,
 				D275DB411DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m in Sources */,
 				D2A946DD2192C66900AD1E5B /* GlobalMethod+Logical.m in Sources */,
 				D239EACD1E2E175100E803F6 /* CutomFooter.m in Sources */,

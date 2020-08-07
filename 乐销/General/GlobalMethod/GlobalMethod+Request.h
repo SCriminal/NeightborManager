@@ -19,5 +19,6 @@
 + (void)requestBindDeviceToken;
 //请求bind undevice token
 + (void)requestUnBindDeviceToken;
-
+// requestCellPhoneBinded
++ (void)requestCellPhoneBinded;
 @end

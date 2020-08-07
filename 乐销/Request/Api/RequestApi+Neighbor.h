@@ -237,6 +237,9 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                                  failure:(void (^)(NSString * errorStr, id mark))failure;
 
 
++(void)requestPersonlInfoWithDelegate:(id <RequestDelegate>)delegate
+                                 success:(void (^)(NSDictionary * response, id mark))success
+                              failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
  列表
  */

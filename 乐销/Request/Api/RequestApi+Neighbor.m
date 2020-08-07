@@ -49,6 +49,8 @@
         [self requestUserInfoWithScope:0 delegate:delegate success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             ModelUser * model = [ModelUser modelObjectWithDictionary:response];
             [GlobalData sharedInstance].GB_UserModel = model;
+            [GlobalMethod requestBindDeviceToken];
+            [GlobalMethod requestCellPhoneBinded];
             if (success) {
                 success(response,mark);
             }
@@ -78,6 +80,7 @@
             ModelUser * model = [ModelUser modelObjectWithDictionary:response];
             [GlobalData sharedInstance].GB_UserModel = model;
             [GlobalMethod requestBindDeviceToken];
+            [GlobalMethod requestCellPhoneBinded];
             if (success) {
                 success(response,mark);
             }
@@ -427,6 +430,14 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"phone":RequestStrKey(phone),
                           @"addr":RequestStrKey(addr),
                           @"gender":NSNumber.dou(gender),
+                          @"scope":NSNumber.dou(4)};
+    [self patchUrl:@"/resident/user" delegate:delegate parameters:dic success:success failure:failure];
+}
+
++(void)requestPersonlInfoWithDelegate:(id <RequestDelegate>)delegate
+                                 success:(void (^)(NSDictionary * response, id mark))success
+                                 failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{
                           @"scope":NSNumber.dou(4)};
     [self patchUrl:@"/resident/user" delegate:delegate parameters:dic success:success failure:failure];
 }

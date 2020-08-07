@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *headUrl;
 @property (nonatomic, strong) NSString *account;
 @property (nonatomic, strong) NSString *nickname;
+@property (nonatomic, strong) NSString *cellPhone;
 @property (nonatomic, strong) NSArray *areas;
 @property (nonatomic, assign) double areaID;
 

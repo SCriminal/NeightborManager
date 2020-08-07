@@ -37,30 +37,34 @@
 - (UILabel *)name{
     if (_name == nil) {
         _name = [UILabel new];
-        _name.textColor = [UIColor blackColor];
+        _name.textColor = [UIColor whiteColor];
         _name.font =  [UIFont systemFontOfSize:F(20) weight:UIFontWeightRegular];
         _name.numberOfLines = 1;
         _name.lineSpace = 0;
     }
     return _name;
 }
-- (UIImageView *)whiteBg{
-    if (_whiteBg == nil) {
-        _whiteBg = [UIImageView new];
-        _whiteBg.image = [UIImage imageNamed:@"personal_bg_white"];
-        _whiteBg.widthHeight = XY(SCREEN_WIDTH,W(15));
+- (UIImageView *)iconBind{
+    if (_iconBind == nil) {
+        _iconBind = [UIImageView new];
+        _iconBind.image = [UIImage imageNamed:@"personal_iconBind"];
+        _iconBind.highlightedImage = [UIImage imageNamed:@"personal_iconBinded"];
+        _iconBind.widthHeight = XY(W(17),W(17));
+        _iconBind.contentMode = UIViewContentModeScaleAspectFill;
     }
-    return _whiteBg;
+    return _iconBind;
 }
-- (UIImageView *)headBG{
-    if (_headBG == nil) {
-        _headBG = [UIImageView new];
-        _headBG.image = [UIImage imageNamed:@"personal_head_bg"];
-        _headBG.widthHeight = XY(W(90),W(90));
-        _headBG.backgroundColor = [UIColor clearColor];
+- (UILabel *)bind{
+    if (_bind == nil) {
+        _bind = [UILabel new];
+        _bind.textColor = [UIColor blackColor];
+        _bind.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+        _bind.numberOfLines = 1;
+        _bind.lineSpace = 0;
     }
-    return _headBG;
+    return _bind;
 }
+
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -76,11 +80,10 @@
 //添加subview
 - (void)addSubView{
     [self addSubview:self.bg];
-//    [self addSubview:self.headBG];
     [self addSubview:self.head];
     [self addSubview:self.name];
-//    [self addSubview:self.whiteBg];
-
+    [self addSubview:self.bind];
+    [self addSubview:self.iconBind];
     //初始化页面
     [self resetViewWithModel];
 }
@@ -90,19 +93,31 @@
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     ModelUser * model = [GlobalData sharedInstance].GB_UserModel;
-    self.headBG.leftTop = XY(W(7.5),W(43.5)+iphoneXTopInterval);
 
     [self.head sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"personal_head"]];
-    self.head.centerXCenterY = self.headBG.centerXCenterY;
+    self.head.leftTop = XY(W(20), W(55)+iphoneXTopInterval);
   
     [self.name fitTitle:[GlobalMethod isLoginSuccess]?UnPackStr(model.nickname):@"您好，请登录" variable:0];
-    self.name.leftCenterY = XY(self.headBG.right + W(7.5),self.headBG.centerY);
+    self.name.leftTop = XY(self.head.right + W(20),self.head.top+W(5));
+
+            self.iconBind.highlighted = isStr([GlobalData sharedInstance].GB_UserModel.cellPhone);
+    [self.bind fitTitle:isStr([GlobalData sharedInstance].GB_UserModel.cellPhone)?@"手机已绑定":@"手机未绑定" variable:0];
+
+    self.iconBind.leftBottom = XY(self.head.right +W(20), self.head.bottom - W(6));
+    self.bind.leftCenterY = XY(self.iconBind.right +W(4), self.iconBind.centerY);
 
    
     //设置总高度
-    self.height = self.headBG.bottom + W(35);
-    self.bg.height = self.height;
-    self.whiteBg.bottom = self.height;
+    [self addSubview:^(){
+        UIView * viewGray = [UIView new];
+        viewGray.widthHeight = XY(SCREEN_WIDTH, W(10));
+        viewGray.top = self.head.bottom + W(53);
+        viewGray.tag = TAG_LINE;
+        viewGray.backgroundColor = COLOR_GRAY;
+        return viewGray;
+    }()];
+    self.height = self.head.bottom + W(53)+W(10);
+    self.bg.height = self.height-W(10);
 
 }
 - (void)headClick{
@@ -138,25 +153,28 @@
     }
     return _name;
 }
-- (UIView *)whiteBG{
-    if (!_whiteBG) {
-        _whiteBG = [UIView new];
-        _whiteBG.backgroundColor = [UIColor whiteColor];
-        _whiteBG.widthHeight = XY(SCREEN_WIDTH, W(50));
+- (UILabel *)subTitle{
+    if (_subTitle == nil) {
+        _subTitle = [UILabel new];
+        _subTitle.textColor = COLOR_999;
+        _subTitle.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _subTitle.numberOfLines = 1;
+        _subTitle.lineSpace = 0;
     }
-    return _whiteBG;
+    return _subTitle;
 }
+
 #pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = COLOR_GRAY;
-        self.backgroundColor = COLOR_GRAY;
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self.contentView addSubview:self.whiteBG];
         [self.contentView addSubview:self.arrow];
         [self.contentView addSubview:self.name];
-        
+        [self.contentView addSubview:self.subTitle];
+
     }
     return self;
 }
@@ -164,16 +182,15 @@
 - (void)resetCellWithModel:(ModelBtn *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    
-    self.whiteBG.leftTop = XY(0, W(10));
-    
+    self.height = W(52);
+
     [self.name fitTitle:model.title variable:0];
-    self.name.leftCenterY = XY(W(25),self.whiteBG.centerY);
+    self.name.leftCenterY = XY(W(25),self.height/2.0);
 
     self.arrow.rightCenterY = XY(SCREEN_WIDTH - W(15),self.name.centerY);
     
-    //设置总高度
-    self.height = self.whiteBG.bottom + W(10);
+    [self.subTitle fitTitle:model.subTitle variable:0];
+    self.subTitle.rightCenterY = XY(self.arrow.left - W(5),self.height/2.0);
 }
 
 @end

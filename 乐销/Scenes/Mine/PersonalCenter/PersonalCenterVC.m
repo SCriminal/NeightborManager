@@ -44,14 +44,7 @@
 
 - (NSMutableArray *)aryDatas{
     if (!_aryDatas) {
-        _aryDatas = @[^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"设置";
-            model.blockClick = ^{
-                [GB_Nav pushVCName:@"SettingVC" animated:true];
-            };
-            return model;
-        }()].mutableCopy;
+        _aryDatas = [NSMutableArray array];
     }
     return _aryDatas;
 }
@@ -61,22 +54,26 @@
     //添加导航栏
     [self reconfigView];
     //table
-    
     self.tableView.top = 0;
     self.tableView.bounces = false;
     self.tableView.height = SCREEN_HEIGHT - TABBAR_HEIGHT;
     [self.tableView registerClass:[PersonalCenterCell class] forCellReuseIdentifier:@"PersonalCenterCell"];
+    //notice
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestList) name:NOTICE_SELFMODEL_CHANGE object:nil];
     //request
     [self requestList];
 }
 - (void)reconfigView{
     [self.tableHeaderView removeAllSubViews];
-    
     [self.tableHeaderView addSubview:self.topView];
-    
-
     self.tableHeaderView.height = self.topView.bottom;
     self.tableView.tableHeaderView = self.tableHeaderView;
+    self.tableView.tableFooterView = ^(){
+        UIView * viewGray = [UIView new];
+        viewGray.widthHeight = XY(SCREEN_WIDTH, W(10));
+        viewGray.backgroundColor = COLOR_GRAY;
+        return viewGray;
+    }();
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -127,5 +124,29 @@
 }
 #pragma mark request
 - (void)requestList{
+    self.aryDatas =  @[^(){
+                     ModelBtn * model = [ModelBtn new];
+                     model.title = @"手机绑定";
+                  model.subTitle = isStr([GlobalData sharedInstance].GB_UserModel.cellPhone)?@"已绑定":@"未绑定";
+                     model.blockClick = ^{
+                         if (isStr([GlobalData sharedInstance].GB_UserModel.cellPhone)) {
+                                            [GB_Nav pushVCName:@"UnbindMobilePhoneVC" animated:true];
+                         }else{
+                             [GB_Nav pushVCName:@"BindMobilePhoneVC" animated:true];
+                         }
+                     };
+                     return model;
+                 }(),^(){
+                     ModelBtn * model = [ModelBtn new];
+                     model.title = @"设置";
+                     model.blockClick = ^{
+                         [GB_Nav pushVCName:@"SettingVC" animated:true];
+                     };
+                     return model;
+                 }()].mutableCopy;
+           [self.tableView reloadData];
+    
+   
+   
 }
 @end

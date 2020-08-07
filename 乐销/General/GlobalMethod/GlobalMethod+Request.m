@@ -39,7 +39,17 @@
     }
     
 }
-
+// requestCellPhoneBinded
++ (void)requestCellPhoneBinded{
+    if ([self isLoginSuccess]) {
+        
+        [RequestApi requestPersonlInfoWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalData sharedInstance].GB_UserModel.cellPhone = [response stringValueForKey:@"cellPhone"];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    }
+}
 //request version
 + (void)requestVersion:(void(^)(void))blockSuccess{
     [RequestApi requestVersionWithDelegate:nil success:^(NSDictionary *response, id mark) {

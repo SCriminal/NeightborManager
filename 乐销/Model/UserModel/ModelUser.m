@@ -13,6 +13,7 @@ NSString *const kModelUser2HeadUrl = @"headUrl";
 NSString *const kModelUser2Account = @"account";
 NSString *const kModelUser2Nickname = @"nickname";
 NSString *const kModelUser2Areas = @"areas";
+NSString *const kModelUser2CellPhone = @"cellPhone";
 
 
 @interface ModelUser ()
@@ -39,6 +40,7 @@ NSString *const kModelUser2Areas = @"areas";
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
         self.headUrl = [dict stringValueForKey:kModelUser2HeadUrl];
         self.account = [dict stringValueForKey:kModelUser2Account];
+        self.cellPhone = [dict stringValueForKey:kModelUser2CellPhone];
         self.nickname = [dict stringValueForKey:kModelUser2Nickname];
         self.areas = [GlobalMethod exchangeDic:[dict objectForKey:kModelUser2Areas] toAryWithModelName:NSStringFromClass(ModelUserAuthority.class)];
         [self fetchAreaID];
@@ -58,6 +60,7 @@ NSString *const kModelUser2Areas = @"areas";
     [mutableDict setValue:self.headUrl forKey:kModelUser2HeadUrl];
     [mutableDict setValue:self.account forKey:kModelUser2Account];
     [mutableDict setValue:self.nickname forKey:kModelUser2Nickname];
+    [mutableDict setValue:self.cellPhone forKey:kModelUser2CellPhone];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.areas] forKey:kModelUser2Areas];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
