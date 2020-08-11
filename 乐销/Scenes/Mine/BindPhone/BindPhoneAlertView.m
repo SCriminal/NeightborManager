@@ -7,6 +7,8 @@
 //
 
 #import "BindPhoneAlertView.h"
+//request
+#import "RequestApi+Neighbor.h"
 
 @interface BindPhoneAlertView ()
 
@@ -14,6 +16,13 @@
 
 @implementation BindPhoneAlertView
 #pragma mark 懒加载
+- (LoadingView *)loadingView{
+    if (_loadingView == nil) {
+        _loadingView = [LoadingView new];
+    }
+    return _loadingView;
+}
+
 - (UIView *)phoneBG{
     if (_phoneBG == nil) {
         _phoneBG = [UIView new];
@@ -103,13 +112,13 @@
 }
 - (UIButton *)btn{
     if (!_btn) {
-        _btn = [UIButton new];
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
         _btn.widthHeight = XY(W(290), W(55));
         [_btn setBackgroundColor:[UIColor clearColor]];
         _btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_btn setTitle:@"绑定" forState:UIControlStateNormal];
         [_btn setTitleColor:COLOR_BLUE forState:UIControlStateNormal];
-        [_btn addTarget:self action:@selector(bindClick)];
+        [_btn addTarget:self action:@selector(bindClick) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _btn;
@@ -146,7 +155,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = COLOR_BLACK_ALPHA_PER60;
-        [self addTarget:self action:@selector(hideKeyboard)];
         self.width = SCREEN_WIDTH;
         self.height = SCREEN_HEIGHT;
         [self addSubView];
@@ -278,19 +286,75 @@
 
 #pragma mark click
 - (void)closeClick{
+    [GlobalMethod endEditing];
     [self removeFromSuperview];
 }
 - (void)sendCodeClick{
-    if (self.blockSendCodeClick) {
-        self.blockSendCodeClick();
-    }
+    [self requestSendCode];
 }
 - (void)hideKeyboard{
     [GlobalMethod hideKeyboard];
 }
 - (void)bindClick{
-    if (self.blockLoginClick) {
-                   self.blockLoginClick();
-               }
+    [self requestCodeLogin];
+}
+#pragma mark 请求过程回调
+- (void)protocolWillRequest{
+    [self showLoadingView];
+}
+//show loading view
+- (void)showLoadingView{
+    [self.loadingView hideLoading];
+    [self.loadingView resetFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) viewShow:self];
+}
+- (void)protocolDidRequestSuccess{
+    [self.loadingView hideLoading];
+}
+- (void)protocolDidRequestFailure:(NSString *)errorStr{
+    [self.loadingView hideLoading];
+    if ([self isShowInScreen]&&isStr(errorStr)) {
+          [GlobalMethod showAlert:errorStr];
+         }
+}
+#pragma mark request
+- (void)requestSendCode{
+    [GlobalMethod endEditing];
+
+    NSString * strPhone = [self.tfPhone.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+
+    if (!isPhoneNum(strPhone)) {
+        [GlobalMethod showAlert:@"请输入有效手机号"];
+        return;
+    }
+    [RequestApi requestSendBindPhoneCode:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [self timerStart];
+
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+    
+}
+- (void)requestCodeLogin{
+    [GlobalMethod endEditing];
+
+    NSString * strPhone = [self.tfPhone.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    if (!isPhoneNum(strPhone)) {
+        [GlobalMethod showAlert:@"请输入有效手机号"];
+        return;
+    }
+    if (self.tfSecond.text.length == 0) {
+        [GlobalMethod showAlert:@"请输入验证码"];
+        return;
+    }
+    [RequestApi requestBindPhone:strPhone code:self.tfSecond.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"绑定成功"];
+        [GlobalData sharedInstance].GB_UserModel.cellPhone = strPhone;
+        [GlobalData saveUserModel];
+        [self removeFromSuperview];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+   
 }
 @end

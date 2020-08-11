@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BindPhoneAlertView : UIView<UITextFieldDelegate>
+@interface BindPhoneAlertView : UIView<RequestDelegate,UITextFieldDelegate>
 @property (strong, nonatomic) UIView *viewBG;
 @property (strong, nonatomic) UIView *phoneBG;
 @property (strong, nonatomic) UIView *secondBG;
@@ -21,8 +21,8 @@
 @property (nonatomic, strong) UIControl *controlResendCode;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) double numTime;
-@property (nonatomic, strong) void (^blockSendCodeClick)(void);
-@property (nonatomic, strong) void (^blockLoginClick)(void);
+@property (nonatomic, strong) LoadingView * loadingView;//loading动画
+
 - (void)timerStart;
 
 @end

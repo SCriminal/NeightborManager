@@ -452,7 +452,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                                  failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{
                           @"scope":NSNumber.dou(4)};
-    [self patchUrl:@"/resident/user" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/resident/user" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  获取

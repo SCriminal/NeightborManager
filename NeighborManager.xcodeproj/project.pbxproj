@@ -143,6 +143,7 @@
 		D25651B824BECBEF00CB7A4E /* SafetyUnionMemberListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D25651B724BECBEF00CB7A4E /* SafetyUnionMemberListVC.m */; };
 		D25651BB24BEDCA500CB7A4E /* SafetySearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = D25651BA24BEDCA400CB7A4E /* SafetySearchView.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
+		D25B1B8524E2329A006D3A6A /* BindedPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B1B8424E2329A006D3A6A /* BindedPhoneVC.m */; };
 		D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */ = {isa = PBXBuildFile; fileRef = D25EB6BB20EA230C0082AD73 /* EditVC_Title.m */; };
 		D25F55D92178801000FD4898 /* 闪屏.m4v in Resources */ = {isa = PBXBuildFile; fileRef = D25F55D82178801000FD4898 /* 闪屏.m4v */; };
 		D26510651E2880FB0084C9E2 /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = D26510641E2880FB0084C9E2 /* UIView+Size.m */; };
@@ -680,6 +681,8 @@
 		D25651BA24BEDCA400CB7A4E /* SafetySearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafetySearchView.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
+		D25B1B8324E2329A006D3A6A /* BindedPhoneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindedPhoneVC.h; sourceTree = "<group>"; };
+		D25B1B8424E2329A006D3A6A /* BindedPhoneVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindedPhoneVC.m; sourceTree = "<group>"; };
 		D25EB6BA20EA230C0082AD73 /* EditVC_Title.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditVC_Title.h; sourceTree = "<group>"; };
 		D25EB6BB20EA230C0082AD73 /* EditVC_Title.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditVC_Title.m; sourceTree = "<group>"; };
 		D25F55D82178801000FD4898 /* 闪屏.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "闪屏.m4v"; sourceTree = "<group>"; };
@@ -2856,6 +2859,8 @@
 			children = (
 				D2F09E9B24DD30EF00CE85C3 /* UnbindMobilePhoneVC.h */,
 				D2F09E9C24DD30EF00CE85C3 /* UnbindMobilePhoneVC.m */,
+				D25B1B8324E2329A006D3A6A /* BindedPhoneVC.h */,
+				D25B1B8424E2329A006D3A6A /* BindedPhoneVC.m */,
 				D2F09E9824DD30DE00CE85C3 /* BindMobilePhoneVC.h */,
 				D2F09E9924DD30DE00CE85C3 /* BindMobilePhoneVC.m */,
 				D2F09E9E24DD31C600CE85C3 /* BindPhoneView.h */,
@@ -3371,6 +3376,7 @@
 				D22BA9DF1E5EB8CA00C5B391 /* FSCalendarWeekdayView.m in Sources */,
 				D216F5341E56966200E11ED2 /* NSDictionary+Category.m in Sources */,
 				D20E4A92243C22A4009915E2 /* CommunityServiceWatiListVC.m in Sources */,
+				D25B1B8524E2329A006D3A6A /* BindedPhoneVC.m in Sources */,
 				D2F7F3D624299BFA00F86747 /* DisposalWhistleVC.m in Sources */,
 				D2BC9AAF1DFFDF0400B0468E /* GlobalData.m in Sources */,
 				D2CD1BA41E233BBE0042182B /* BaseImage.m in Sources */,

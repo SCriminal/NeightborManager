@@ -130,7 +130,7 @@
                   model.subTitle = isStr([GlobalData sharedInstance].GB_UserModel.cellPhone)?@"已绑定":@"未绑定";
                      model.blockClick = ^{
                          if (isStr([GlobalData sharedInstance].GB_UserModel.cellPhone)) {
-                                            [GB_Nav pushVCName:@"UnbindMobilePhoneVC" animated:true];
+                                            [GB_Nav pushVCName:@"BindedPhoneVC" animated:true];
                          }else{
                              [GB_Nav pushVCName:@"BindMobilePhoneVC" animated:true];
                          }

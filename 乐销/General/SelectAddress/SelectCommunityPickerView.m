@@ -389,6 +389,9 @@
 }
 - (void)protocolDidRequestFailure:(NSString *)errorStr{
     [self.loadingView hideLoading];
+    if ([self isShowInScreen]&&isStr(errorStr)) {
+          [GlobalMethod showAlert:errorStr];
+         }
 }
 
 #pragma mark click
