@@ -967,8 +967,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BindPhone/BindPhoneAlertView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "-requestCodeLogin"
             landmarkType = "7">
          </BreakpointContent>
@@ -983,8 +983,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BindPhone/BindPhoneAlertView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "-hideKeyboard"
             landmarkType = "7">
          </BreakpointContent>
@@ -999,8 +999,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BindPhone/BindPhoneAlertView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "-bindClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -1015,8 +1015,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BindPhone/BindPhoneAlertView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "-requestCodeLogin"
             landmarkType = "7">
             <Locations>
@@ -1063,8 +1063,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BindPhone/BindPhoneAlertView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "-requestCodeLogin"
             landmarkType = "7">
          </BreakpointContent>
@@ -1079,8 +1079,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BindPhone/BindPhoneAlertView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "-requestCodeLogin"
             landmarkType = "7">
          </BreakpointContent>

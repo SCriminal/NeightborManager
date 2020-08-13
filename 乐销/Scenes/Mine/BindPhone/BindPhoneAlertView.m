@@ -155,6 +155,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = COLOR_BLACK_ALPHA_PER60;
+        [self addTarget:self action:@selector(hideKeyboard)];
         self.width = SCREEN_WIDTH;
         self.height = SCREEN_HEIGHT;
         [self addSubView];
@@ -293,7 +294,7 @@
     [self requestSendCode];
 }
 - (void)hideKeyboard{
-    [GlobalMethod hideKeyboard];
+    [self endEditing:true];
 }
 - (void)bindClick{
     [self requestCodeLogin];
