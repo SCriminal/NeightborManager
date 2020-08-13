@@ -59,7 +59,6 @@
             [GB_Nav popToClass:@"LoginViewController"];
         }else{
             [GlobalMethod createRootNav];
-            [GB_Nav pushVCName:@"LoginViewController" animated:false];
         }
         [GlobalData sharedInstance].isLoginAnimation = false;
     }

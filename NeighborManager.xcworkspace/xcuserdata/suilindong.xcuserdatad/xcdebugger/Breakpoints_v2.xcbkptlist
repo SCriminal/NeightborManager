@@ -1089,7 +1089,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1CD00CB8-6E87-43AB-AD79-E5E3ADC8D784"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/Community/CommunityVC.m"
@@ -1137,7 +1137,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "313E1D38-D652-4A25-9701-9216E92EE011"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/Community/CommunityVC.m"
@@ -1162,6 +1162,22 @@
             startingLineNumber = "455"
             endingLineNumber = "455"
             landmarkName = "+requestPersonlInfoWithDelegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E64A76ED-11C5-446B-AAE0-183DDD376A97"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Community/CommunityVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
+            landmarkName = "-reqeustCellPhone"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

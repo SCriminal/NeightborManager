@@ -176,8 +176,7 @@
 
     [RequestApi requestLoginWithAccount:strPhone password:self.pwdView.tfSecond.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod writeStr:strPhone forKey:LOCAL_PHONE exchange:false];
-
-        [GB_Nav popToRootViewControllerAnimated:true];
+        [GlobalMethod createRootNav];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

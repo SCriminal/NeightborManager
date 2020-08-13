@@ -138,6 +138,9 @@
 }
 
 - (void)reconfig{
+    if (self.type == ENUM_LOGIN_BTN_FORGET) {
+        return;
+    }
     for (UIView * subView in self.subviews) {
         subView.hidden = false;
     }
@@ -165,12 +168,12 @@
             break;
         case ENUM_LOGIN_BTN_FORGET:
         {
-            self.btnPwd.centerX = SCREEN_WIDTH/2.0;
-            self.btnPwd.right = SCREEN_WIDTH/2.0-W(47)/2.0;
-
-            self.btnWechat.right = self.btnPwd.left - W(47);
-            self.btnCode.left = self.btnPwd.right + W(47);
-            self.btnForget.hidden = true;
+//            self.btnPwd.centerX = SCREEN_WIDTH/2.0;
+//            self.btnPwd.right = SCREEN_WIDTH/2.0-W(47)/2.0;
+//
+//            self.btnWechat.right = self.btnPwd.left - W(47);
+//            self.btnCode.left = self.btnPwd.right + W(47);
+//            self.btnForget.hidden = true;
         }
             break;
         default:

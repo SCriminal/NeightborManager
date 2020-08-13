@@ -306,10 +306,13 @@
 }
 - (void)reqeustCellPhone{
     [RequestApi requestPersonlInfoWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSString * cellPhone = [response stringValueForKey:@"cellPhone"];
+        NSString * cellPhone = [response stringValueForKey:@"cellphone"];
         if (!isStr(cellPhone)) {
             BindPhoneAlertView * bindView = [BindPhoneAlertView new];
             [[UIApplication sharedApplication].keyWindow addSubview:bindView];
+        }else{
+            [GlobalData sharedInstance].GB_UserModel.cellPhone = cellPhone;
+            [GlobalData saveUserModel];
         }
         
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

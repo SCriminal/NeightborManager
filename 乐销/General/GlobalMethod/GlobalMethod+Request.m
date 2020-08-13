@@ -44,7 +44,10 @@
     if ([self isLoginSuccess]) {
         
         [RequestApi requestPersonlInfoWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            [GlobalData sharedInstance].GB_UserModel.cellPhone = [response stringValueForKey:@"cellPhone"];
+            [GlobalData sharedInstance].GB_UserModel.cellPhone = [response stringValueForKey:@"cellphone"];
+            if (isStr([GlobalData sharedInstance].GB_UserModel.cellPhone)) {
+                [GlobalData saveUserModel];
+            }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
