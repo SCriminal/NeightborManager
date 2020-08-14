@@ -101,6 +101,14 @@
     WEAKSELF
     self.aryDatas = @[^(){
         ModelBtn * model = [ModelBtn new];
+        model.title = @"重置密码";
+        model.isLineHide = false;
+        model.blockClick = ^{
+            [GB_Nav pushVCName:@"ForgetPwdVC" animated:true];
+        };
+        return model;
+    }(),^(){
+        ModelBtn * model = [ModelBtn new];
         model.title = @"清除缓存";
         model.isLineHide = false;
         SDImageCache * cache = [SDImageCache sharedImageCache];
