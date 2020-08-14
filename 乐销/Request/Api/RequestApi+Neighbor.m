@@ -42,6 +42,20 @@
     [self postUrl:@"/auth/smscode/1_1_0/4" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
+ 获取解绑手机验证码
+ */
++(void)requestSendUnbindPhoneCode:(NSString *)phone
+                           delegate:(id <RequestDelegate>)delegate
+                            success:(void (^)(NSDictionary * response, id mark))success
+                            failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{
+                          @"cellphone":RequestStrKey(phone),
+                          @"scope":@4,
+                          
+    };
+    [self postUrl:@"/resident/smscode/1_0_40/5" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
  登录(手机号自动注册)
  */
 +(void)requestLoginWithCode:(NSString *)smsCode
@@ -1309,5 +1323,14 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                            @"scope":NSNumber.dou(4)};
         [self postUrl:@"/resident/bind/phone/1_0_30" delegate:delegate parameters:dic success:success failure:failure];
 }
-
++(void)requestUnbindPhone:(NSString *)phone
+                code:(NSString *)code
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"cellphone":RequestStrKey(phone),
+                           @"code":RequestStrKey(code),
+                           @"scope":NSNumber.dou(4)};
+        [self deleteUrl:@"/resident/cellphone/1_0_40" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

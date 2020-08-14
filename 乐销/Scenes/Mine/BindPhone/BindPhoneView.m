@@ -165,9 +165,8 @@
         _tfPhone.numericFormatter = [AKNumericFormatter formatterWithMask:@"*** **** ****" placeholderCharacter:'*'];
         _tfPhone.keyboardType = UIKeyboardTypeNumberPad;
         [_tfPhone addTarget:self action:@selector(textFileAction:) forControlEvents:(UIControlEventEditingChanged)];
-        NSString * strValue = [GlobalMethod readStrFromUser:LOCAL_PHONE exchange:false];
-        if (isStr(strValue)) {
-            _tfPhone.text = [self exchangePhone:strValue];
+        if (isStr([GlobalData sharedInstance].GB_UserModel.cellPhone)) {
+            _tfPhone.text = [self exchangePhone:[GlobalData sharedInstance].GB_UserModel.cellPhone];
             self.time.textColor = COLOR_BLUE;
         }
     }

@@ -70,9 +70,9 @@
         [GlobalMethod showAlert:@"请输入有效手机号"];
         return;
     }
-    
-    [RequestApi requestSendCodeWithCellPhone:strPhone smsType:3 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestSendUnbindPhoneCode:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.codeView timerStart];
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
@@ -91,13 +91,11 @@
         return;
     }
     
-    [RequestApi requestLoginWithCode:self.codeView.tfSecond.text cellPhone:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        //保存手机号
-        [GlobalMethod writeStr:strPhone forKey:LOCAL_PHONE exchange:false];
-        
-        
-        [GB_Nav popToRootViewControllerAnimated:true];
-        
+   [RequestApi requestUnbindPhone:strPhone code:self.codeView.tfSecond.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"解绑成功"];
+        [GlobalData sharedInstance].GB_UserModel.cellPhone = @"";
+        [GlobalData saveUserModel];
+        [GB_Nav popViewControllerAnimated:true];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
