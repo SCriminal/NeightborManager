@@ -35,14 +35,15 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     WEAKSELF
-    [self.view addSubview:[BaseNavView initNavBackTitle:@"" rightTitle:@"解绑手机号" rightBlock:^{
-        ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
-           ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_SUBTITLE];
-        modelConfirm.blockClick = ^{
-            [GB_Nav popLastAndPushVC:[UnbindMobilePhoneVC new]];
-        };
-        [BaseAlertView initWithTitle:@"提示" content:@"确认解绑手机号？" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:weakSelf.view];
-    }]];
+    [self.view addSubview:[BaseNavView initNavBackTitle:@"" rightView:nil]];
+//    [self.view addSubview:[BaseNavView initNavBackTitle:@"" rightTitle:@"解绑手机号" rightBlock:^{
+//        ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+//           ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_SUBTITLE];
+//        modelConfirm.blockClick = ^{
+//            [GB_Nav popLastAndPushVC:[UnbindMobilePhoneVC new]];
+//        };
+//        [BaseAlertView initWithTitle:@"提示" content:@"确认解绑手机号？" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:weakSelf.view];
+//    }]];
 }
 
 @end

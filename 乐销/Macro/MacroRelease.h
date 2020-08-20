@@ -12,11 +12,11 @@
 //请求URL
 #if DEBUG
 
-#define URL_HEAD  @"http://112.253.1.72:10231"
-#define URL_IMAGE @"http://112.253.1.72:10299"//image
+//#define URL_HEAD  @"http://112.253.1.72:10231"
+//#define URL_IMAGE @"http://112.253.1.72:10299"//image
 
-//#define URL_HEAD  @"https://api.wsq.hongjiafu.cn"
-//#define URL_IMAGE @"https://file.wsq.hongjiafu.cn"//image
+#define URL_HEAD  @"https://api.wsq.hongjiafu.cn"
+#define URL_IMAGE @"https://file.wsq.hongjiafu.cn"//image
 
 #define URL_SHARE @"http://172.16.1.102:30001"
 #else
