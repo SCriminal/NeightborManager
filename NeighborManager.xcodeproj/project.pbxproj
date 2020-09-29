@@ -276,6 +276,7 @@
 		D2C27AC11E0266880097DAAD /* GlobalMethod+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C27AC01E0266880097DAAD /* GlobalMethod+Version.m */; };
 		D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C331E0BA42F001D5DBA /* RadioBtnView.m */; };
 		D2C9C7DD1EE562220020E4E3 /* AMapPOI+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C9C7DC1EE562220020E4E3 /* AMapPOI+Category.m */; };
+		D2C9EC9125231854000D3E00 /* NoticeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C9EC9025231854000D3E00 /* NoticeAlertView.m */; };
 		D2CC9659241B503E00818D87 /* RequestApi+Neighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CC9657241B503E00818D87 /* RequestApi+Neighbor.m */; };
 		D2CC965B241B52B700818D87 /* api.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2CC965A241B52B700818D87 /* api.txt */; };
 		D2CC965F241BAA0000818D87 /* ModelIntegralRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CC965E241BAA0000818D87 /* ModelIntegralRecord.m */; };
@@ -944,6 +945,8 @@
 		D2C99C331E0BA42F001D5DBA /* RadioBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioBtnView.m; sourceTree = "<group>"; };
 		D2C9C7DB1EE562220020E4E3 /* AMapPOI+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMapPOI+Category.h"; sourceTree = "<group>"; };
 		D2C9C7DC1EE562220020E4E3 /* AMapPOI+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMapPOI+Category.m"; sourceTree = "<group>"; };
+		D2C9EC8F25231854000D3E00 /* NoticeAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeAlertView.h; sourceTree = "<group>"; };
+		D2C9EC9025231854000D3E00 /* NoticeAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeAlertView.m; sourceTree = "<group>"; };
 		D2CC9657241B503E00818D87 /* RequestApi+Neighbor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Neighbor.m"; sourceTree = "<group>"; };
 		D2CC9658241B503E00818D87 /* RequestApi+Neighbor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Neighbor.h"; sourceTree = "<group>"; };
 		D2CC965A241B52B700818D87 /* api.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = api.txt; sourceTree = "<group>"; };
@@ -2001,6 +2004,7 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D2C9EC8E2523183F000D3E00 /* NoticeAlertView */,
 				D2F09E9724DD30CB00CE85C3 /* BindPhone */,
 				D29130862417227900CAC2E4 /* MemeberManage */,
 				D291307F241721A300CAC2E4 /* Archive */,
@@ -2664,6 +2668,15 @@
 				D2C9C7DC1EE562220020E4E3 /* AMapPOI+Category.m */,
 			);
 			path = "高德地图扩展";
+			sourceTree = "<group>";
+		};
+		D2C9EC8E2523183F000D3E00 /* NoticeAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				D2C9EC8F25231854000D3E00 /* NoticeAlertView.h */,
+				D2C9EC9025231854000D3E00 /* NoticeAlertView.m */,
+			);
+			path = NoticeAlertView;
 			sourceTree = "<group>";
 		};
 		D2CC9656241B503E00818D87 /* Api */ = {
@@ -3629,6 +3642,7 @@
 				D234EF0024209E2000D8D1AB /* WhistleTabVC.m in Sources */,
 				D2CEBABB24AD7EE500518270 /* ManagerWhistleDetailVC.m in Sources */,
 				D2DFD78522969D6100363142 /* ModelAuthorityImage.m in Sources */,
+				D2C9EC9125231854000D3E00 /* NoticeAlertView.m in Sources */,
 				D2BE30B621070BD40059929D /* ModelImage.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
 				D26AE0642425A7900044E1DA /* HospitalListVC.m in Sources */,
