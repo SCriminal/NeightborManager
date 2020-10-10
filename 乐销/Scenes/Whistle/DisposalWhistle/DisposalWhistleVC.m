@@ -90,7 +90,7 @@
     self.textView.leftTop = XY( self.bg.left + W(15),self.bg.top+W(15));
     self.btn.centerXTop = XY(SCREEN_WIDTH/2.0,self.bg.bottom + W(35));
     
-    [self.view addTarget:self action:@selector(hideKeyboardClick)];
+//    [self.view addTarget:self action:@selector(hideKeyboardClick)];
 }
 -(void)hideKeyboardClick{
     [GlobalMethod endEditing];

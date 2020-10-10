@@ -190,7 +190,7 @@
     [self.view addSubview:self.arrowRight];
 
     [self reconfigView];
-    [self.view addTarget:self action:@selector(hideKeyboardClick)];
+//    [self.view addTarget:self action:@selector(hideKeyboardClick)];
 }
 -(void)hideKeyboardClick{
     [GlobalMethod endEditing];
