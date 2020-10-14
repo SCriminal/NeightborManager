@@ -370,6 +370,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
 id:(double)identity
 scope:(NSString *)scope
 scopeId:(double)scopeId
+urls:(NSString *)urls
 delegate:(id <RequestDelegate>)delegate
 success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure;

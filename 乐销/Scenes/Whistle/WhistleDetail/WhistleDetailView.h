@@ -44,6 +44,7 @@
 @property (strong, nonatomic) UIView *labelBg;
 @property (strong, nonatomic) UILabel *status;
 @property (strong, nonatomic) UILabel *progress;
+@property (nonatomic, strong) ModelWhistleList *model;
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelWhistleList *)model;

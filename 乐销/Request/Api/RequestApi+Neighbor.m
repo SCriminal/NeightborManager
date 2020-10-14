@@ -683,6 +683,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
 id:(double)identity
 scope:(NSString *)scope
 scopeId:(double)scopeId
+urls:(NSString *)urls
 delegate:(id <RequestDelegate>)delegate
 success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -690,7 +691,9 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"areaId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
                           @"id":NSNumber.dou(identity),
                           @"scope":@7,
-                          @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID)};
+                          @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+                          @"urls":RequestStrKey(urls)
+    };
     [self patchUrl:@"/admin/whistle/9/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 

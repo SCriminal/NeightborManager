@@ -85,6 +85,7 @@ NSString *const kModelWhistleListHandlerName = @"handlerName";
             self.iDPropertyDescription = [dict stringValueForKey:kModelWhistleListDescription];
             self.categoryName = [dict stringValueForKey:kModelWhistleListCategoryName];
         self.urls =  [dict arrayValueForKey:kModelWhistleListUrls];
+        self.photo9Urls =  [dict arrayValueForKey:@"photo9Urls"];
         self.score = [dict doubleValueForKey:kModelWhistleListScore];
         self.evaluation = [dict stringValueForKey:kModelWhistleListEvaluation];
         self.result = [dict stringValueForKey:kModelWhistleListSolutionResult];
@@ -162,6 +163,12 @@ NSString *const kModelWhistleListHandlerName = @"handlerName";
             model.url = strURL;
             [self.aryImages addObject:model];
         }
+        self.ary9UrlImages = [NSMutableArray new];
+               for (NSString * strURL in self.photo9Urls) {
+                   ModelImage * model = [ModelImage new];
+                   model.url = strURL;
+                   [self.ary9UrlImages addObject:model];
+               }
     }
     
     return self;
@@ -176,6 +183,8 @@ NSString *const kModelWhistleListHandlerName = @"handlerName";
     [mutableDict setValue:self.iDPropertyDescription forKey:kModelWhistleListDescription];
     [mutableDict setValue:self.categoryName forKey:kModelWhistleListCategoryName];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.urls] forKey:kModelWhistleListUrls];
+    [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.photo9Urls] forKey:@"photo9Urls"];
+
     [mutableDict setValue:[NSNumber numberWithDouble:self.score] forKey:kModelWhistleListScore];
     [mutableDict setValue:self.evaluation forKey:kModelWhistleListEvaluation];
     [mutableDict setValue:self.result forKey:kModelWhistleListSolutionResult];

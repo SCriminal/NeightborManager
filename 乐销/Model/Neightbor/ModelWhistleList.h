@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *iDPropertyDescription;
 @property (nonatomic, strong) NSString *categoryName;
 @property (nonatomic, strong) NSArray *urls;
+@property (nonatomic, strong) NSArray *photo9Urls;
 @property (nonatomic, assign) double score;
 @property (nonatomic, strong) NSString *evaluation;
 @property (nonatomic, strong) NSString *result;
@@ -62,6 +63,7 @@
 @property (nonatomic, strong) NSString *statusShow;
 @property (nonatomic, strong) UIColor *statusColorShow;
 @property (nonatomic, strong) NSMutableArray *aryImages;
+@property (nonatomic, strong) NSMutableArray *ary9UrlImages;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
