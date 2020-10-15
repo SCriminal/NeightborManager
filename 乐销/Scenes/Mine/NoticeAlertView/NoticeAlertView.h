@@ -15,5 +15,6 @@
 @property (nonatomic, strong) UIImageView *close;
 @property (strong, nonatomic) UIButton *btn;
 
+- (void)resetViewWithModel:(NSString *)title;
 
 @end

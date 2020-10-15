@@ -125,7 +125,7 @@
     self.image.leftTop = XY(self.result.left, self.imageAlert.bottom + W(15));
     
     self.btn.centerXTop = XY(SCREEN_WIDTH/2.0,self.image.bottom + W(35));
-
+    [self.viewBG addTarget:self action:@selector(hideKeyboardClick)];
 }
 -(void)hideKeyboardClick{
     [GlobalMethod endEditing];

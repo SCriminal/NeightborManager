@@ -83,7 +83,7 @@
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(NSString *)title{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     self.viewBG.top = W(157)+iphoneXTopInterval;
@@ -95,29 +95,40 @@
 
     CGFloat top = W(77) + self.viewBG.top;
     
+//    {
+//        NSString * str1 = @"有";
+//               NSString * str2 = @"1";
+//        NSString * str3 = @"条新的社区工作通知下发，请及时查阅！";
+//
+//               NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@%@",str1,str2,str3]];
+//               [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName : [UIFont systemFontOfSize:F(15)]} range:NSMakeRange(0, str1.length)];
+//               [strAttribute setAttributes:@{NSForegroundColorAttributeName : [UIColor redColor],        NSFontAttributeName : [UIFont systemFontOfSize:F(15)]} range:NSMakeRange(str1.length, str2.length)];
+//        [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName : [UIFont systemFontOfSize:F(15)]} range:NSMakeRange(str1.length +str2.length, str3.length)];
+//        strAttribute.lineSpacing = W(11);
+//        strAttribute.lineBreakMode = NSLineBreakByCharWrapping;
+//        UILabel * l = [UILabel new];
+//        l.numberOfLines = 0;
+//        l.lineSpace = W(11);
+//        l.backgroundColor = [UIColor clearColor];
+//        [l fitTitle:[NSString stringWithFormat:@"%@%@%@",str1,str2,str3] variable:SCREEN_WIDTH - W(67.5)*2];
+//        l.attributedText = strAttribute;
+//
+//        l.leftTop = XY(W(67.5), top);
+//        [self addSubview:l];
+//        top = l.bottom + W(15);
+//    }
     {
-        NSString * str1 = @"有";
-               NSString * str2 = @"1";
-        NSString * str3 = @"条新的社区工作通知下发，请及时查阅！";
+              
+                UILabel * l = [UILabel new];
+                l.numberOfLines = 0;
+                l.lineSpace = W(11);
+                l.backgroundColor = [UIColor clearColor];
+                [l fitTitle:UnPackStr(title) variable:SCREEN_WIDTH - W(67.5)*2];
+                l.leftTop = XY(W(67.5), top);
+                [self addSubview:l];
+                top = l.bottom + W(15);
 
-               NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@%@",str1,str2,str3]];
-               [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName : [UIFont systemFontOfSize:F(15)]} range:NSMakeRange(0, str1.length)];
-               [strAttribute setAttributes:@{NSForegroundColorAttributeName : [UIColor redColor],        NSFontAttributeName : [UIFont systemFontOfSize:F(15)]} range:NSMakeRange(str1.length, str2.length)];
-        [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName : [UIFont systemFontOfSize:F(15)]} range:NSMakeRange(str1.length +str2.length, str3.length)];
-        strAttribute.lineSpacing = W(11);
-        strAttribute.lineBreakMode = NSLineBreakByCharWrapping;
-        UILabel * l = [UILabel new];
-        l.numberOfLines = 0;
-        l.lineSpace = W(11);
-        l.backgroundColor = [UIColor clearColor];
-        [l fitTitle:[NSString stringWithFormat:@"%@%@%@",str1,str2,str3] variable:SCREEN_WIDTH - W(67.5)*2];
-        l.attributedText = strAttribute;
-
-        l.leftTop = XY(W(67.5), top);
-        [self addSubview:l];
-        top = l.bottom + W(15);
     }
-            
   
     
     self.btn.centerXTop = XY(SCREEN_WIDTH/2.0,top + W(20));
@@ -132,6 +143,7 @@
     [self removeFromSuperview];
 }
 - (void)btnClick{
-    
+    [self removeFromSuperview];
+
 }
 @end
