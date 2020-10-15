@@ -45,9 +45,12 @@ NSString *const kModelWhistleProgressOpsName = @"opsName";
             self.deptName = [dict stringValueForKey:kModelWhistleProgressDeptName];
             self.opsId = [dict stringValueForKey:kModelWhistleProgressOpsId];
             self.opsName = [dict stringValueForKey:kModelWhistleProgressOpsName];
-
+        self.internalBaseClassDescription = [dict stringValueForKey:kModelWhistleProgressDescription];
         NSArray * ary = [dict arrayValueForKey:@"handleArr"];
         NSMutableArray * aryAll = [NSMutableArray new];
+        if (isStr(self.internalBaseClassDescription)) {
+            [aryAll addObject:self.internalBaseClassDescription];
+        }
         for (NSDictionary * item in ary) {
             [aryAll addObject:[NSString stringWithFormat:@"%@:%@",[item stringValueForKey:@"username"],[item stringValueForKey:@"content"]]];
         }
