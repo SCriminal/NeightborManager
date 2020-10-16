@@ -391,8 +391,7 @@
                 ModelBaseData * modelItem = [ModelBaseData new];
                 modelItem.string = [GlobalMethod exchangeTimeWithStamp:model.pushTime andFormatter:TIME_MIN_SHOW];
                 modelItem.subString = @"社区:";
-                modelItem.thirdString = @"已吹哨";
-                modelItem.isSelected = true;
+                modelItem.thirdString =model.isAutoPush?@"该事项因超时自动推送至中心处理":@"该事项已经由社区发起吹哨推送至中心处理";
                 return modelItem;
             }()];
             if (isAry(model.results)) {

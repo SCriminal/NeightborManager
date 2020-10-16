@@ -126,6 +126,7 @@
                 [l fitTitle:UnPackStr(title) variable:SCREEN_WIDTH - W(67.5)*2];
                 l.leftTop = XY(W(67.5), top);
                 [self addSubview:l];
+        l.tag = TAG_LINE;
                 top = l.bottom + W(15);
 
     }

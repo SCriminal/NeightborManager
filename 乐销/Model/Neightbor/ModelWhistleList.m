@@ -126,6 +126,7 @@ NSString *const kModelWhistleListHandlerName = @"handlerName";
         self.cityName = [dict stringValueForKey:kModelWhistleListCityName];
         self.categoryId = [dict doubleValueForKey:kModelWhistleListCategoryId];
         self.handlerName = [dict stringValueForKey:kModelWhistleListHandlerName];
+        self.isAutoPush = [dict doubleValueForKey:@"isAutoPush"];
 
 //1已发哨 3已吹哨 6已处理 9已处理 10已评价
         switch ((int)self.status) {
@@ -184,6 +185,7 @@ NSString *const kModelWhistleListHandlerName = @"handlerName";
     [mutableDict setValue:self.categoryName forKey:kModelWhistleListCategoryName];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.urls] forKey:kModelWhistleListUrls];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.photo9Urls] forKey:@"photo9Urls"];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isAutoPush] forKey:@"isAutoPush"];
 
     [mutableDict setValue:[NSNumber numberWithDouble:self.score] forKey:kModelWhistleListScore];
     [mutableDict setValue:self.evaluation forKey:kModelWhistleListEvaluation];

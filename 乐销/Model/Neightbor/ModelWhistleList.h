@@ -58,6 +58,7 @@
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, assign) double categoryId;
 @property (nonatomic, strong) NSString *handlerName;
+@property (nonatomic, assign) double isAutoPush;
 
 //logical
 @property (nonatomic, strong) NSString *statusShow;

@@ -243,7 +243,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     if (alertView == nil) {
         alertView = [NoticeAlertView new];
     }
-    [alertView resetViewWithModel:title];
+    [alertView resetViewWithModel:body];
     [self.window addSubview:alertView];
 }
 @end
