@@ -425,7 +425,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"page":NSNumber.dou(page),
                           @"count":NSNumber.dou(count),
                           //                          @"categoryId":NSNumber.dou(categoryId),
-                          @"categoryAlias":@"work_notice",
+                          @"categoryAlias":@"work_issue",
                           @"scope":NSNumber.dou(4)};
     [self getUrl:@"/resident/content/1_0_26/user/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
