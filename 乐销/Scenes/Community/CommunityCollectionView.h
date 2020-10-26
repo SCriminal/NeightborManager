@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UIImageView *iconImg;
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (nonatomic, strong) ModelBtn *model;
+@property (nonatomic, strong) UIView *viewAlert;
 
 
 

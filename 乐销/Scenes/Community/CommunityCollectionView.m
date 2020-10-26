@@ -185,6 +185,16 @@
     }
     return _nameLabel;
 }
+- (UIView *)viewAlert{
+    if (!_viewAlert) {
+        _viewAlert = [UIView new];
+        _viewAlert.widthHeight = XY(W(10), W(10));
+        _viewAlert.backgroundColor = [UIColor colorWithHexString:@"FE533F"];
+        [_viewAlert addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:_viewAlert.width/2.0 lineWidth:1 lineColor:[UIColor whiteColor]];
+        _viewAlert.hidden = true;
+    }
+    return _viewAlert;
+}
 #pragma mark 初始化
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -194,6 +204,8 @@
         self.contentView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.iconImg];
         [self.contentView addSubview:self.nameLabel];
+        [self.contentView addSubview:self.viewAlert];
+
     }
     return self;
 }
@@ -206,6 +218,7 @@
     self.iconImg.widthHeight = XY(W(74),W(74));
     self.iconImg.centerXTop = XY(self.contentView.width / 2,W(0));
     
+    self.viewAlert.rightTop = XY(self.iconImg.right-W(13), self.iconImg.top+W(7));
     //设置图片
     //    [self.iconImg sd_setImageWithURL:[NSURL URLWithString:model.imageName] placeholderImage:[UIImage imageNamed:@"community_collection_home"]];
     self.iconImg.image = [UIImage imageNamed:model.imageName];
