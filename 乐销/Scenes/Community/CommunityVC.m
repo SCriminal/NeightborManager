@@ -68,7 +68,7 @@
                     vc.url = model.bodyUrl;
                     [GB_Nav pushViewController:vc animated:true];
                 }
-               
+                
             }
             
         };
@@ -87,8 +87,8 @@
                 model.tag = 1;
                 model.imageName = @"tmp_module_0";
                 model.blockClick = ^{
-                        WhistleTabVC * whislterVC = [WhistleTabVC new];
-                        [GB_Nav pushViewController:whislterVC animated:true];
+                    WhistleTabVC * whislterVC = [WhistleTabVC new];
+                    [GB_Nav pushViewController:whislterVC animated:true];
                 };
                 return model;
             }(),^(){
@@ -139,7 +139,7 @@
                 model.tag = 1;
                 model.imageName = @"tmp_module_7";
                 model.blockClick = ^{
-                     [GB_Nav pushVCName:@"MeetingListVC" animated:true];
+                    [GB_Nav pushVCName:@"MeetingListVC" animated:true];
                 };
                 return model;
             }(),^(){
@@ -169,7 +169,7 @@
                 model.imageName = @"tmp_module_6";
                 model.blockClick = ^{
                     [GB_Nav pushVCName:@"ActivityListVC" animated:true];
-                     
+                    
                 };
                 return model;
             }(),^(){
@@ -178,7 +178,7 @@
                 model.tag = 1;
                 model.imageName = @"tmp_module_8";
                 model.blockClick = ^{
-                     [GB_Nav pushVCName:@"AssociationListVC" animated:true];
+                    [GB_Nav pushVCName:@"AssociationListVC" animated:true];
                 };
                 return model;
             }(),].mutableCopy;
@@ -193,9 +193,9 @@
                 model.tag = 1;
                 model.imageName = @"tmp_module_2";
                 model.blockClick = ^{
-                     CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
-                                    vc.serviceType = ENUM_COMMUNITY_SERVICE_SECURITY;
-                                    [GB_Nav pushViewController:vc animated:true];
+                    CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
+                    vc.serviceType = ENUM_COMMUNITY_SERVICE_SECURITY;
+                    [GB_Nav pushViewController:vc animated:true];
                 };
                 return model;
             }(),^(){
@@ -204,9 +204,9 @@
                 model.tag = 1;
                 model.imageName = @"tmp_module_3";
                 model.blockClick = ^{
-                     CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
-                                    vc.serviceType = ENUM_COMMUNITY_SERVICE_CLEAN;
-                                    [GB_Nav pushViewController:vc animated:true];
+                    CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
+                    vc.serviceType = ENUM_COMMUNITY_SERVICE_CLEAN;
+                    [GB_Nav pushViewController:vc animated:true];
                 };
                 return model;
             }(),^(){
@@ -215,9 +215,9 @@
                 model.tag = 1;
                 model.imageName = @"tmp_module_4";
                 model.blockClick = ^{
-                     CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
-                                    vc.serviceType = ENUM_COMMUNITY_SERVICE_MAINTAIN;
-                                    [GB_Nav pushViewController:vc animated:true];
+                    CommunityServiceTabVC * vc = [CommunityServiceTabVC new];
+                    vc.serviceType = ENUM_COMMUNITY_SERVICE_MAINTAIN;
+                    [GB_Nav pushViewController:vc animated:true];
                 };
                 return model;
             }()].mutableCopy;
@@ -242,11 +242,11 @@
     //添加导航栏
     [self addNav];
     [self reconfigView];
-
+    
     //table
     self.tableView.top = 0;
     self.tableView.height = SCREEN_HEIGHT  - TABBAR_HEIGHT;
-
+    
     [self.tableView registerClass:[CommunityInfoCell class] forCellReuseIdentifier:@"CommunityInfoCell"];
     [self requestADList];
     [self reqeustCellPhone];
@@ -256,10 +256,10 @@
     [self.tableHeaderView removeAllSubViews];
     //auto sc
     [self.tableHeaderView addSubview:self.autoSCView];
-
+    
     self.signInView.top = self.autoSCView.bottom+W(15);
     [self.tableHeaderView addSubview:self.signInView];
-
+    
     self.collection.top = self.signInView.bottom+W(15);
     [self.tableHeaderView addSubview:self.collection];
     
@@ -269,9 +269,81 @@
 
 #pragma mark 添加导航栏
 - (void)addNav{
-
+    
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    /*1.党员示范经营 1
+     2.居民哨 1
+     3.纠纷 1 (物业服务 1)
+     4.一键办理 1
+     5.商家入驻 1（商家审核 1）
+     6.商家更新 1（商家审核 1）
+     7.实名认证 2
+     8.维修 1 (物业服务 1)
+     9.保洁 1 (物业服务 1)
+     10.安保 1 (物业服务 1)
+     11.议事厅 1 (物业服务 1)*/
+    
+    NSMutableArray * ary = [NSMutableArray array];
+    for (int i = 0; i<11; i++) {
+        [ary addObject: [NSString stringWithFormat:@"%d",i+10000+1]];
+    }
+    [RequestApi requestModelNumWithModuleIds:[ary componentsJoinedByString:@","] delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSArray * ary = [response arrayValueForKey:@"modules"];
+        for (NSDictionary * dic in ary) {
+            int identity = [dic intValueForKey:@"id"];
+            int num = [dic intValueForKey:@"amount"];
+            NSString * strModelName = @"";
+            switch (identity) {
+                case 10001:
+                    strModelName = @"";
+                    break;
+                case 10002:
+                    strModelName = @"小红哨";
+                    break;
+                case 10003:
+                    strModelName = @"纠纷调解";
+                    break;
+                case 10004:
+                    strModelName = @"社区办理";
+                    break;
+                case 10005:
+                    strModelName = @"";
+                    break;
+                case 10006:
+                    strModelName = @"";
+                    break;
+                case 10007:
+                    strModelName = @"";
+                    break;
+                case 10008:
+                    strModelName = @"小区维修";
+                    break;
+                case 10009:
+                    strModelName = @"小区保洁";
+                    break;
+                case 10010:
+                    strModelName = @"小区安保";
+                    break;
+                case 10011:
+                    strModelName = @"议事厅";
+                    break;
+                default:
+                    break;
+            }
+            if (strModelName.length > 0) {
+                for (ModelBaseData * item in self.collection.aryModel) {
+                    ModelBtn * same = [item.aryDatas fetchSameModelKeyPath:@"title" value:strModelName];
+                    same.num = num;
+                }
+            }
+        }
+        [self.collection reload];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
 #pragma mark UITableViewDelegate
 //row num
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -290,7 +362,7 @@
     return [CommunityInfoCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
+    
 }
 
 #pragma mark request

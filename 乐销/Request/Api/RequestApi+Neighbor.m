@@ -407,8 +407,8 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"page":NSNumber.dou(page),
                           @"count":NSNumber.dou(count),
                           @"categoryAlias":RequestStrKey(categoryAlias),
-                          @"scope":NSNumber.dou(1)};
-    [self getUrl:@"/resident/content/list/total" delegate:delegate parameters:dic success:success failure:failure];
+                          @"scope":NSNumber.dou(4)};
+    [self getUrl:@"/resident/content/list/1_3_5/area/1/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  列表
@@ -426,8 +426,9 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"count":NSNumber.dou(count),
                           //                          @"categoryId":NSNumber.dou(categoryId),
                           @"categoryAlias":@"work_issue",
-                          @"scope":NSNumber.dou(4)};
-    [self getUrl:@"/resident/content/1_0_26/user/list/total" delegate:delegate parameters:dic success:success failure:failure];
+                          @"scope":NSNumber.dou(5)};
+    //  /resident/content/list/1_3_5/area/1/total  scope 4
+    [self getUrl:@"/resident/content/list/1_3_5/token/2/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  详情
@@ -1335,5 +1336,18 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                            @"code":RequestStrKey(code),
                            @"scope":NSNumber.dou(4)};
         [self deleteUrl:@"/resident/cellphone/1_0_40" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+模块待处理事项[^/admin/stat/module/todo/1_0_10$]
+*/
++(void)requestModelNumWithModuleIds:(NSString *)moduleIds
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"scope":@7,
+                           @"scopeId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.areaID),
+                           @"moduleIds":RequestStrKey(moduleIds)};
+        [self getUrl:@"/admin/stat/module/todo/1_1_10" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

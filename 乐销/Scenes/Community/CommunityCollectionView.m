@@ -163,6 +163,10 @@
     self.myCollectionView.width = SCREEN_WIDTH ;
     [self.myCollectionView reloadData];
 }
+- (void)reload{
+    [self.myCollectionView reloadData];
+
+}
 @end
 
 
@@ -219,6 +223,7 @@
     self.iconImg.centerXTop = XY(self.contentView.width / 2,W(0));
     
     self.viewAlert.rightTop = XY(self.iconImg.right-W(13), self.iconImg.top+W(7));
+    self.viewAlert.hidden = model.num == 0;
     //设置图片
     //    [self.iconImg sd_setImageWithURL:[NSURL URLWithString:model.imageName] placeholderImage:[UIImage imageNamed:@"community_collection_home"]];
     self.iconImg.image = [UIImage imageNamed:model.imageName];

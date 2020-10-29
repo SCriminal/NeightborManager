@@ -263,8 +263,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
             landmarkName = "+requestUserInfoWithScope:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -295,8 +295,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
             landmarkName = "+requestUserInfoWithScope:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -407,8 +407,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "855"
-            endingLineNumber = "855"
+            startingLineNumber = "856"
+            endingLineNumber = "856"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1095,8 +1095,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Community/CommunityVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "-reqeustCellPhone"
             landmarkType = "7">
             <Locations>
@@ -1143,8 +1143,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Community/CommunityVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "-reqeustCellPhone"
             landmarkType = "7">
          </BreakpointContent>
@@ -1159,8 +1159,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "+requestPersonlInfoWithDelegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1175,8 +1175,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Community/CommunityVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "-reqeustCellPhone"
             landmarkType = "7">
          </BreakpointContent>
@@ -1351,8 +1351,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "854"
-            endingLineNumber = "854"
+            startingLineNumber = "855"
+            endingLineNumber = "855"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1367,8 +1367,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "852"
-            endingLineNumber = "852"
+            startingLineNumber = "853"
+            endingLineNumber = "853"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
