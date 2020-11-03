@@ -293,7 +293,7 @@
         NSArray * ary = [response arrayValueForKey:@"modules"];
         for (NSDictionary * dic in ary) {
             int identity = [dic intValueForKey:@"id"];
-            int num = [dic intValueForKey:@"amount"];
+            int num = [dic intValueForKey:@"qty"];
             NSString * strModelName = @"";
             switch (identity) {
                 case 10001:
@@ -306,7 +306,7 @@
                     strModelName = @"纠纷调解";
                     break;
                 case 10004:
-                    strModelName = @"社区办理";
+                    strModelName = @"社区办事";
                     break;
                 case 10005:
                     strModelName = @"";
@@ -327,7 +327,8 @@
                     strModelName = @"小区安保";
                     break;
                 case 10011:
-                    strModelName = @"议事厅";
+//                    strModelName = @"议事厅";
+                    strModelName = @"";
                     break;
                 default:
                     break;

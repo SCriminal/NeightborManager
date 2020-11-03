@@ -427,8 +427,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           //                          @"categoryId":NSNumber.dou(categoryId),
                           @"categoryAlias":@"work_issue",
                           @"scope":NSNumber.dou(5)};
-    //  /resident/content/list/1_3_5/area/1/total  scope 4
-    [self getUrl:@"/resident/content/list/1_3_5/token/2/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/resident/content/list/1_3_5/token/1/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  详情
