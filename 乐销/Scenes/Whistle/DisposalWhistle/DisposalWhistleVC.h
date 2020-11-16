@@ -13,3 +13,12 @@
 
 @end
 
+@interface CollectionDisposalImageCell : UICollectionViewCell
+@property  (nonatomic, strong) UIImageView *ivImage;
+#pragma mark 获取cell高度
++ (CGSize)fetchHeight;
+#pragma mark 刷新cell
+- (CGSize)resetCellWithModel:(ModelImage *)model;
+- (void)resetCellWithCamera;
+
+@end
