@@ -111,6 +111,7 @@
     [RequestApi requestNewsListWithScopeid:25 page:self.pageNum count:50 categoryAlias:categoryAlias delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
+        
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
         }

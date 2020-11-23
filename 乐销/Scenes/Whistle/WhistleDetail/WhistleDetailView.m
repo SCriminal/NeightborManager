@@ -439,6 +439,7 @@
     //设置总高度
     self.height = bottom;
 }
+
 - (void)imageClick:(UITapGestureRecognizer *)tap{
     UIImageView * iv = (UIImageView *)tap.view;
     if ([iv isKindOfClass:[UIImageView class]]) {
@@ -447,6 +448,7 @@
         [detailView showInView:GB_Nav.lastVC.view imageViewShow:iv];
     }
 }
+
 - (CGFloat)addDot:(NSArray *)aryBtns top:(CGFloat)top{
     for (int i = 0; i<aryBtns.count; i++) {
         ModelBaseData * modelData = aryBtns[i];
