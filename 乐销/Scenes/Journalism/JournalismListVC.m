@@ -80,7 +80,7 @@
     JournalismListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"JournalismListCell"];
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
     return cell;
-
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [JournalismListCell fetchHeight:self.aryDatas[indexPath.row]];
@@ -90,7 +90,7 @@
     JournalismDetailVC * vc = [JournalismDetailVC new];
     vc.model = self.aryDatas[indexPath.row];
     [GB_Nav pushViewController:vc animated:true];
-
+    
 }
 #pragma mark request
 - (void)requestList{
@@ -111,7 +111,11 @@
     [RequestApi requestNewsListWithScopeid:25 page:self.pageNum count:50 categoryAlias:categoryAlias delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
-        
+        for (ModelNews * item in aryRequest.copy) {
+            if ([item.title containsString:@"疫情"]) {
+                [aryRequest removeObject:item];
+            }
+        }
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
         }

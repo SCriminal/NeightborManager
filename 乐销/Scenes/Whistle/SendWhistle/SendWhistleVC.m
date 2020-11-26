@@ -251,8 +251,8 @@
     [self configData];
     //add keyboard observe
     [self addObserveOfKeyboard];
-    [self initLocation];
-    [self addLocalAuthorityListen];
+//    [self initLocation];
+//    [self addLocalAuthorityListen];
 }
 - (void)fetchAddress:(ModelAddress *)clPlace{
     [GlobalMethod writeModel:clPlace key:LOCAL_LOCATION exchange:false];
